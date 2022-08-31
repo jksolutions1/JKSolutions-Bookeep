@@ -26,6 +26,14 @@
                     <th><?= __('Id') ?></th>
                     <td><?= $this->Number->format($admin->id) ?></td>
                 </tr>
+                <tr>
+                    <th><?= __('Adminname') ?></th>
+                    <td><?= $this->Number->format($admin->Adminname) ?></td>
+                </tr>
+                <tr>
+                    <th><?= __('Passsword') ?></th>
+                    <td><?= $this->Number->format($admin->Passsword) ?></td>
+                </tr>
             </table>
         </div>
     </div>

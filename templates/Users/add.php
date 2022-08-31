@@ -22,6 +22,8 @@
                     echo $this->Form->control('lastname');
                     echo $this->Form->control('role');
                     echo $this->Form->control('client_id', ['options' => $clients]);
+                    echo $this->Form->control('Username');
+                    echo $this->Form->control('Password');
                 ?>
             </fieldset>
             <?= $this->Form->button(__('Submit')) ?>

@@ -38,6 +38,14 @@
                     <th><?= __('Role') ?></th>
                     <td><?= $this->Number->format($user->role) ?></td>
                 </tr>
+                <tr>
+                    <th><?= __('Username') ?></th>
+                    <td><?= $this->Number->format($user->Username) ?></td>
+                </tr>
+                <tr>
+                    <th><?= __('Password') ?></th>
+                    <td><?= $this->Number->format($user->Password) ?></td>
+                </tr>
             </table>
             <div class="related">
                 <h4><?= __('Related Admins') ?></h4>
@@ -47,12 +55,16 @@
                         <tr>
                             <th><?= __('Id') ?></th>
                             <th><?= __('User Id') ?></th>
+                            <th><?= __('Adminname') ?></th>
+                            <th><?= __('Passsword') ?></th>
                             <th class="actions"><?= __('Actions') ?></th>
                         </tr>
                         <?php foreach ($user->admins as $admins) : ?>
                         <tr>
                             <td><?= h($admins->id) ?></td>
                             <td><?= h($admins->user_id) ?></td>
+                            <td><?= h($admins->Adminname) ?></td>
+                            <td><?= h($admins->Passsword) ?></td>
                             <td class="actions">
                                 <?= $this->Html->link(__('View'), ['controller' => 'Admins', 'action' => 'view', $admins->id]) ?>
                                 <?= $this->Html->link(__('Edit'), ['controller' => 'Admins', 'action' => 'edit', $admins->id]) ?>

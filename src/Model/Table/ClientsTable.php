@@ -104,6 +104,16 @@ class ClientsTable extends Table
             ->requirePresence('payment', 'create')
             ->notEmptyString('payment');
 
+        $validator
+            ->integer('Username')
+            ->requirePresence('Username', 'create')
+            ->notEmptyString('Username');
+
+        $validator
+            ->integer('Password')
+            ->requirePresence('Password', 'create')
+            ->notEmptyString('Password');
+
         return $validator;
     }
 }

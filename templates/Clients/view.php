@@ -30,6 +30,14 @@
                     <th><?= __('Payment') ?></th>
                     <td><?= $this->Number->format($client->payment) ?></td>
                 </tr>
+                <tr>
+                    <th><?= __('Username') ?></th>
+                    <td><?= $this->Number->format($client->Username) ?></td>
+                </tr>
+                <tr>
+                    <th><?= __('Password') ?></th>
+                    <td><?= $this->Number->format($client->Password) ?></td>
+                </tr>
             </table>
             <div class="text">
                 <strong><?= __('Firstname') ?></strong>
@@ -136,6 +144,8 @@
                             <th><?= __('Lastname') ?></th>
                             <th><?= __('Role') ?></th>
                             <th><?= __('Client Id') ?></th>
+                            <th><?= __('Username') ?></th>
+                            <th><?= __('Password') ?></th>
                             <th class="actions"><?= __('Actions') ?></th>
                         </tr>
                         <?php foreach ($client->users as $users) : ?>
@@ -145,6 +155,8 @@
                             <td><?= h($users->lastname) ?></td>
                             <td><?= h($users->role) ?></td>
                             <td><?= h($users->client_id) ?></td>
+                            <td><?= h($users->Username) ?></td>
+                            <td><?= h($users->Password) ?></td>
                             <td class="actions">
                                 <?= $this->Html->link(__('View'), ['controller' => 'Users', 'action' => 'view', $users->id]) ?>
                                 <?= $this->Html->link(__('Edit'), ['controller' => 'Users', 'action' => 'edit', $users->id]) ?>
