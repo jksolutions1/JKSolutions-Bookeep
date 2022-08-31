@@ -19,7 +19,7 @@ class ClientDocumentsController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Clients'],
+            'contain' => ['Clients', 'Documents'],
         ];
         $clientDocuments = $this->paginate($this->ClientDocuments);
 
@@ -36,7 +36,7 @@ class ClientDocumentsController extends AppController
     public function view($id = null)
     {
         $clientDocument = $this->ClientDocuments->get($id, [
-            'contain' => ['Clients'],
+            'contain' => ['Clients', 'Documents'],
         ]);
 
         $this->set(compact('clientDocument'));
@@ -60,7 +60,8 @@ class ClientDocumentsController extends AppController
             $this->Flash->error(__('The client document could not be saved. Please, try again.'));
         }
         $clients = $this->ClientDocuments->Clients->find('list', ['limit' => 200])->all();
-        $this->set(compact('clientDocument', 'clients'));
+        $documents = $this->ClientDocuments->Documents->find('list', ['limit' => 200])->all();
+        $this->set(compact('clientDocument', 'clients', 'documents'));
     }
 
     /**
@@ -85,7 +86,8 @@ class ClientDocumentsController extends AppController
             $this->Flash->error(__('The client document could not be saved. Please, try again.'));
         }
         $clients = $this->ClientDocuments->Clients->find('list', ['limit' => 200])->all();
-        $this->set(compact('clientDocument', 'clients'));
+        $documents = $this->ClientDocuments->Documents->find('list', ['limit' => 200])->all();
+        $this->set(compact('clientDocument', 'clients', 'documents'));
     }
 
     /**

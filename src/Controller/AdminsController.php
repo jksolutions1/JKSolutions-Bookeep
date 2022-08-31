@@ -18,6 +18,9 @@ class AdminsController extends AppController
      */
     public function index()
     {
+        $this->paginate = [
+            'contain' => ['Users'],
+        ];
         $admins = $this->paginate($this->Admins);
 
         $this->set(compact('admins'));
@@ -33,7 +36,7 @@ class AdminsController extends AppController
     public function view($id = null)
     {
         $admin = $this->Admins->get($id, [
-            'contain' => [],
+            'contain' => ['Users'],
         ]);
 
         $this->set(compact('admin'));
@@ -56,7 +59,8 @@ class AdminsController extends AppController
             }
             $this->Flash->error(__('The admin could not be saved. Please, try again.'));
         }
-        $this->set(compact('admin'));
+        $users = $this->Admins->Users->find('list', ['limit' => 200])->all();
+        $this->set(compact('admin', 'users'));
     }
 
     /**
@@ -80,7 +84,8 @@ class AdminsController extends AppController
             }
             $this->Flash->error(__('The admin could not be saved. Please, try again.'));
         }
-        $this->set(compact('admin'));
+        $users = $this->Admins->Users->find('list', ['limit' => 200])->all();
+        $this->set(compact('admin', 'users'));
     }
 
     /**

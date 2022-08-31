@@ -1,7 +1,7 @@
 <?php
 /**
  * @var \App\View\AppView $this
- * @var \App\Model\Entity\User $user
+ * @var \App\Model\Entity\Company $company
  * @var string[]|\Cake\Collection\CollectionInterface $clients
  */
 ?>
@@ -11,21 +11,21 @@
             <h4 class="heading"><?= __('Actions') ?></h4>
             <?= $this->Form->postLink(
                 __('Delete'),
-                ['action' => 'delete', $user->id],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $user->id), 'class' => 'side-nav-item']
+                ['action' => 'delete', $company->id],
+                ['confirm' => __('Are you sure you want to delete # {0}?', $company->id), 'class' => 'side-nav-item']
             ) ?>
-            <?= $this->Html->link(__('List Users'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
+            <?= $this->Html->link(__('List Companies'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
         </div>
     </aside>
     <div class="column-responsive column-80">
-        <div class="users form content">
-            <?= $this->Form->create($user) ?>
+        <div class="companies form content">
+            <?= $this->Form->create($company) ?>
             <fieldset>
-                <legend><?= __('Edit User') ?></legend>
+                <legend><?= __('Edit Company') ?></legend>
                 <?php
-                    echo $this->Form->control('firstname');
-                    echo $this->Form->control('lastname');
-                    echo $this->Form->control('role');
+                    echo $this->Form->control('name');
+                    echo $this->Form->control('address');
+                    echo $this->Form->control('contactno');
                     echo $this->Form->control('client_id', ['options' => $clients]);
                 ?>
             </fieldset>

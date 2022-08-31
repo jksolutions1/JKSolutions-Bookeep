@@ -33,7 +33,7 @@ class DocumentsController extends AppController
     public function view($id = null)
     {
         $document = $this->Documents->get($id, [
-            'contain' => [],
+            'contain' => ['ClientDocuments'],
         ]);
 
         $this->set(compact('document'));

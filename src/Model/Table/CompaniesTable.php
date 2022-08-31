@@ -11,6 +11,8 @@ use Cake\Validation\Validator;
 /**
  * Companies Model
  *
+ * @property \App\Model\Table\ClientsTable&\Cake\ORM\Association\BelongsTo $Clients
+ *
  * @method \App\Model\Entity\Company newEmptyEntity()
  * @method \App\Model\Entity\Company newEntity(array $data, array $options = [])
  * @method \App\Model\Entity\Company[] newEntities(array $data, array $options = [])
@@ -39,6 +41,12 @@ class CompaniesTable extends Table
 
         $this->setTable('companies');
         $this->setDisplayField('name');
+        $this->setPrimaryKey('id');
+
+        $this->belongsTo('Clients', [
+            'foreignKey' => 'client_id',
+            'joinType' => 'INNER',
+        ]);
     }
 
     /**
@@ -49,11 +57,6 @@ class CompaniesTable extends Table
      */
     public function validationDefault(Validator $validator): Validator
     {
-        $validator
-            ->integer('id')
-            ->requirePresence('id', 'create')
-            ->notEmptyString('id');
-
         $validator
             ->scalar('name')
             ->requirePresence('name', 'create')
@@ -70,10 +73,24 @@ class CompaniesTable extends Table
             ->notEmptyString('contactno');
 
         $validator
-            ->integer('clientno')
-            ->requirePresence('clientno', 'create')
-            ->notEmptyString('clientno');
+            ->integer('client_id')
+            ->requirePresence('client_id', 'create')
+            ->notEmptyString('client_id');
 
         return $validator;
+    }
+
+    /**
+     * Returns a rules checker object that will be used for validating
+     * application integrity.
+     *
+     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
+     * @return \Cake\ORM\RulesChecker
+     */
+    public function buildRules(RulesChecker $rules): RulesChecker
+    {
+        $rules->add($rules->existsIn('client_id', 'Clients'), ['errorField' => 'client_id']);
+
+        return $rules;
     }
 }

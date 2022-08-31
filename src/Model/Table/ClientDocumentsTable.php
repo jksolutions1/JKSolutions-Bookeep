@@ -12,6 +12,7 @@ use Cake\Validation\Validator;
  * ClientDocuments Model
  *
  * @property \App\Model\Table\ClientsTable&\Cake\ORM\Association\BelongsTo $Clients
+ * @property \App\Model\Table\DocumentsTable&\Cake\ORM\Association\BelongsTo $Documents
  *
  * @method \App\Model\Entity\ClientDocument newEmptyEntity()
  * @method \App\Model\Entity\ClientDocument newEntity(array $data, array $options = [])
@@ -45,6 +46,10 @@ class ClientDocumentsTable extends Table
             'foreignKey' => 'client_id',
             'joinType' => 'INNER',
         ]);
+        $this->belongsTo('Documents', [
+            'foreignKey' => 'document_id',
+            'joinType' => 'INNER',
+        ]);
     }
 
     /**
@@ -61,9 +66,9 @@ class ClientDocumentsTable extends Table
             ->notEmptyString('client_id');
 
         $validator
-            ->integer('document_no')
-            ->requirePresence('document_no', 'create')
-            ->notEmptyString('document_no');
+            ->integer('document_id')
+            ->requirePresence('document_id', 'create')
+            ->notEmptyString('document_id');
 
         $validator
             ->integer('document_type')
@@ -83,6 +88,7 @@ class ClientDocumentsTable extends Table
     public function buildRules(RulesChecker $rules): RulesChecker
     {
         $rules->add($rules->existsIn('client_id', 'Clients'), ['errorField' => 'client_id']);
+        $rules->add($rules->existsIn('document_id', 'Documents'), ['errorField' => 'document_id']);
 
         return $rules;
     }

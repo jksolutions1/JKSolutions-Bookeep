@@ -19,6 +19,8 @@ use Cake\ORM\Entity;
  * @property int $payment
  *
  * @property \App\Model\Entity\ClientDocument[] $client_documents
+ * @property \App\Model\Entity\Company[] $companies
+ * @property \App\Model\Entity\User[] $users
  */
 class Client extends Entity
 {
@@ -41,5 +43,7 @@ class Client extends Entity
         'required_documents' => true,
         'payment' => true,
         'client_documents' => true,
+        'companies' => true,
+        'users' => true,
     ];
 }

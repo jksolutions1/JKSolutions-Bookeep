@@ -11,6 +11,8 @@ use Cake\Validation\Validator;
 /**
  * Admins Model
  *
+ * @property \App\Model\Table\UsersTable&\Cake\ORM\Association\BelongsTo $Users
+ *
  * @method \App\Model\Entity\Admin newEmptyEntity()
  * @method \App\Model\Entity\Admin newEntity(array $data, array $options = [])
  * @method \App\Model\Entity\Admin[] newEntities(array $data, array $options = [])
@@ -38,6 +40,13 @@ class AdminsTable extends Table
         parent::initialize($config);
 
         $this->setTable('admins');
+        $this->setDisplayField('id');
+        $this->setPrimaryKey('id');
+
+        $this->belongsTo('Users', [
+            'foreignKey' => 'user_id',
+            'joinType' => 'INNER',
+        ]);
     }
 
     /**
@@ -49,15 +58,24 @@ class AdminsTable extends Table
     public function validationDefault(Validator $validator): Validator
     {
         $validator
-            ->integer('no')
-            ->requirePresence('no', 'create')
-            ->notEmptyString('no');
-
-        $validator
-            ->integer('user_no')
-            ->requirePresence('user_no', 'create')
-            ->notEmptyString('user_no');
+            ->integer('user_id')
+            ->requirePresence('user_id', 'create')
+            ->notEmptyString('user_id');
 
         return $validator;
+    }
+
+    /**
+     * Returns a rules checker object that will be used for validating
+     * application integrity.
+     *
+     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
+     * @return \Cake\ORM\RulesChecker
+     */
+    public function buildRules(RulesChecker $rules): RulesChecker
+    {
+        $rules->add($rules->existsIn('user_id', 'Users'), ['errorField' => 'user_id']);
+
+        return $rules;
     }
 }

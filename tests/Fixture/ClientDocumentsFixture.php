@@ -20,7 +20,7 @@ class ClientDocumentsFixture extends TestFixture
         $this->records = [
             [
                 'client_id' => 1,
-                'document_no' => 1,
+                'document_id' => 1,
                 'document_type' => 1,
             ],
         ];

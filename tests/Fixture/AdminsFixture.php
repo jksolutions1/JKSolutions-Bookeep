@@ -19,8 +19,8 @@ class AdminsFixture extends TestFixture
     {
         $this->records = [
             [
-                'no' => 1,
-                'user_no' => 1,
+                'id' => 1,
+                'user_id' => 1,
             ],
         ];
         parent::init();
