@@ -19,7 +19,7 @@ class DocumentsFixture extends TestFixture
     {
         $this->records = [
             [
-                'no' => 1,
+                'id' => 1,
                 'client_engagement_agreement_doc' => 1,
                 'authority_for_agent_doc' => 1,
             ],

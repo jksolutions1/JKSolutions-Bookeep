@@ -19,6 +19,10 @@
             <h3><?= h($user->id) ?></h3>
             <table>
                 <tr>
+                    <th><?= __('Client') ?></th>
+                    <td><?= $user->has('client') ? $this->Html->link($user->client->id, ['controller' => 'Clients', 'action' => 'view', $user->client->id]) : '' ?></td>
+                </tr>
+                <tr>
                     <th><?= __('Id') ?></th>
                     <td><?= $this->Number->format($user->id) ?></td>
                 </tr>
@@ -34,35 +38,25 @@
                     <th><?= __('Role') ?></th>
                     <td><?= $this->Number->format($user->role) ?></td>
                 </tr>
-                <tr>
-                    <th><?= __('User Id') ?></th>
-                    <td><?= $this->Number->format($user->user_id) ?></td>
-                </tr>
             </table>
             <div class="related">
-                <h4><?= __('Related Users') ?></h4>
-                <?php if (!empty($user->users)) : ?>
+                <h4><?= __('Related Admins') ?></h4>
+                <?php if (!empty($user->admins)) : ?>
                 <div class="table-responsive">
                     <table>
                         <tr>
                             <th><?= __('Id') ?></th>
-                            <th><?= __('Firstname') ?></th>
-                            <th><?= __('Lastname') ?></th>
-                            <th><?= __('Role') ?></th>
                             <th><?= __('User Id') ?></th>
                             <th class="actions"><?= __('Actions') ?></th>
                         </tr>
-                        <?php foreach ($user->users as $users) : ?>
+                        <?php foreach ($user->admins as $admins) : ?>
                         <tr>
-                            <td><?= h($users->id) ?></td>
-                            <td><?= h($users->firstname) ?></td>
-                            <td><?= h($users->lastname) ?></td>
-                            <td><?= h($users->role) ?></td>
-                            <td><?= h($users->user_id) ?></td>
+                            <td><?= h($admins->id) ?></td>
+                            <td><?= h($admins->user_id) ?></td>
                             <td class="actions">
-                                <?= $this->Html->link(__('View'), ['controller' => 'Users', 'action' => 'view', $users->id]) ?>
-                                <?= $this->Html->link(__('Edit'), ['controller' => 'Users', 'action' => 'edit', $users->id]) ?>
-                                <?= $this->Form->postLink(__('Delete'), ['controller' => 'Users', 'action' => 'delete', $users->id], ['confirm' => __('Are you sure you want to delete # {0}?', $users->id)]) ?>
+                                <?= $this->Html->link(__('View'), ['controller' => 'Admins', 'action' => 'view', $admins->id]) ?>
+                                <?= $this->Html->link(__('Edit'), ['controller' => 'Admins', 'action' => 'edit', $admins->id]) ?>
+                                <?= $this->Form->postLink(__('Delete'), ['controller' => 'Admins', 'action' => 'delete', $admins->id], ['confirm' => __('Are you sure you want to delete # {0}?', $admins->id)]) ?>
                             </td>
                         </tr>
                         <?php endforeach; ?>

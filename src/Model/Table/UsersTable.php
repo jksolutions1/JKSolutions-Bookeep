@@ -11,8 +11,8 @@ use Cake\Validation\Validator;
 /**
  * Users Model
  *
- * @property \App\Model\Table\UsersTable&\Cake\ORM\Association\BelongsTo $Users
- * @property \App\Model\Table\UsersTable&\Cake\ORM\Association\HasMany $Users
+ * @property \App\Model\Table\ClientsTable&\Cake\ORM\Association\BelongsTo $Clients
+ * @property \App\Model\Table\AdminsTable&\Cake\ORM\Association\HasMany $Admins
  *
  * @method \App\Model\Entity\User newEmptyEntity()
  * @method \App\Model\Entity\User newEntity(array $data, array $options = [])
@@ -44,11 +44,11 @@ class UsersTable extends Table
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
 
-        $this->belongsTo('Users', [
-            'foreignKey' => 'user_id',
+        $this->belongsTo('Clients', [
+            'foreignKey' => 'client_id',
             'joinType' => 'INNER',
         ]);
-        $this->hasMany('Users', [
+        $this->hasMany('Admins', [
             'foreignKey' => 'user_id',
         ]);
     }
@@ -77,9 +77,9 @@ class UsersTable extends Table
             ->notEmptyString('role');
 
         $validator
-            ->integer('user_id')
-            ->requirePresence('user_id', 'create')
-            ->notEmptyString('user_id');
+            ->integer('client_id')
+            ->requirePresence('client_id', 'create')
+            ->notEmptyString('client_id');
 
         return $validator;
     }
@@ -93,7 +93,7 @@ class UsersTable extends Table
      */
     public function buildRules(RulesChecker $rules): RulesChecker
     {
-        $rules->add($rules->existsIn('user_id', 'Users'), ['errorField' => 'user_id']);
+        $rules->add($rules->existsIn('client_id', 'Clients'), ['errorField' => 'client_id']);
 
         return $rules;
     }

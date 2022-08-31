@@ -8,8 +8,10 @@ use Cake\ORM\Entity;
 /**
  * Admin Entity
  *
- * @property int $no
- * @property int $user_no
+ * @property int $id
+ * @property int $user_id
+ *
+ * @property \App\Model\Entity\User $user
  */
 class Admin extends Entity
 {
@@ -23,7 +25,7 @@ class Admin extends Entity
      * @var array<string, bool>
      */
     protected $_accessible = [
-        'no' => true,
-        'user_no' => true,
+        'user_id' => true,
+        'user' => true,
     ];
 }

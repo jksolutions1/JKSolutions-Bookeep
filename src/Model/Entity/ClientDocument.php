@@ -9,10 +9,11 @@ use Cake\ORM\Entity;
  * ClientDocument Entity
  *
  * @property int $client_id
- * @property int $document_no
+ * @property int $document_id
  * @property int $document_type
  *
  * @property \App\Model\Entity\Client $client
+ * @property \App\Model\Entity\Document $document
  */
 class ClientDocument extends Entity
 {
@@ -27,8 +28,9 @@ class ClientDocument extends Entity
      */
     protected $_accessible = [
         'client_id' => true,
-        'document_no' => true,
+        'document_id' => true,
         'document_type' => true,
         'client' => true,
+        'document' => true,
     ];
 }

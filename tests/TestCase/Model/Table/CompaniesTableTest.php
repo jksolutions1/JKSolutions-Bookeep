@@ -25,6 +25,7 @@ class CompaniesTableTest extends TestCase
      */
     protected $fixtures = [
         'app.Companies',
+        'app.Clients',
     ];
 
     /**
@@ -58,6 +59,17 @@ class CompaniesTableTest extends TestCase
      * @uses \App\Model\Table\CompaniesTable::validationDefault()
      */
     public function testValidationDefault(): void
+    {
+        $this->markTestIncomplete('Not implemented yet.');
+    }
+
+    /**
+     * Test buildRules method
+     *
+     * @return void
+     * @uses \App\Model\Table\CompaniesTable::buildRules()
+     */
+    public function testBuildRules(): void
     {
         $this->markTestIncomplete('Not implemented yet.');
     }

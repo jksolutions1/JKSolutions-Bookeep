@@ -25,6 +25,7 @@ class DocumentsTableTest extends TestCase
      */
     protected $fixtures = [
         'app.Documents',
+        'app.ClientDocuments',
     ];
 
     /**

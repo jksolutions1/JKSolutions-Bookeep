@@ -1,7 +1,7 @@
 <?php
 /**
  * @var \App\View\AppView $this
- * @var \App\Model\Entity\User $user
+ * @var \App\Model\Entity\Company $company
  * @var \Cake\Collection\CollectionInterface|string[] $clients
  */
 ?>
@@ -9,18 +9,18 @@
     <aside class="column">
         <div class="side-nav">
             <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Html->link(__('List Users'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
+            <?= $this->Html->link(__('List Companies'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
         </div>
     </aside>
     <div class="column-responsive column-80">
-        <div class="users form content">
-            <?= $this->Form->create($user) ?>
+        <div class="companies form content">
+            <?= $this->Form->create($company) ?>
             <fieldset>
-                <legend><?= __('Add User') ?></legend>
+                <legend><?= __('Add Company') ?></legend>
                 <?php
-                    echo $this->Form->control('firstname');
-                    echo $this->Form->control('lastname');
-                    echo $this->Form->control('role');
+                    echo $this->Form->control('name');
+                    echo $this->Form->control('address');
+                    echo $this->Form->control('contactno');
                     echo $this->Form->control('client_id', ['options' => $clients]);
                 ?>
             </fieldset>

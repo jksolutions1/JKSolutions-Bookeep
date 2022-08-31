@@ -15,7 +15,7 @@
                     <th><?= $this->Paginator->sort('firstname') ?></th>
                     <th><?= $this->Paginator->sort('lastname') ?></th>
                     <th><?= $this->Paginator->sort('role') ?></th>
-                    <th><?= $this->Paginator->sort('user_id') ?></th>
+                    <th><?= $this->Paginator->sort('client_id') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>
             </thead>
@@ -26,7 +26,7 @@
                     <td><?= $this->Number->format($user->firstname) ?></td>
                     <td><?= $this->Number->format($user->lastname) ?></td>
                     <td><?= $this->Number->format($user->role) ?></td>
-                    <td><?= $this->Number->format($user->user_id) ?></td>
+                    <td><?= $user->has('client') ? $this->Html->link($user->client->id, ['controller' => 'Clients', 'action' => 'view', $user->client->id]) : '' ?></td>
                     <td class="actions">
                         <?= $this->Html->link(__('View'), ['action' => 'view', $user->id]) ?>
                         <?= $this->Html->link(__('Edit'), ['action' => 'edit', $user->id]) ?>

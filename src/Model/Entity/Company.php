@@ -12,7 +12,9 @@ use Cake\ORM\Entity;
  * @property string $name
  * @property string $address
  * @property int $contactno
- * @property int $clientno
+ * @property int $client_id
+ *
+ * @property \App\Model\Entity\Client $client
  */
 class Company extends Entity
 {
@@ -26,10 +28,10 @@ class Company extends Entity
      * @var array<string, bool>
      */
     protected $_accessible = [
-        'id' => true,
         'name' => true,
         'address' => true,
         'contactno' => true,
-        'clientno' => true,
+        'client_id' => true,
+        'client' => true,
     ];
 }

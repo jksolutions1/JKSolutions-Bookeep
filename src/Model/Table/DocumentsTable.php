@@ -11,6 +11,8 @@ use Cake\Validation\Validator;
 /**
  * Documents Model
  *
+ * @property \App\Model\Table\ClientDocumentsTable&\Cake\ORM\Association\HasMany $ClientDocuments
+ *
  * @method \App\Model\Entity\Document newEmptyEntity()
  * @method \App\Model\Entity\Document newEntity(array $data, array $options = [])
  * @method \App\Model\Entity\Document[] newEntities(array $data, array $options = [])
@@ -38,6 +40,12 @@ class DocumentsTable extends Table
         parent::initialize($config);
 
         $this->setTable('documents');
+        $this->setDisplayField('id');
+        $this->setPrimaryKey('id');
+
+        $this->hasMany('ClientDocuments', [
+            'foreignKey' => 'document_id',
+        ]);
     }
 
     /**
@@ -48,11 +56,6 @@ class DocumentsTable extends Table
      */
     public function validationDefault(Validator $validator): Validator
     {
-        $validator
-            ->integer('no')
-            ->requirePresence('no', 'create')
-            ->notEmptyString('no');
-
         $validator
             ->integer('client_engagement_agreement_doc')
             ->requirePresence('client_engagement_agreement_doc', 'create')

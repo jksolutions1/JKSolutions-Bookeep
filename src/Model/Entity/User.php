@@ -12,9 +12,10 @@ use Cake\ORM\Entity;
  * @property int $firstname
  * @property int $lastname
  * @property int $role
- * @property int $user_id
+ * @property int $client_id
  *
- * @property \App\Model\Entity\User[] $users
+ * @property \App\Model\Entity\Client $client
+ * @property \App\Model\Entity\Admin[] $admins
  */
 class User extends Entity
 {
@@ -31,7 +32,8 @@ class User extends Entity
         'firstname' => true,
         'lastname' => true,
         'role' => true,
-        'user_id' => true,
-        'users' => true,
+        'client_id' => true,
+        'client' => true,
+        'admins' => true,
     ];
 }

@@ -23,7 +23,7 @@ class UsersFixture extends TestFixture
                 'firstname' => 1,
                 'lastname' => 1,
                 'role' => 1,
-                'user_id' => 1,
+                'client_id' => 1,
             ],
         ];
         parent::init();

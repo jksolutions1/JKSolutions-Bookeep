@@ -12,6 +12,8 @@ use Cake\Validation\Validator;
  * Clients Model
  *
  * @property \App\Model\Table\ClientDocumentsTable&\Cake\ORM\Association\HasMany $ClientDocuments
+ * @property \App\Model\Table\CompaniesTable&\Cake\ORM\Association\HasMany $Companies
+ * @property \App\Model\Table\UsersTable&\Cake\ORM\Association\HasMany $Users
  *
  * @method \App\Model\Entity\Client newEmptyEntity()
  * @method \App\Model\Entity\Client newEntity(array $data, array $options = [])
@@ -44,6 +46,12 @@ class ClientsTable extends Table
         $this->setPrimaryKey('id');
 
         $this->hasMany('ClientDocuments', [
+            'foreignKey' => 'client_id',
+        ]);
+        $this->hasMany('Companies', [
+            'foreignKey' => 'client_id',
+        ]);
+        $this->hasMany('Users', [
             'foreignKey' => 'client_id',
         ]);
     }
