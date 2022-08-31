@@ -71,7 +71,7 @@ class ClientDocumentsTable extends Table
             ->notEmptyString('document_id');
 
         $validator
-            ->integer('document_type')
+            ->scalar('document_type')
             ->requirePresence('document_type', 'create')
             ->notEmptyString('document_type');
 

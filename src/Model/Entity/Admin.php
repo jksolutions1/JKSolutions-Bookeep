@@ -10,8 +10,8 @@ use Cake\ORM\Entity;
  *
  * @property int $id
  * @property int $user_id
- * @property int $Adminname
- * @property int $Passsword
+ * @property string $Adminname
+ * @property string $Passsword
  *
  * @property \App\Model\Entity\User $user
  */

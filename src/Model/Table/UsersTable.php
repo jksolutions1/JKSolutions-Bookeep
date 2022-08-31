@@ -62,17 +62,17 @@ class UsersTable extends Table
     public function validationDefault(Validator $validator): Validator
     {
         $validator
-            ->integer('firstname')
+            ->scalar('firstname')
             ->requirePresence('firstname', 'create')
             ->notEmptyString('firstname');
 
         $validator
-            ->integer('lastname')
+            ->scalar('lastname')
             ->requirePresence('lastname', 'create')
             ->notEmptyString('lastname');
 
         $validator
-            ->integer('role')
+            ->scalar('role')
             ->requirePresence('role', 'create')
             ->notEmptyString('role');
 
@@ -82,12 +82,12 @@ class UsersTable extends Table
             ->notEmptyString('client_id');
 
         $validator
-            ->integer('Username')
+            ->scalar('Username')
             ->requirePresence('Username', 'create')
             ->notEmptyString('Username');
 
         $validator
-            ->integer('Password')
+            ->scalar('Password')
             ->requirePresence('Password', 'create')
             ->notEmptyString('Password');
 

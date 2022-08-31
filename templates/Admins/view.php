@@ -26,15 +26,19 @@
                     <th><?= __('Id') ?></th>
                     <td><?= $this->Number->format($admin->id) ?></td>
                 </tr>
-                <tr>
-                    <th><?= __('Adminname') ?></th>
-                    <td><?= $this->Number->format($admin->Adminname) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Passsword') ?></th>
-                    <td><?= $this->Number->format($admin->Passsword) ?></td>
-                </tr>
             </table>
+            <div class="text">
+                <strong><?= __('Adminname') ?></strong>
+                <blockquote>
+                    <?= $this->Text->autoParagraph(h($admin->Adminname)); ?>
+                </blockquote>
+            </div>
+            <div class="text">
+                <strong><?= __('Passsword') ?></strong>
+                <blockquote>
+                    <?= $this->Text->autoParagraph(h($admin->Passsword)); ?>
+                </blockquote>
+            </div>
         </div>
     </div>
 </div>

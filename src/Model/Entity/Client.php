@@ -17,8 +17,8 @@ use Cake\ORM\Entity;
  * @property string $appointment_list
  * @property string $required_documents
  * @property int $payment
- * @property int $Username
- * @property int $Password
+ * @property string $Username
+ * @property string $Password
  *
  * @property \App\Model\Entity\ClientDocument[] $client_documents
  * @property \App\Model\Entity\Company[] $companies

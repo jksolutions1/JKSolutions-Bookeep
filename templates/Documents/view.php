@@ -22,15 +22,19 @@
                     <th><?= __('Id') ?></th>
                     <td><?= $this->Number->format($document->id) ?></td>
                 </tr>
-                <tr>
-                    <th><?= __('Client Engagement Agreement Doc') ?></th>
-                    <td><?= $this->Number->format($document->client_engagement_agreement_doc) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Authority For Agent Doc') ?></th>
-                    <td><?= $this->Number->format($document->authority_for_agent_doc) ?></td>
-                </tr>
             </table>
+            <div class="text">
+                <strong><?= __('Client Engagement Agreement Doc') ?></strong>
+                <blockquote>
+                    <?= $this->Text->autoParagraph(h($document->client_engagement_agreement_doc)); ?>
+                </blockquote>
+            </div>
+            <div class="text">
+                <strong><?= __('Authority For Agent Doc') ?></strong>
+                <blockquote>
+                    <?= $this->Text->autoParagraph(h($document->authority_for_agent_doc)); ?>
+                </blockquote>
+            </div>
             <div class="related">
                 <h4><?= __('Related Client Documents') ?></h4>
                 <?php if (!empty($document->client_documents)) : ?>

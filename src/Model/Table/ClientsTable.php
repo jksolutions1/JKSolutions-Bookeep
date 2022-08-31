@@ -105,12 +105,12 @@ class ClientsTable extends Table
             ->notEmptyString('payment');
 
         $validator
-            ->integer('Username')
+            ->scalar('Username')
             ->requirePresence('Username', 'create')
             ->notEmptyString('Username');
 
         $validator
-            ->integer('Password')
+            ->scalar('Password')
             ->requirePresence('Password', 'create')
             ->notEmptyString('Password');
 

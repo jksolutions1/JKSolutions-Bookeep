@@ -9,12 +9,12 @@ use Cake\ORM\Entity;
  * User Entity
  *
  * @property int $id
- * @property int $firstname
- * @property int $lastname
- * @property int $role
+ * @property string $firstname
+ * @property string $lastname
+ * @property string $role
  * @property int $client_id
- * @property int $Username
- * @property int $Password
+ * @property string $Username
+ * @property string $Password
  *
  * @property \App\Model\Entity\Client $client
  * @property \App\Model\Entity\Admin[] $admins

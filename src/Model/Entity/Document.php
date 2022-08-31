@@ -9,8 +9,8 @@ use Cake\ORM\Entity;
  * Document Entity
  *
  * @property int $id
- * @property int $client_engagement_agreement_doc
- * @property int $authority_for_agent_doc
+ * @property string $client_engagement_agreement_doc
+ * @property string $authority_for_agent_doc
  *
  * @property \App\Model\Entity\ClientDocument[] $client_documents
  */

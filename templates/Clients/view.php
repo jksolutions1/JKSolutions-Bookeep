@@ -30,14 +30,6 @@
                     <th><?= __('Payment') ?></th>
                     <td><?= $this->Number->format($client->payment) ?></td>
                 </tr>
-                <tr>
-                    <th><?= __('Username') ?></th>
-                    <td><?= $this->Number->format($client->Username) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Password') ?></th>
-                    <td><?= $this->Number->format($client->Password) ?></td>
-                </tr>
             </table>
             <div class="text">
                 <strong><?= __('Firstname') ?></strong>
@@ -73,6 +65,18 @@
                 <strong><?= __('Required Documents') ?></strong>
                 <blockquote>
                     <?= $this->Text->autoParagraph(h($client->required_documents)); ?>
+                </blockquote>
+            </div>
+            <div class="text">
+                <strong><?= __('Username') ?></strong>
+                <blockquote>
+                    <?= $this->Text->autoParagraph(h($client->Username)); ?>
+                </blockquote>
+            </div>
+            <div class="text">
+                <strong><?= __('Password') ?></strong>
+                <blockquote>
+                    <?= $this->Text->autoParagraph(h($client->Password)); ?>
                 </blockquote>
             </div>
             <div class="related">

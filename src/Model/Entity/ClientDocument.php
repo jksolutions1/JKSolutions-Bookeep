@@ -10,7 +10,7 @@ use Cake\ORM\Entity;
  *
  * @property int $client_id
  * @property int $document_id
- * @property int $document_type
+ * @property string $document_type
  *
  * @property \App\Model\Entity\Client $client
  * @property \App\Model\Entity\Document $document
