@@ -26,27 +26,37 @@
                     <th><?= __('Id') ?></th>
                     <td><?= $this->Number->format($user->id) ?></td>
                 </tr>
-                <tr>
-                    <th><?= __('Firstname') ?></th>
-                    <td><?= $this->Number->format($user->firstname) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Lastname') ?></th>
-                    <td><?= $this->Number->format($user->lastname) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Role') ?></th>
-                    <td><?= $this->Number->format($user->role) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Username') ?></th>
-                    <td><?= $this->Number->format($user->Username) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Password') ?></th>
-                    <td><?= $this->Number->format($user->Password) ?></td>
-                </tr>
             </table>
+            <div class="text">
+                <strong><?= __('Firstname') ?></strong>
+                <blockquote>
+                    <?= $this->Text->autoParagraph(h($user->firstname)); ?>
+                </blockquote>
+            </div>
+            <div class="text">
+                <strong><?= __('Lastname') ?></strong>
+                <blockquote>
+                    <?= $this->Text->autoParagraph(h($user->lastname)); ?>
+                </blockquote>
+            </div>
+            <div class="text">
+                <strong><?= __('Role') ?></strong>
+                <blockquote>
+                    <?= $this->Text->autoParagraph(h($user->role)); ?>
+                </blockquote>
+            </div>
+            <div class="text">
+                <strong><?= __('Username') ?></strong>
+                <blockquote>
+                    <?= $this->Text->autoParagraph(h($user->Username)); ?>
+                </blockquote>
+            </div>
+            <div class="text">
+                <strong><?= __('Password') ?></strong>
+                <blockquote>
+                    <?= $this->Text->autoParagraph(h($user->Password)); ?>
+                </blockquote>
+            </div>
             <div class="related">
                 <h4><?= __('Related Admins') ?></h4>
                 <?php if (!empty($user->admins)) : ?>

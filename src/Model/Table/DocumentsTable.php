@@ -57,12 +57,12 @@ class DocumentsTable extends Table
     public function validationDefault(Validator $validator): Validator
     {
         $validator
-            ->integer('client_engagement_agreement_doc')
+            ->scalar('client_engagement_agreement_doc')
             ->requirePresence('client_engagement_agreement_doc', 'create')
             ->notEmptyString('client_engagement_agreement_doc');
 
         $validator
-            ->integer('authority_for_agent_doc')
+            ->scalar('authority_for_agent_doc')
             ->requirePresence('authority_for_agent_doc', 'create')
             ->notEmptyString('authority_for_agent_doc');
 
