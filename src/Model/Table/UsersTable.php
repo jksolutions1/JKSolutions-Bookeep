@@ -81,6 +81,16 @@ class UsersTable extends Table
             ->requirePresence('client_id', 'create')
             ->notEmptyString('client_id');
 
+        $validator
+            ->integer('Username')
+            ->requirePresence('Username', 'create')
+            ->notEmptyString('Username');
+
+        $validator
+            ->integer('Password')
+            ->requirePresence('Password', 'create')
+            ->notEmptyString('Password');
+
         return $validator;
     }
 

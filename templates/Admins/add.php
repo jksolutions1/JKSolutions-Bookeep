@@ -19,6 +19,8 @@
                 <legend><?= __('Add Admin') ?></legend>
                 <?php
                     echo $this->Form->control('user_id', ['options' => $users]);
+                    echo $this->Form->control('Adminname');
+                    echo $this->Form->control('Passsword');
                 ?>
             </fieldset>
             <?= $this->Form->button(__('Submit')) ?>

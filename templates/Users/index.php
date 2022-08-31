@@ -16,6 +16,8 @@
                     <th><?= $this->Paginator->sort('lastname') ?></th>
                     <th><?= $this->Paginator->sort('role') ?></th>
                     <th><?= $this->Paginator->sort('client_id') ?></th>
+                    <th><?= $this->Paginator->sort('Username') ?></th>
+                    <th><?= $this->Paginator->sort('Password') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>
             </thead>
@@ -27,6 +29,8 @@
                     <td><?= $this->Number->format($user->lastname) ?></td>
                     <td><?= $this->Number->format($user->role) ?></td>
                     <td><?= $user->has('client') ? $this->Html->link($user->client->id, ['controller' => 'Clients', 'action' => 'view', $user->client->id]) : '' ?></td>
+                    <td><?= $this->Number->format($user->Username) ?></td>
+                    <td><?= $this->Number->format($user->Password) ?></td>
                     <td class="actions">
                         <?= $this->Html->link(__('View'), ['action' => 'view', $user->id]) ?>
                         <?= $this->Html->link(__('Edit'), ['action' => 'edit', $user->id]) ?>

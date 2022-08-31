@@ -21,6 +21,8 @@ class AdminsFixture extends TestFixture
             [
                 'id' => 1,
                 'user_id' => 1,
+                'Adminname' => 1,
+                'Passsword' => 1,
             ],
         ];
         parent::init();
