@@ -10,8 +10,7 @@ use Cake\ORM\Entity;
  *
  * @property int $id
  * @property int $user_id
- * @property string $Adminname
- * @property string $Passsword
+ * @property string $password
  *
  * @property \App\Model\Entity\User $user
  */
@@ -28,8 +27,16 @@ class Admin extends Entity
      */
     protected $_accessible = [
         'user_id' => true,
-        'Adminname' => true,
-        'Passsword' => true,
+        'password' => true,
         'user' => true,
+    ];
+
+    /**
+     * Fields that are excluded from JSON versions of the entity.
+     *
+     * @var array<string>
+     */
+    protected $_hidden = [
+        'password',
     ];
 }

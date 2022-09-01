@@ -5,8 +5,6 @@ namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
 
-use Cake\Auth\DefaultPasswordHasher;
-
 /**
  * User Entity
  *
@@ -14,9 +12,9 @@ use Cake\Auth\DefaultPasswordHasher;
  * @property string $firstname
  * @property string $lastname
  * @property string $role
- * @property int $client_id
- * @property string $Username
- * @property string $Password
+ * @property int|null $client_id
+ * @property string $username
+ * @property string $password
  *
  * @property \App\Model\Entity\Client $client
  * @property \App\Model\Entity\Admin[] $admins
@@ -37,17 +35,18 @@ class User extends Entity
         'lastname' => true,
         'role' => true,
         'client_id' => true,
-        'Username' => true,
-        'Password' => true,
+        'username' => true,
+        'password' => true,
         'client' => true,
         'admins' => true,
     ];
 
-
-    protected function _setPassword($password) {
-
-        return (new DefaultPasswordHasher) -> hash($password);
-
-    }
-
+    /**
+     * Fields that are excluded from JSON versions of the entity.
+     *
+     * @var array<string>
+     */
+    protected $_hidden = [
+        'password',
+    ];
 }

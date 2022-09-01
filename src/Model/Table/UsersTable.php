@@ -46,7 +46,6 @@ class UsersTable extends Table
 
         $this->belongsTo('Clients', [
             'foreignKey' => 'client_id',
-            'joinType' => 'INNER',
         ]);
         $this->hasMany('Admins', [
             'foreignKey' => 'user_id',
@@ -78,18 +77,17 @@ class UsersTable extends Table
 
         $validator
             ->integer('client_id')
-            ->requirePresence('client_id', 'create')
-            ->notEmptyString('client_id');
+            ->allowEmptyString('client_id');
 
         $validator
-            ->scalar('Username')
-            ->requirePresence('Username', 'create')
-            ->notEmptyString('Username');
+            ->scalar('username')
+            ->requirePresence('username', 'create')
+            ->notEmptyString('username');
 
         $validator
-            ->scalar('Password')
-            ->requirePresence('Password', 'create')
-            ->notEmptyString('Password');
+            ->scalar('password')
+            ->requirePresence('password', 'create')
+            ->notEmptyString('password');
 
         return $validator;
     }
@@ -103,6 +101,7 @@ class UsersTable extends Table
      */
     public function buildRules(RulesChecker $rules): RulesChecker
     {
+        $rules->add($rules->isUnique(['username']), ['errorField' => 'username']);
         $rules->add($rules->existsIn('client_id', 'Clients'), ['errorField' => 'client_id']);
 
         return $rules;

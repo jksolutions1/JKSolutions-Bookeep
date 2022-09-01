@@ -63,14 +63,9 @@ class AdminsTable extends Table
             ->notEmptyString('user_id');
 
         $validator
-            ->scalar('Adminname')
-            ->requirePresence('Adminname', 'create')
-            ->notEmptyString('Adminname');
-
-        $validator
-            ->scalar('Passsword')
-            ->requirePresence('Passsword', 'create')
-            ->notEmptyString('Passsword');
+            ->scalar('password')
+            ->requirePresence('password', 'create')
+            ->notEmptyString('password');
 
         return $validator;
     }
