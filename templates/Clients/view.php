@@ -67,18 +67,6 @@
                     <?= $this->Text->autoParagraph(h($client->required_documents)); ?>
                 </blockquote>
             </div>
-            <div class="text">
-                <strong><?= __('Username') ?></strong>
-                <blockquote>
-                    <?= $this->Text->autoParagraph(h($client->Username)); ?>
-                </blockquote>
-            </div>
-            <div class="text">
-                <strong><?= __('Password') ?></strong>
-                <blockquote>
-                    <?= $this->Text->autoParagraph(h($client->Password)); ?>
-                </blockquote>
-            </div>
             <div class="related">
                 <h4><?= __('Related Client Documents') ?></h4>
                 <?php if (!empty($client->client_documents)) : ?>
@@ -159,8 +147,8 @@
                             <td><?= h($users->lastname) ?></td>
                             <td><?= h($users->role) ?></td>
                             <td><?= h($users->client_id) ?></td>
-                            <td><?= h($users->Username) ?></td>
-                            <td><?= h($users->Password) ?></td>
+                            <td><?= h($users->username) ?></td>
+                            <td><?= h($users->password) ?></td>
                             <td class="actions">
                                 <?= $this->Html->link(__('View'), ['controller' => 'Users', 'action' => 'view', $users->id]) ?>
                                 <?= $this->Html->link(__('Edit'), ['controller' => 'Users', 'action' => 'edit', $users->id]) ?>

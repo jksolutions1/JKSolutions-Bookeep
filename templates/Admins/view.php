@@ -27,18 +27,6 @@
                     <td><?= $this->Number->format($admin->id) ?></td>
                 </tr>
             </table>
-            <div class="text">
-                <strong><?= __('Adminname') ?></strong>
-                <blockquote>
-                    <?= $this->Text->autoParagraph(h($admin->Adminname)); ?>
-                </blockquote>
-            </div>
-            <div class="text">
-                <strong><?= __('Passsword') ?></strong>
-                <blockquote>
-                    <?= $this->Text->autoParagraph(h($admin->Passsword)); ?>
-                </blockquote>
-            </div>
         </div>
     </div>
 </div>

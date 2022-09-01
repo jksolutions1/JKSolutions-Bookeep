@@ -24,8 +24,7 @@
                 <legend><?= __('Edit Admin') ?></legend>
                 <?php
                     echo $this->Form->control('user_id', ['options' => $users]);
-                    echo $this->Form->control('Adminname');
-                    echo $this->Form->control('Passsword');
+                    echo $this->Form->control('password');
                 ?>
             </fieldset>
             <?= $this->Form->button(__('Submit')) ?>

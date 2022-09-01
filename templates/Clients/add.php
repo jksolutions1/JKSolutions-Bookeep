@@ -25,8 +25,6 @@
                     echo $this->Form->control('appointment_list');
                     echo $this->Form->control('required_documents');
                     echo $this->Form->control('payment');
-                    echo $this->Form->control('Username');
-                    echo $this->Form->control('Password');
                 ?>
             </fieldset>
             <?= $this->Form->button(__('Submit')) ?>

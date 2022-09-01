@@ -21,9 +21,9 @@
                     echo $this->Form->control('firstname');
                     echo $this->Form->control('lastname');
                     echo $this->Form->control('role');
-                    echo $this->Form->control('client_id', ['options' => $clients]);
-                    echo $this->Form->control('Username');
-                    echo $this->Form->control('Password');
+                    echo $this->Form->control('client_id', ['options' => $clients, 'empty' => true]);
+                    echo $this->Form->control('username');
+                    echo $this->Form->control('password');
                 ?>
             </fieldset>
             <?= $this->Form->button(__('Submit')) ?>

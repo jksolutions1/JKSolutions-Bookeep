@@ -48,13 +48,7 @@
             <div class="text">
                 <strong><?= __('Username') ?></strong>
                 <blockquote>
-                    <?= $this->Text->autoParagraph(h($user->Username)); ?>
-                </blockquote>
-            </div>
-            <div class="text">
-                <strong><?= __('Password') ?></strong>
-                <blockquote>
-                    <?= $this->Text->autoParagraph(h($user->Password)); ?>
+                    <?= $this->Text->autoParagraph(h($user->username)); ?>
                 </blockquote>
             </div>
             <div class="related">
@@ -65,16 +59,14 @@
                         <tr>
                             <th><?= __('Id') ?></th>
                             <th><?= __('User Id') ?></th>
-                            <th><?= __('Adminname') ?></th>
-                            <th><?= __('Passsword') ?></th>
+                            <th><?= __('Password') ?></th>
                             <th class="actions"><?= __('Actions') ?></th>
                         </tr>
                         <?php foreach ($user->admins as $admins) : ?>
                         <tr>
                             <td><?= h($admins->id) ?></td>
                             <td><?= h($admins->user_id) ?></td>
-                            <td><?= h($admins->Adminname) ?></td>
-                            <td><?= h($admins->Passsword) ?></td>
+                            <td><?= h($admins->password) ?></td>
                             <td class="actions">
                                 <?= $this->Html->link(__('View'), ['controller' => 'Admins', 'action' => 'view', $admins->id]) ?>
                                 <?= $this->Html->link(__('Edit'), ['controller' => 'Admins', 'action' => 'edit', $admins->id]) ?>
