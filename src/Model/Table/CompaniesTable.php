@@ -47,6 +47,9 @@ class CompaniesTable extends Table
             'foreignKey' => 'client_id',
             'joinType' => 'INNER',
         ]);
+        $this->hasMany('Appointments', [
+            'foreignKey' => 'company_id',
+        ]);
     }
 
     /**

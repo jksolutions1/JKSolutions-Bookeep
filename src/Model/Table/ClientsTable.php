@@ -45,6 +45,9 @@ class ClientsTable extends Table
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
 
+        $this->hasMany('Appointments', [
+            'foreignKey' => 'client_id',
+        ]);
         $this->hasMany('ClientDocuments', [
             'foreignKey' => 'client_id',
         ]);
