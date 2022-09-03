@@ -3,16 +3,16 @@ declare(strict_types=1);
 
 namespace App\Test\TestCase\Controller;
 
-use App\Controller\ClientDocumentsController;
+use App\Controller\ClientdocumentsController;
 use Cake\TestSuite\IntegrationTestTrait;
 use Cake\TestSuite\TestCase;
 
 /**
- * App\Controller\ClientDocumentsController Test Case
+ * App\Controller\ClientdocumentsController Test Case
  *
- * @uses \App\Controller\ClientDocumentsController
+ * @uses \App\Controller\ClientdocumentsController
  */
-class ClientDocumentsControllerTest extends TestCase
+class ClientdocumentsControllerTest extends TestCase
 {
     use IntegrationTestTrait;
 
@@ -22,7 +22,7 @@ class ClientDocumentsControllerTest extends TestCase
      * @var array<string>
      */
     protected $fixtures = [
-        'app.ClientDocuments',
+        'app.Clientdocuments',
         'app.Clients',
         'app.Documents',
     ];
@@ -31,7 +31,7 @@ class ClientDocumentsControllerTest extends TestCase
      * Test index method
      *
      * @return void
-     * @uses \App\Controller\ClientDocumentsController::index()
+     * @uses \App\Controller\ClientdocumentsController::index()
      */
     public function testIndex(): void
     {
@@ -42,7 +42,7 @@ class ClientDocumentsControllerTest extends TestCase
      * Test view method
      *
      * @return void
-     * @uses \App\Controller\ClientDocumentsController::view()
+     * @uses \App\Controller\ClientdocumentsController::view()
      */
     public function testView(): void
     {
@@ -53,7 +53,7 @@ class ClientDocumentsControllerTest extends TestCase
      * Test add method
      *
      * @return void
-     * @uses \App\Controller\ClientDocumentsController::add()
+     * @uses \App\Controller\ClientdocumentsController::add()
      */
     public function testAdd(): void
     {
@@ -64,7 +64,7 @@ class ClientDocumentsControllerTest extends TestCase
      * Test edit method
      *
      * @return void
-     * @uses \App\Controller\ClientDocumentsController::edit()
+     * @uses \App\Controller\ClientdocumentsController::edit()
      */
     public function testEdit(): void
     {
@@ -75,7 +75,7 @@ class ClientDocumentsControllerTest extends TestCase
      * Test delete method
      *
      * @return void
-     * @uses \App\Controller\ClientDocumentsController::delete()
+     * @uses \App\Controller\ClientdocumentsController::delete()
      */
     public function testDelete(): void
     {

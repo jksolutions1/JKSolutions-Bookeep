@@ -4,12 +4,12 @@ declare(strict_types=1);
 namespace App\Controller;
 
 /**
- * ClientDocuments Controller
+ * Clientdocuments Controller
  *
- * @property \App\Model\Table\ClientDocumentsTable $ClientDocuments
- * @method \App\Model\Entity\ClientDocument[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
+ * @property \App\Model\Table\ClientdocumentsTable $Clientdocuments
+ * @method \App\Model\Entity\Clientdocument[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
  */
-class ClientDocumentsController extends AppController
+class ClientdocumentsController extends AppController
 {
     /**
      * Index method
@@ -21,25 +21,25 @@ class ClientDocumentsController extends AppController
         $this->paginate = [
             'contain' => ['Clients', 'Documents'],
         ];
-        $clientDocuments = $this->paginate($this->ClientDocuments);
+        $clientdocuments = $this->paginate($this->Clientdocuments);
 
-        $this->set(compact('clientDocuments'));
+        $this->set(compact('clientdocuments'));
     }
 
     /**
      * View method
      *
-     * @param string|null $id Client Document id.
+     * @param string|null $id Clientdocument id.
      * @return \Cake\Http\Response|null|void Renders view
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
     public function view($id = null)
     {
-        $clientDocument = $this->ClientDocuments->get($id, [
+        $clientdocument = $this->Clientdocuments->get($id, [
             'contain' => ['Clients', 'Documents'],
         ]);
 
-        $this->set(compact('clientDocument'));
+        $this->set(compact('clientdocument'));
     }
 
     /**
@@ -49,62 +49,62 @@ class ClientDocumentsController extends AppController
      */
     public function add()
     {
-        $clientDocument = $this->ClientDocuments->newEmptyEntity();
+        $clientdocument = $this->Clientdocuments->newEmptyEntity();
         if ($this->request->is('post')) {
-            $clientDocument = $this->ClientDocuments->patchEntity($clientDocument, $this->request->getData());
-            if ($this->ClientDocuments->save($clientDocument)) {
-                $this->Flash->success(__('The client document has been saved.'));
+            $clientdocument = $this->Clientdocuments->patchEntity($clientdocument, $this->request->getData());
+            if ($this->Clientdocuments->save($clientdocument)) {
+                $this->Flash->success(__('The clientdocument has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The client document could not be saved. Please, try again.'));
+            $this->Flash->error(__('The clientdocument could not be saved. Please, try again.'));
         }
-        $clients = $this->ClientDocuments->Clients->find('list', ['limit' => 200])->all();
-        $documents = $this->ClientDocuments->Documents->find('list', ['limit' => 200])->all();
-        $this->set(compact('clientDocument', 'clients', 'documents'));
+        $clients = $this->Clientdocuments->Clients->find('list', ['limit' => 200])->all();
+        $documents = $this->Clientdocuments->Documents->find('list', ['limit' => 200])->all();
+        $this->set(compact('clientdocument', 'clients', 'documents'));
     }
 
     /**
      * Edit method
      *
-     * @param string|null $id Client Document id.
+     * @param string|null $id Clientdocument id.
      * @return \Cake\Http\Response|null|void Redirects on successful edit, renders view otherwise.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
     public function edit($id = null)
     {
-        $clientDocument = $this->ClientDocuments->get($id, [
+        $clientdocument = $this->Clientdocuments->get($id, [
             'contain' => [],
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
-            $clientDocument = $this->ClientDocuments->patchEntity($clientDocument, $this->request->getData());
-            if ($this->ClientDocuments->save($clientDocument)) {
-                $this->Flash->success(__('The client document has been saved.'));
+            $clientdocument = $this->Clientdocuments->patchEntity($clientdocument, $this->request->getData());
+            if ($this->Clientdocuments->save($clientdocument)) {
+                $this->Flash->success(__('The clientdocument has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The client document could not be saved. Please, try again.'));
+            $this->Flash->error(__('The clientdocument could not be saved. Please, try again.'));
         }
-        $clients = $this->ClientDocuments->Clients->find('list', ['limit' => 200])->all();
-        $documents = $this->ClientDocuments->Documents->find('list', ['limit' => 200])->all();
-        $this->set(compact('clientDocument', 'clients', 'documents'));
+        $clients = $this->Clientdocuments->Clients->find('list', ['limit' => 200])->all();
+        $documents = $this->Clientdocuments->Documents->find('list', ['limit' => 200])->all();
+        $this->set(compact('clientdocument', 'clients', 'documents'));
     }
 
     /**
      * Delete method
      *
-     * @param string|null $id Client Document id.
+     * @param string|null $id Clientdocument id.
      * @return \Cake\Http\Response|null|void Redirects to index.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
-        $clientDocument = $this->ClientDocuments->get($id);
-        if ($this->ClientDocuments->delete($clientDocument)) {
-            $this->Flash->success(__('The client document has been deleted.'));
+        $clientdocument = $this->Clientdocuments->get($id);
+        if ($this->Clientdocuments->delete($clientdocument)) {
+            $this->Flash->success(__('The clientdocument has been deleted.'));
         } else {
-            $this->Flash->error(__('The client document could not be deleted. Please, try again.'));
+            $this->Flash->error(__('The clientdocument could not be deleted. Please, try again.'));
         }
 
         return $this->redirect(['action' => 'index']);

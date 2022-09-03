@@ -9,26 +9,26 @@ use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
- * ClientDocuments Model
+ * Clientdocuments Model
  *
  * @property \App\Model\Table\ClientsTable&\Cake\ORM\Association\BelongsTo $Clients
  * @property \App\Model\Table\DocumentsTable&\Cake\ORM\Association\BelongsTo $Documents
  *
- * @method \App\Model\Entity\ClientDocument newEmptyEntity()
- * @method \App\Model\Entity\ClientDocument newEntity(array $data, array $options = [])
- * @method \App\Model\Entity\ClientDocument[] newEntities(array $data, array $options = [])
- * @method \App\Model\Entity\ClientDocument get($primaryKey, $options = [])
- * @method \App\Model\Entity\ClientDocument findOrCreate($search, ?callable $callback = null, $options = [])
- * @method \App\Model\Entity\ClientDocument patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
- * @method \App\Model\Entity\ClientDocument[] patchEntities(iterable $entities, array $data, array $options = [])
- * @method \App\Model\Entity\ClientDocument|false save(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\ClientDocument saveOrFail(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\ClientDocument[]|\Cake\Datasource\ResultSetInterface|false saveMany(iterable $entities, $options = [])
- * @method \App\Model\Entity\ClientDocument[]|\Cake\Datasource\ResultSetInterface saveManyOrFail(iterable $entities, $options = [])
- * @method \App\Model\Entity\ClientDocument[]|\Cake\Datasource\ResultSetInterface|false deleteMany(iterable $entities, $options = [])
- * @method \App\Model\Entity\ClientDocument[]|\Cake\Datasource\ResultSetInterface deleteManyOrFail(iterable $entities, $options = [])
+ * @method \App\Model\Entity\Clientdocument newEmptyEntity()
+ * @method \App\Model\Entity\Clientdocument newEntity(array $data, array $options = [])
+ * @method \App\Model\Entity\Clientdocument[] newEntities(array $data, array $options = [])
+ * @method \App\Model\Entity\Clientdocument get($primaryKey, $options = [])
+ * @method \App\Model\Entity\Clientdocument findOrCreate($search, ?callable $callback = null, $options = [])
+ * @method \App\Model\Entity\Clientdocument patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
+ * @method \App\Model\Entity\Clientdocument[] patchEntities(iterable $entities, array $data, array $options = [])
+ * @method \App\Model\Entity\Clientdocument|false save(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\Clientdocument saveOrFail(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\Clientdocument[]|\Cake\Datasource\ResultSetInterface|false saveMany(iterable $entities, $options = [])
+ * @method \App\Model\Entity\Clientdocument[]|\Cake\Datasource\ResultSetInterface saveManyOrFail(iterable $entities, $options = [])
+ * @method \App\Model\Entity\Clientdocument[]|\Cake\Datasource\ResultSetInterface|false deleteMany(iterable $entities, $options = [])
+ * @method \App\Model\Entity\Clientdocument[]|\Cake\Datasource\ResultSetInterface deleteManyOrFail(iterable $entities, $options = [])
  */
-class ClientDocumentsTable extends Table
+class ClientdocumentsTable extends Table
 {
     /**
      * Initialize method
@@ -40,7 +40,9 @@ class ClientDocumentsTable extends Table
     {
         parent::initialize($config);
 
-        $this->setTable('client_documents');
+        $this->setTable('clientdocuments');
+        $this->setDisplayField(['client_id', 'document_id']);
+        $this->setPrimaryKey(['client_id', 'document_id']);
 
         $this->belongsTo('Clients', [
             'foreignKey' => 'client_id',
@@ -60,16 +62,6 @@ class ClientDocumentsTable extends Table
      */
     public function validationDefault(Validator $validator): Validator
     {
-        $validator
-            ->integer('client_id')
-            ->requirePresence('client_id', 'create')
-            ->notEmptyString('client_id');
-
-        $validator
-            ->integer('document_id')
-            ->requirePresence('document_id', 'create')
-            ->notEmptyString('document_id');
-
         $validator
             ->scalar('document_type')
             ->requirePresence('document_type', 'create')

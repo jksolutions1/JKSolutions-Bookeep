@@ -3,20 +3,20 @@ declare(strict_types=1);
 
 namespace App\Test\TestCase\Model\Table;
 
-use App\Model\Table\ClientDocumentsTable;
+use App\Model\Table\ClientdocumentsTable;
 use Cake\TestSuite\TestCase;
 
 /**
- * App\Model\Table\ClientDocumentsTable Test Case
+ * App\Model\Table\ClientdocumentsTable Test Case
  */
-class ClientDocumentsTableTest extends TestCase
+class ClientdocumentsTableTest extends TestCase
 {
     /**
      * Test subject
      *
-     * @var \App\Model\Table\ClientDocumentsTable
+     * @var \App\Model\Table\ClientdocumentsTable
      */
-    protected $ClientDocuments;
+    protected $Clientdocuments;
 
     /**
      * Fixtures
@@ -24,7 +24,7 @@ class ClientDocumentsTableTest extends TestCase
      * @var array<string>
      */
     protected $fixtures = [
-        'app.ClientDocuments',
+        'app.Clientdocuments',
         'app.Clients',
         'app.Documents',
     ];
@@ -37,8 +37,8 @@ class ClientDocumentsTableTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $config = $this->getTableLocator()->exists('ClientDocuments') ? [] : ['className' => ClientDocumentsTable::class];
-        $this->ClientDocuments = $this->getTableLocator()->get('ClientDocuments', $config);
+        $config = $this->getTableLocator()->exists('Clientdocuments') ? [] : ['className' => ClientdocumentsTable::class];
+        $this->Clientdocuments = $this->getTableLocator()->get('Clientdocuments', $config);
     }
 
     /**
@@ -48,30 +48,8 @@ class ClientDocumentsTableTest extends TestCase
      */
     protected function tearDown(): void
     {
-        unset($this->ClientDocuments);
+        unset($this->Clientdocuments);
 
         parent::tearDown();
-    }
-
-    /**
-     * Test validationDefault method
-     *
-     * @return void
-     * @uses \App\Model\Table\ClientDocumentsTable::validationDefault()
-     */
-    public function testValidationDefault(): void
-    {
-        $this->markTestIncomplete('Not implemented yet.');
-    }
-
-    /**
-     * Test buildRules method
-     *
-     * @return void
-     * @uses \App\Model\Table\ClientDocumentsTable::buildRules()
-     */
-    public function testBuildRules(): void
-    {
-        $this->markTestIncomplete('Not implemented yet.');
     }
 }
