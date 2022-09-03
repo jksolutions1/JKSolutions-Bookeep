@@ -16,7 +16,6 @@ use Cake\ORM\Entity;
  * @property string $password
  *
  * @property \App\Model\Entity\Client $client
- * @property \App\Model\Entity\Admin[] $admins
  */
 class User extends Entity
 {
@@ -36,7 +35,6 @@ class User extends Entity
         'client_id' => true,
         'password' => true,
         'client' => true,
-        'admins' => true,
     ];
 
     /**

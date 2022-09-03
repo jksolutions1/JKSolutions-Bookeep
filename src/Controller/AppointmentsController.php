@@ -23,8 +23,6 @@ class AppointmentsController extends AppController
         ];
         $appointments = $this->paginate($this->Appointments);
 
-        //$appointments = $this -> appointments -> find() -> contain(['client_id']);
-
         $this->set(compact('appointments'));
     }
 

@@ -120,6 +120,7 @@ CREATE TABLE `documents` (
 --
 
 CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
   `firstname` text NOT NULL,
   `lastname` text NOT NULL,
   `role` text NOT NULL,
@@ -127,6 +128,7 @@ CREATE TABLE `users` (
   `username` text NOT NULL,
   `password` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 
 --
 -- Indexes for dumped tables
@@ -170,8 +172,9 @@ ALTER TABLE `documents`
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`username`(10)) USING BTREE,
+  ADD PRIMARY KEY (`id`),
   ADD KEY `FK_USERS_CLIENTS` (`client_id`);
+
 
 --
 -- AUTO_INCREMENT for dumped tables
