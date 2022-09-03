@@ -37,5 +37,15 @@ class AppView extends View
      */
     public function initialize(): void
     {
+        $formTemplate = [
+            'inputContainer' => '<div class="input {{type}}{{required}}">{{content}}</div>',
+            'label' => '<label{{attrs}}>{{text}}</label>',
+            'input' => '<input type="{{type}}" name="{{name}}"{{attrs}}/>',
+            'textarea' => '<textarea name="{{name}}"{{attrs}}>{{value}}</textarea>',
+            'nestingLabel' => '{{hidden}}<label{{attrs}}>{{input}}{{text}}</label>',
+            'checkboxFormGroup' => '{{label}}',
+        ];
+        
+        $this->Form->setTemplates($formTemplate);
     }
 }
