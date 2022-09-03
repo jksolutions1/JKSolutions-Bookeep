@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- 主机： 127.0.0.1
--- 生成日期： 2022-09-03 09:53:19
--- 服务器版本： 10.4.24-MariaDB
--- PHP 版本： 8.1.6
+-- Host: 127.0.0.1
+-- Generation Time: Sep 03, 2022 at 11:18 AM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,25 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- 数据库： `fit3047 team 105`
+-- Database: `cake`
 --
 
 -- --------------------------------------------------------
 
 --
--- 表的结构 `admins`
---
-
-CREATE TABLE `admins` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `password` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- 表的结构 `appointments`
+-- Table structure for table `appointments`
 --
 
 CREATE TABLE `appointments` (
@@ -49,7 +37,7 @@ CREATE TABLE `appointments` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 转存表中的数据 `appointments`
+-- Dumping data for table `appointments`
 --
 
 INSERT INTO `appointments` (`id`, `appointment_description`, `client_id`, `company_id`, `date`, `address`) VALUES
@@ -58,7 +46,7 @@ INSERT INTO `appointments` (`id`, `appointment_description`, `client_id`, `compa
 -- --------------------------------------------------------
 
 --
--- 表的结构 `clients`
+-- Table structure for table `clients`
 --
 
 CREATE TABLE `clients` (
@@ -74,7 +62,7 @@ CREATE TABLE `clients` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 转存表中的数据 `clients`
+-- Dumping data for table `clients`
 --
 
 INSERT INTO `clients` (`id`, `firstname`, `lastname`, `contactno`, `adress`, `email`, `appointment_list`, `required_documents`, `payment`) VALUES
@@ -83,7 +71,7 @@ INSERT INTO `clients` (`id`, `firstname`, `lastname`, `contactno`, `adress`, `em
 -- --------------------------------------------------------
 
 --
--- 表的结构 `client_documents`
+-- Table structure for table `client_documents`
 --
 
 CREATE TABLE `client_documents` (
@@ -95,7 +83,7 @@ CREATE TABLE `client_documents` (
 -- --------------------------------------------------------
 
 --
--- 表的结构 `companies`
+-- Table structure for table `companies`
 --
 
 CREATE TABLE `companies` (
@@ -107,7 +95,7 @@ CREATE TABLE `companies` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 转存表中的数据 `companies`
+-- Dumping data for table `companies`
 --
 
 INSERT INTO `companies` (`id`, `name`, `address`, `contactno`, `client_id`) VALUES
@@ -116,7 +104,7 @@ INSERT INTO `companies` (`id`, `name`, `address`, `contactno`, `client_id`) VALU
 -- --------------------------------------------------------
 
 --
--- 表的结构 `documents`
+-- Table structure for table `documents`
 --
 
 CREATE TABLE `documents` (
@@ -128,11 +116,10 @@ CREATE TABLE `documents` (
 -- --------------------------------------------------------
 
 --
--- 表的结构 `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
-  `id` int(11) NOT NULL,
   `firstname` text NOT NULL,
   `lastname` text NOT NULL,
   `role` text NOT NULL,
@@ -142,25 +129,11 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 转存表中的数据 `users`
---
-
-INSERT INTO `users` (`id`, `firstname`, `lastname`, `role`, `client_id`, `username`, `password`) VALUES
-(1, 'Qihao', 'Hu', 'Manager', NULL, 'qhuu', 'asdfghjkl');
-
---
--- 转储表的索引
+-- Indexes for dumped tables
 --
 
 --
--- 表的索引 `admins`
---
-ALTER TABLE `admins`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `FK_USERS_ADMINTS` (`user_id`);
-
---
--- 表的索引 `appointments`
+-- Indexes for table `appointments`
 --
 ALTER TABLE `appointments`
   ADD PRIMARY KEY (`id`),
@@ -168,70 +141,74 @@ ALTER TABLE `appointments`
   ADD KEY `company_id` (`company_id`);
 
 --
--- 表的索引 `clients`
+-- Indexes for table `clients`
 --
 ALTER TABLE `clients`
   ADD PRIMARY KEY (`id`);
 
 --
--- 表的索引 `client_documents`
+-- Indexes for table `client_documents`
 --
 ALTER TABLE `client_documents`
   ADD KEY `FK_CLIENTS_CLIENT_DOCUMENTS` (`client_id`),
   ADD KEY `FK_CLIENT_DOCUMENTS_DOCUMENTS` (`document_id`) USING BTREE;
 
 --
--- 表的索引 `companies`
+-- Indexes for table `companies`
 --
 ALTER TABLE `companies`
   ADD PRIMARY KEY (`id`),
   ADD KEY `client_id` (`client_id`);
 
 --
--- 表的索引 `documents`
+-- Indexes for table `documents`
 --
 ALTER TABLE `documents`
   ADD PRIMARY KEY (`id`);
 
 --
--- 表的索引 `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`),
+  ADD PRIMARY KEY (`username`(10)) USING BTREE,
   ADD KEY `FK_USERS_CLIENTS` (`client_id`);
 
 --
--- 限制导出的表
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- 限制表 `admins`
+-- AUTO_INCREMENT for table `appointments`
 --
-ALTER TABLE `admins`
-  ADD CONSTRAINT `FK_USERS_ADMINTS` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+ALTER TABLE `appointments`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- 限制表 `appointments`
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `appointments`
 --
 ALTER TABLE `appointments`
   ADD CONSTRAINT `appointments_ibfk_1` FOREIGN KEY (`client_id`) REFERENCES `clients` (`id`),
   ADD CONSTRAINT `appointments_ibfk_2` FOREIGN KEY (`company_id`) REFERENCES `companies` (`id`);
 
 --
--- 限制表 `client_documents`
+-- Constraints for table `client_documents`
 --
 ALTER TABLE `client_documents`
   ADD CONSTRAINT `FK_CLIENTS_CLIENT_DOCUMENTS` FOREIGN KEY (`client_id`) REFERENCES `clients` (`id`),
   ADD CONSTRAINT `client_documents_ibfk_1` FOREIGN KEY (`document_id`) REFERENCES `documents` (`id`);
 
 --
--- 限制表 `companies`
+-- Constraints for table `companies`
 --
 ALTER TABLE `companies`
   ADD CONSTRAINT `companies_ibfk_1` FOREIGN KEY (`client_id`) REFERENCES `clients` (`id`);
 
 --
--- 限制表 `users`
+-- Constraints for table `users`
 --
 ALTER TABLE `users`
   ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`client_id`) REFERENCES `clients` (`id`);
