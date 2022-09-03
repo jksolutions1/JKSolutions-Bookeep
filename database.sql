@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主机： 127.0.0.1
--- 生成日期： 2022-09-02 16:52:44
+-- 生成日期： 2022-09-03 09:53:19
 -- 服务器版本： 10.4.24-MariaDB
 -- PHP 版本： 8.1.6
 
@@ -41,12 +41,19 @@ CREATE TABLE `admins` (
 
 CREATE TABLE `appointments` (
   `id` int(11) NOT NULL,
-  `appointment description` text DEFAULT NULL,
+  `appointment_description` text DEFAULT NULL,
   `client_id` int(11) NOT NULL,
   `company_id` int(11) NOT NULL,
   `date` date NOT NULL,
   `address` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- 转存表中的数据 `appointments`
+--
+
+INSERT INTO `appointments` (`id`, `appointment_description`, `client_id`, `company_id`, `date`, `address`) VALUES
+(1, 'asd', 1, 123, '2022-09-06', 'asd');
 
 -- --------------------------------------------------------
 
@@ -65,6 +72,13 @@ CREATE TABLE `clients` (
   `required_documents` text NOT NULL,
   `payment` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- 转存表中的数据 `clients`
+--
+
+INSERT INTO `clients` (`id`, `firstname`, `lastname`, `contactno`, `adress`, `email`, `appointment_list`, `required_documents`, `payment`) VALUES
+(1, 'asd', 'asd', 213, 'asd', 'asd@asd.com', '1', 'asda', 123);
 
 -- --------------------------------------------------------
 
@@ -91,6 +105,13 @@ CREATE TABLE `companies` (
   `contactno` int(11) NOT NULL,
   `client_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- 转存表中的数据 `companies`
+--
+
+INSERT INTO `companies` (`id`, `name`, `address`, `contactno`, `client_id`) VALUES
+(123, 'asd', 'asd', 123, 1);
 
 -- --------------------------------------------------------
 
