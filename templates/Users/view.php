@@ -22,6 +22,10 @@
                     <th><?= __('Client') ?></th>
                     <td><?= $user->has('client') ? $this->Html->link($user->client->id, ['controller' => 'Clients', 'action' => 'view', $user->client->id]) : '' ?></td>
                 </tr>
+                <tr>
+                    <th><?= __('Id') ?></th>
+                    <td><?= $this->Number->format($user->id) ?></td>
+                </tr>
             </table>
             <div class="text">
                 <strong><?= __('Firstname') ?></strong>
