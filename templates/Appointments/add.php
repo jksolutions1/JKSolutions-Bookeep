@@ -7,7 +7,7 @@
  */
 ?>
 
-<h1 class="h3 mb-2 text-gray-800">Add apointment</h1>
+<h1 class="h3 mb-2 text-gray-800">Add Appointment</h1>
 <?= $this->Form->create($appointment)?>
     <?php
         echo $this->Form->control('appointment_description');
