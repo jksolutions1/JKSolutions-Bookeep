@@ -6,28 +6,17 @@
  * @var \Cake\Collection\CollectionInterface|string[] $companies
  */
 ?>
-<div class="row">
-    <aside class="column">
-        <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Html->link(__('List Appointments'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
-        </div>
-    </aside>
-    <div class="column-responsive column-80">
-        <div class="appointments form content">
-            <?= $this->Form->create($appointment) ?>
-            <fieldset>
-                <legend><?= __('Add Appointment') ?></legend>
-                <?php
-                    echo $this->Form->control('appointment_description');
-                    echo $this->Form->control('client_id', ['options' => $clients]);
-                    echo $this->Form->control('company_id', ['options' => $companies]);
-                    echo $this->Form->control('date');
-                    echo $this->Form->control('address');
-                ?>
-            </fieldset>
-            <?= $this->Form->button(__('Submit')) ?>
-            <?= $this->Form->end() ?>
-        </div>
-    </div>
-</div>
+
+<h1 class="h3 mb-2 text-gray-800">Add Appointment</h1>
+<?= $this->Form->create($appointment)?>
+    <?php
+        echo $this->Form->control('appointment_description');
+        echo $this->Form->control('client_id', ['options' => $clients]);
+        echo $this->Form->control('company_id', ['options' => $companies]);
+        echo $this->Form->control('date');
+        echo $this->Form->control('address');
+    ?>
+  
+<?= $this->Form->button(__('Submit')) ?>
+<?= $this->Form->end() ?>
+
