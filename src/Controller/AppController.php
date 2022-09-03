@@ -58,7 +58,7 @@ class AppController extends Controller
                 'action' => 'login'
             ]
         ]);
-        
+         
 
         /*
          * Enable the following component for recommended CakePHP form protection settings.

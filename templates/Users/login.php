@@ -17,6 +17,7 @@
 			<?= $this->Form->controller('password', array('type' => 'password')); ?>
 			<br>
 			<?= $this->Form->submit('Login', array('class' => 'button')); ?>
+			<br>
 		<?= $this->Form->end(); ?>
 	</div>
 </div>
