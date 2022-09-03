@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 03, 2022 at 12:02 PM
+-- Generation Time: Sep 03, 2022 at 03:07 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -41,7 +41,7 @@ CREATE TABLE `appointments` (
 --
 
 INSERT INTO `appointments` (`id`, `appointment_description`, `client_id`, `company_id`, `date`, `address`) VALUES
-(1, 'asd', 1, 123, '2022-09-06', 'asd');
+(1, 'asd', 1, 123, '2020-01-03', 'asd');
 
 -- --------------------------------------------------------
 
@@ -109,8 +109,8 @@ INSERT INTO `companies` (`id`, `name`, `address`, `contactno`, `client_id`) VALU
 
 CREATE TABLE `documents` (
   `id` int(11) NOT NULL,
-  `client_engagement_agreement_doc` text NOT NULL,
-  `authority_for_agent_doc` text NOT NULL
+  `document_path` text NOT NULL,
+  `document _type` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -128,6 +128,17 @@ CREATE TABLE `users` (
   `username` text NOT NULL,
   `password` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `firstname`, `lastname`, `role`, `client_id`, `username`, `password`) VALUES
+(1, 'hello', '123', '123', NULL, 'test', '$2y$10$JTUKggL47LKwzB.MVefNCOTWE3X3aSSl5mbCtGH9HaDiZkvhMUIii'),
+(3, 'ahah', 'ahah', 'ahah', NULL, 'hello123', '$2y$10$ZtFBRjoGSTaOAvClPAnRIeAUPnYOioz2jak1uglv1QCt8ngtJKlXS'),
+(4, 'asd', 'asd', 'asd', NULL, 'hello', '$2y$10$0rwIqjEbZ5hgwSF3aA8qSuVCyBwTOSUsmREVb0l7yiRm6lvz2hb16'),
+(5, 'hha', 'hha', 'hah', NULL, 'yoo', '$2y$10$UvXD5VYsiimwliVmHXB2geNXroPiFD1D5KmwRmZmU4Yo3CS97sKv2'),
+(6, 'Kale', 'Rod', 'hea', NULL, 'bruh', '$2y$10$Kz846plg6XoQGO.xaj0YIOVclEHt7vd332AP4q9wJ9z8/I2WjIt0K');
 
 --
 -- Indexes for dumped tables
@@ -151,6 +162,7 @@ ALTER TABLE `clients`
 -- Indexes for table `client_documents`
 --
 ALTER TABLE `client_documents`
+  ADD PRIMARY KEY (`client_id`,`document_id`),
   ADD KEY `FK_CLIENTS_CLIENT_DOCUMENTS` (`client_id`),
   ADD KEY `FK_CLIENT_DOCUMENTS_DOCUMENTS` (`document_id`) USING BTREE;
 
@@ -188,7 +200,7 @@ ALTER TABLE `appointments`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables
