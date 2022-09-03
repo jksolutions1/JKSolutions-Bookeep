@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 03, 2022 at 11:18 AM
+-- Generation Time: Sep 03, 2022 at 12:02 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -129,7 +129,6 @@ CREATE TABLE `users` (
   `password` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-
 --
 -- Indexes for dumped tables
 --
@@ -175,7 +174,6 @@ ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD KEY `FK_USERS_CLIENTS` (`client_id`);
 
-
 --
 -- AUTO_INCREMENT for dumped tables
 --
@@ -185,6 +183,12 @@ ALTER TABLE `users`
 --
 ALTER TABLE `appointments`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
