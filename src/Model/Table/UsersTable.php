@@ -12,7 +12,6 @@ use Cake\Validation\Validator;
  * Users Model
  *
  * @property \App\Model\Table\ClientsTable&\Cake\ORM\Association\BelongsTo $Clients
- * @property \App\Model\Table\AdminsTable&\Cake\ORM\Association\HasMany $Admins
  *
  * @method \App\Model\Entity\User newEmptyEntity()
  * @method \App\Model\Entity\User newEntity(array $data, array $options = [])
@@ -47,9 +46,6 @@ class UsersTable extends Table
         $this->belongsTo('Clients', [
             'foreignKey' => 'client_id',
         ]);
-        $this->hasMany('Admins', [
-            'foreignKey' => 'user_id',
-        ]);
     }
 
     /**
@@ -78,11 +74,6 @@ class UsersTable extends Table
         $validator
             ->integer('client_id')
             ->allowEmptyString('client_id');
-
-        $validator
-            ->scalar('username')
-            ->requirePresence('username', 'create')
-            ->notEmptyString('username');
 
         $validator
             ->scalar('password')

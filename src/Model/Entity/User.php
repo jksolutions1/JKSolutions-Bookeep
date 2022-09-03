@@ -8,7 +8,6 @@ use Cake\ORM\Entity;
 /**
  * User Entity
  *
- * @property int $id
  * @property string $firstname
  * @property string $lastname
  * @property string $role
@@ -35,7 +34,6 @@ class User extends Entity
         'lastname' => true,
         'role' => true,
         'client_id' => true,
-        'username' => true,
         'password' => true,
         'client' => true,
         'admins' => true,
