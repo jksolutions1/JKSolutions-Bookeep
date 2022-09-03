@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 03, 2022 at 03:07 PM
+-- Generation Time: Sep 03, 2022 at 03:52 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -76,8 +76,7 @@ INSERT INTO `clients` (`id`, `firstname`, `lastname`, `contactno`, `adress`, `em
 
 CREATE TABLE `client_documents` (
   `client_id` int(11) NOT NULL,
-  `document_id` int(11) NOT NULL,
-  `document_type` text NOT NULL
+  `document_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -110,7 +109,7 @@ INSERT INTO `companies` (`id`, `name`, `address`, `contactno`, `client_id`) VALU
 CREATE TABLE `documents` (
   `id` int(11) NOT NULL,
   `document_path` text NOT NULL,
-  `document _type` text NOT NULL
+  `document_type` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -138,7 +137,8 @@ INSERT INTO `users` (`id`, `firstname`, `lastname`, `role`, `client_id`, `userna
 (3, 'ahah', 'ahah', 'ahah', NULL, 'hello123', '$2y$10$ZtFBRjoGSTaOAvClPAnRIeAUPnYOioz2jak1uglv1QCt8ngtJKlXS'),
 (4, 'asd', 'asd', 'asd', NULL, 'hello', '$2y$10$0rwIqjEbZ5hgwSF3aA8qSuVCyBwTOSUsmREVb0l7yiRm6lvz2hb16'),
 (5, 'hha', 'hha', 'hah', NULL, 'yoo', '$2y$10$UvXD5VYsiimwliVmHXB2geNXroPiFD1D5KmwRmZmU4Yo3CS97sKv2'),
-(6, 'Kale', 'Rod', 'hea', NULL, 'bruh', '$2y$10$Kz846plg6XoQGO.xaj0YIOVclEHt7vd332AP4q9wJ9z8/I2WjIt0K');
+(6, 'Kale', 'Rod', 'hea', NULL, 'bruh', '$2y$10$Kz846plg6XoQGO.xaj0YIOVclEHt7vd332AP4q9wJ9z8/I2WjIt0K'),
+(7, 'sss', 'sss', 'sss', NULL, 'sss', '$2y$10$phkdvcTycdly4Lm9avAQF.Vt8I6VkMfikVtt5rMn8X.cH0hQgvqfS');
 
 --
 -- Indexes for dumped tables
@@ -200,7 +200,7 @@ ALTER TABLE `appointments`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Constraints for dumped tables
