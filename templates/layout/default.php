@@ -31,6 +31,8 @@
     <!-- Page Wrapper -->
     <div id="wrapper">
 
+
+        <?php if ($loggedIn) : ?>
         <!-- Sidebar -->
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
@@ -150,6 +152,7 @@
 
         </ul>
         <!-- End of Sidebar -->
+        <?php endif ?>
 
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
@@ -164,7 +167,8 @@
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
                     </button>
-
+                    
+                    <?php if ($loggedIn) : ?>
                     <!-- Topbar Search -->
                     <form
                         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
@@ -178,7 +182,7 @@
                             </div>
                         </div>
                     </form>
-
+                    <?php endif ?>
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
 
@@ -206,6 +210,7 @@
                             </div>
                         </li>
 
+                        <?php if ($loggedIn) : ?>
                         <!-- Nav Item - Alerts -->
                         <li class="nav-item dropdown no-arrow mx-1">
                             <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
@@ -323,8 +328,11 @@
                             </div>
                         </li>
 
+                        <?php endif ?>
+
                         <div class="topbar-divider d-none d-sm-block"></div>
 
+                        <?php if ($loggedIn) : ?>
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
@@ -354,6 +362,9 @@
                                     Logout
                                 </a>
                             </div>
+                            <?php else : ?>
+                                <?= $this->Html->link('Register',['controller' => 'users','action'=>'register']); ?>
+                        <?php endif ?>
                         </li>
 
                     </ul>
@@ -377,7 +388,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
+                        <span>Copyright &copy; Bookeep</span>
                     </div>
                 </div>
             </footer>
@@ -408,7 +419,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary"><?= $this->Html->link('Logout', ['controller' => 'users', 'action' => 'logout']); ?></a>
+                    <button class="btn"><?= $this->Html->link('Logout', ['controller' => 'users', 'action' => 'logout']); ?></button>
                 </div>
             </div>
         </div>
