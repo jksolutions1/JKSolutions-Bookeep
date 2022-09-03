@@ -17,7 +17,7 @@
             <fieldset>
                 <legend><?= __('Add Document') ?></legend>
                 <?php
-                    echo $this->Form->control('client_engagement_agreement_doc');
+                    echo $this->Form->control('client_engagement_agreement_doc',['type'=>'file']);
                     echo $this->Form->control('authority_for_agent_doc');
                 ?>
             </fieldset>
