@@ -30,8 +30,8 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['bl
                 <?php foreach ($appointments as $appointment): ?>
                 <tr>
                     <td><?= $this->Number->format($appointment->id) ?></td>
-                    <td><?= $appointment->has('client') ? $this->Html->link($appointment->client->id, ['controller' => 'Clients', 'action' => 'view', $appointment->client->id]) : '' ?></td>
-                    <td><?= $appointment->has('company') ? $this->Html->link($appointment->company->name, ['controller' => 'Companies', 'action' => 'view', $appointment->company->id]) : '' ?></td>
+                    <td><?= $this->Number->format($appointment->client->id) ?></td>
+                    <td><?= h($appointment->company->name)?></td>
                     <td><?= h($appointment->date) ?></td>
                     <td class="actions">
                         <?= $this->Html->link(__('View'), ['action' => 'view', $appointment->id]) ?>
@@ -42,16 +42,6 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['bl
                 <?php endforeach; ?>
             </tbody>
         </table>
-    </div>
-    <div class="paginator">
-        <ul class="pagination">
-            <?= $this->Paginator->first('<< ' . __('first')) ?>
-            <?= $this->Paginator->prev('< ' . __('previous')) ?>
-            <?= $this->Paginator->numbers() ?>
-            <?= $this->Paginator->next(__('next') . ' >') ?>
-            <?= $this->Paginator->last(__('last') . ' >>') ?>
-        </ul>
-        <p><?= $this->Paginator->counter(__('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')) ?></p>
     </div>
     <script>
         $(document).ready(function() {
