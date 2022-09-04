@@ -22,8 +22,9 @@
             <fieldset>
                 <legend><?= __('Edit Document') ?></legend>
                 <?php
-                    echo $this->Form->control('client_engagement_agreement_doc');
-                    echo $this->Form->control('authority_for_agent_doc');
+                    echo $this->Form->control('document_path');
+                    echo $this->Form->control('document_type');
+                    echo $this->Form->control('client_id');
                 ?>
             </fieldset>
             <?= $this->Form->button(__('Submit')) ?>

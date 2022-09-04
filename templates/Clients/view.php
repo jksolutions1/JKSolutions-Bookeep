@@ -84,9 +84,9 @@
                             <td><?= h($clientDocuments->document_id) ?></td>
                             <td><?= h($clientDocuments->document_type) ?></td>
                             <td class="actions">
-                                <?= $this->Html->link(__('View'), ['controller' => 'ClientDocuments', 'action' => 'view', $clientDocuments->]) ?>
-                                <?= $this->Html->link(__('Edit'), ['controller' => 'ClientDocuments', 'action' => 'edit', $clientDocuments->]) ?>
-                                <?= $this->Form->postLink(__('Delete'), ['controller' => 'ClientDocuments', 'action' => 'delete', $clientDocuments->], ['confirm' => __('Are you sure you want to delete # {0}?', $clientDocuments->)]) ?>
+                                <?= $this->Html->link(__('View'), ['controller' => 'ClientDocuments', 'action' => 'view', $clientDocuments->id]) ?>
+                                <?= $this->Html->link(__('Edit'), ['controller' => 'ClientDocuments', 'action' => 'edit', $clientDocuments->id]) ?>
+                                <?= $this->Form->postLink(__('Delete'), ['controller' => 'ClientDocuments', 'action' => 'delete', $clientDocuments->id], ['confirm' => __('Are you sure you want to delete # {0}?', $clientDocuments->id)]) ?>
                             </td>
                         </tr>
                         <?php endforeach; ?>

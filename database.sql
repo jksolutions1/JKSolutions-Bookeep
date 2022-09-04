@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 03, 2022 at 03:52 PM
+-- Generation Time: Sep 04, 2022 at 06:26 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -36,13 +36,6 @@ CREATE TABLE `appointments` (
   `address` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `appointments`
---
-
-INSERT INTO `appointments` (`id`, `appointment_description`, `client_id`, `company_id`, `date`, `address`) VALUES
-(1, 'asd', 1, 123, '2020-01-03', 'asd');
-
 -- --------------------------------------------------------
 
 --
@@ -54,7 +47,7 @@ CREATE TABLE `clients` (
   `firstname` text NOT NULL,
   `lastname` text NOT NULL,
   `contactno` int(11) NOT NULL,
-  `adress` text NOT NULL,
+  `address` text NOT NULL,
   `email` text NOT NULL,
   `appointment_list` text NOT NULL,
   `required_documents` text NOT NULL,
@@ -65,19 +58,8 @@ CREATE TABLE `clients` (
 -- Dumping data for table `clients`
 --
 
-INSERT INTO `clients` (`id`, `firstname`, `lastname`, `contactno`, `adress`, `email`, `appointment_list`, `required_documents`, `payment`) VALUES
+INSERT INTO `clients` (`id`, `firstname`, `lastname`, `contactno`, `address`, `email`, `appointment_list`, `required_documents`, `payment`) VALUES
 (1, 'asd', 'asd', 213, 'asd', 'asd@asd.com', '1', 'asda', 123);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `client_documents`
---
-
-CREATE TABLE `client_documents` (
-  `client_id` int(11) NOT NULL,
-  `document_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -109,7 +91,8 @@ INSERT INTO `companies` (`id`, `name`, `address`, `contactno`, `client_id`) VALU
 CREATE TABLE `documents` (
   `id` int(11) NOT NULL,
   `document_path` text NOT NULL,
-  `document_type` text NOT NULL
+  `document_type` text NOT NULL,
+  `client_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -159,14 +142,6 @@ ALTER TABLE `clients`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `client_documents`
---
-ALTER TABLE `client_documents`
-  ADD PRIMARY KEY (`client_id`,`document_id`),
-  ADD KEY `FK_CLIENTS_CLIENT_DOCUMENTS` (`client_id`),
-  ADD KEY `FK_CLIENT_DOCUMENTS_DOCUMENTS` (`document_id`) USING BTREE;
-
---
 -- Indexes for table `companies`
 --
 ALTER TABLE `companies`
@@ -177,7 +152,8 @@ ALTER TABLE `companies`
 -- Indexes for table `documents`
 --
 ALTER TABLE `documents`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `client_id` (`client_id`);
 
 --
 -- Indexes for table `users`
@@ -214,17 +190,16 @@ ALTER TABLE `appointments`
   ADD CONSTRAINT `appointments_ibfk_2` FOREIGN KEY (`company_id`) REFERENCES `companies` (`id`);
 
 --
--- Constraints for table `client_documents`
---
-ALTER TABLE `client_documents`
-  ADD CONSTRAINT `FK_CLIENTS_CLIENT_DOCUMENTS` FOREIGN KEY (`client_id`) REFERENCES `clients` (`id`),
-  ADD CONSTRAINT `client_documents_ibfk_1` FOREIGN KEY (`document_id`) REFERENCES `documents` (`id`);
-
---
 -- Constraints for table `companies`
 --
 ALTER TABLE `companies`
   ADD CONSTRAINT `companies_ibfk_1` FOREIGN KEY (`client_id`) REFERENCES `clients` (`id`);
+
+--
+-- Constraints for table `documents`
+--
+ALTER TABLE `documents`
+  ADD CONSTRAINT `documents_ibfk_1` FOREIGN KEY (`client_id`) REFERENCES `clients` (`id`);
 
 --
 -- Constraints for table `users`

@@ -11,8 +11,6 @@ use Cake\Validation\Validator;
 /**
  * Documents Model
  *
- * @property \App\Model\Table\ClientDocumentsTable&\Cake\ORM\Association\HasMany $ClientDocuments
- *
  * @method \App\Model\Entity\Document newEmptyEntity()
  * @method \App\Model\Entity\Document newEntity(array $data, array $options = [])
  * @method \App\Model\Entity\Document[] newEntities(array $data, array $options = [])
@@ -43,8 +41,9 @@ class DocumentsTable extends Table
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
 
-        $this->hasMany('ClientDocuments', [
-            'foreignKey' => 'document_id',
+        $this->belongsTo('Clients', [
+            'foreignKey' => 'client_id',
+            'joinType' => 'INNER',
         ]);
     }
 
@@ -57,15 +56,34 @@ class DocumentsTable extends Table
     public function validationDefault(Validator $validator): Validator
     {
         $validator
-            ->scalar('client_engagement_agreement_doc')
-            ->requirePresence('client_engagement_agreement_doc', 'create')
-            ->notEmptyString('client_engagement_agreement_doc');
+            ->scalar('document_path')
+            ->requirePresence('document_path', 'create')
+            ->notEmptyString('document_path');
 
         $validator
-            ->scalar('authority_for_agent_doc')
-            ->requirePresence('authority_for_agent_doc', 'create')
-            ->notEmptyString('authority_for_agent_doc');
+            ->scalar('document_type')
+            ->requirePresence('document_type', 'create')
+            ->notEmptyString('document_type');
+
+        $validator
+            ->integer('client_id')
+            ->requirePresence('client_id', 'create')
+            ->notEmptyString('client_id');
 
         return $validator;
+    }
+
+    /**
+     * Returns a rules checker object that will be used for validating
+     * application integrity.
+     *
+     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
+     * @return \Cake\ORM\RulesChecker
+     */
+    public function buildRules(RulesChecker $rules): RulesChecker
+    {
+        $rules->add($rules->existsIn('client_id', 'Clients'), ['errorField' => 'client_id']);
+
+        return $rules;
     }
 }

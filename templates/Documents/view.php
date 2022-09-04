@@ -22,45 +22,22 @@
                     <th><?= __('Id') ?></th>
                     <td><?= $this->Number->format($document->id) ?></td>
                 </tr>
+                <tr>
+                    <th><?= __('Client Id') ?></th>
+                    <td><?= $this->Number->format($document->client_id) ?></td>
+                </tr>
             </table>
             <div class="text">
-                <strong><?= __('Client Engagement Agreement Doc') ?></strong>
+                <strong><?= __('Document Path') ?></strong>
                 <blockquote>
-                    <?= $this->Text->autoParagraph(h($document->client_engagement_agreement_doc)); ?>
+                    <?= $this->Text->autoParagraph(h($document->document_path)); ?>
                 </blockquote>
             </div>
             <div class="text">
-                <strong><?= __('Authority For Agent Doc') ?></strong>
+                <strong><?= __('Document Type') ?></strong>
                 <blockquote>
-                    <?= $this->Text->autoParagraph(h($document->authority_for_agent_doc)); ?>
+                    <?= $this->Text->autoParagraph(h($document->document_type)); ?>
                 </blockquote>
-            </div>
-            <div class="related">
-                <h4><?= __('Related Client Documents') ?></h4>
-                <?php if (!empty($document->client_documents)) : ?>
-                <div class="table-responsive">
-                    <table>
-                        <tr>
-                            <th><?= __('Client Id') ?></th>
-                            <th><?= __('Document Id') ?></th>
-                            <th><?= __('Document Type') ?></th>
-                            <th class="actions"><?= __('Actions') ?></th>
-                        </tr>
-                        <?php foreach ($document->client_documents as $clientDocuments) : ?>
-                        <tr>
-                            <td><?= h($clientDocuments->client_id) ?></td>
-                            <td><?= h($clientDocuments->document_id) ?></td>
-                            <td><?= h($clientDocuments->document_type) ?></td>
-                            <td class="actions">
-                                <?= $this->Html->link(__('View'), ['controller' => 'ClientDocuments', 'action' => 'view', $clientDocuments->]) ?>
-                                <?= $this->Html->link(__('Edit'), ['controller' => 'ClientDocuments', 'action' => 'edit', $clientDocuments->]) ?>
-                                <?= $this->Form->postLink(__('Delete'), ['controller' => 'ClientDocuments', 'action' => 'delete', $clientDocuments->], ['confirm' => __('Are you sure you want to delete # {0}?', $clientDocuments->)]) ?>
-                            </td>
-                        </tr>
-                        <?php endforeach; ?>
-                    </table>
-                </div>
-                <?php endif; ?>
             </div>
         </div>
     </div>

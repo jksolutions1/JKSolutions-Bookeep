@@ -9,10 +9,11 @@ use Cake\ORM\Entity;
  * Document Entity
  *
  * @property int $id
- * @property string $client_engagement_agreement_doc
- * @property string $authority_for_agent_doc
+ * @property string $document_path
+ * @property string $document_type
+ * @property int $client_id
  *
- * @property \App\Model\Entity\ClientDocument[] $client_documents
+ * @property \App\Model\Entity\Clientdocument[] $client_documents
  */
 class Document extends Entity
 {
@@ -26,8 +27,9 @@ class Document extends Entity
      * @var array<string, bool>
      */
     protected $_accessible = [
-        'client_engagement_agreement_doc' => true,
-        'authority_for_agent_doc' => true,
+        'document_path' => true,
+        'document_type' => true,
+        'client_id' => true,
         'client_documents' => true,
     ];
 }
