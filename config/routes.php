@@ -92,8 +92,8 @@ return static function (RouteBuilder $routes) {
 
 
     //File upload route
-    $routes->connect('/files',['controller'=>'Files', 'action'=>'index']);
-    $routes->connect('/files/upload',['controller'=>'Files', 'action'=>'upload']);
+    $routes->connect('/documents',['controller'=>'Documents', 'action'=>'index']);
+    $routes->connect('/documents/upload',['controller'=>'Documents', 'action'=>'upload']);
 
 
 
