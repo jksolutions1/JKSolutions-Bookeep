@@ -25,7 +25,7 @@
                     echo $this->Form->control('firstname');
                     echo $this->Form->control('lastname');
                     echo $this->Form->control('contactno');
-                    echo $this->Form->control('adress');
+                    echo $this->Form->control('address');
                     echo $this->Form->control('email');
                     echo $this->Form->control('appointment_list');
                     echo $this->Form->control('required_documents');

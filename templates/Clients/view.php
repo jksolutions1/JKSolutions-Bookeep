@@ -44,9 +44,9 @@
                 </blockquote>
             </div>
             <div class="text">
-                <strong><?= __('Adress') ?></strong>
+                <strong><?= __('Address') ?></strong>
                 <blockquote>
-                    <?= $this->Text->autoParagraph(h($client->adress)); ?>
+                    <?= $this->Text->autoParagraph(h($client->address)); ?>
                 </blockquote>
             </div>
             <div class="text">
@@ -68,25 +68,31 @@
                 </blockquote>
             </div>
             <div class="related">
-                <h4><?= __('Related Client Documents') ?></h4>
-                <?php if (!empty($client->client_documents)) : ?>
+                <h4><?= __('Related Appointments') ?></h4>
+                <?php if (!empty($client->appointments)) : ?>
                 <div class="table-responsive">
                     <table>
                         <tr>
+                            <th><?= __('Id') ?></th>
+                            <th><?= __('Appointment Description') ?></th>
                             <th><?= __('Client Id') ?></th>
-                            <th><?= __('Document Id') ?></th>
-                            <th><?= __('Document Type') ?></th>
+                            <th><?= __('Company Id') ?></th>
+                            <th><?= __('Date') ?></th>
+                            <th><?= __('Address') ?></th>
                             <th class="actions"><?= __('Actions') ?></th>
                         </tr>
-                        <?php foreach ($client->client_documents as $clientDocuments) : ?>
+                        <?php foreach ($client->appointments as $appointments) : ?>
                         <tr>
-                            <td><?= h($clientDocuments->client_id) ?></td>
-                            <td><?= h($clientDocuments->document_id) ?></td>
-                            <td><?= h($clientDocuments->document_type) ?></td>
+                            <td><?= h($appointments->id) ?></td>
+                            <td><?= h($appointments->appointment_description) ?></td>
+                            <td><?= h($appointments->client_id) ?></td>
+                            <td><?= h($appointments->company_id) ?></td>
+                            <td><?= h($appointments->date) ?></td>
+                            <td><?= h($appointments->address) ?></td>
                             <td class="actions">
-                                <?= $this->Html->link(__('View'), ['controller' => 'ClientDocuments', 'action' => 'view', $clientDocuments->id]) ?>
-                                <?= $this->Html->link(__('Edit'), ['controller' => 'ClientDocuments', 'action' => 'edit', $clientDocuments->id]) ?>
-                                <?= $this->Form->postLink(__('Delete'), ['controller' => 'ClientDocuments', 'action' => 'delete', $clientDocuments->id], ['confirm' => __('Are you sure you want to delete # {0}?', $clientDocuments->id)]) ?>
+                                <?= $this->Html->link(__('View'), ['controller' => 'Appointments', 'action' => 'view', $appointments->id]) ?>
+                                <?= $this->Html->link(__('Edit'), ['controller' => 'Appointments', 'action' => 'edit', $appointments->id]) ?>
+                                <?= $this->Form->postLink(__('Delete'), ['controller' => 'Appointments', 'action' => 'delete', $appointments->id], ['confirm' => __('Are you sure you want to delete # {0}?', $appointments->id)]) ?>
                             </td>
                         </tr>
                         <?php endforeach; ?>

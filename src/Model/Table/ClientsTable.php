@@ -11,7 +11,7 @@ use Cake\Validation\Validator;
 /**
  * Clients Model
  *
- * @property \App\Model\Table\ClientDocumentsTable&\Cake\ORM\Association\HasMany $ClientDocuments
+ * @property \App\Model\Table\AppointmentsTable&\Cake\ORM\Association\HasMany $Appointments
  * @property \App\Model\Table\CompaniesTable&\Cake\ORM\Association\HasMany $Companies
  * @property \App\Model\Table\UsersTable&\Cake\ORM\Association\HasMany $Users
  *
@@ -48,10 +48,10 @@ class ClientsTable extends Table
         $this->hasMany('Appointments', [
             'foreignKey' => 'client_id',
         ]);
-        $this->hasMany('ClientDocuments', [
+        $this->hasMany('Companies', [
             'foreignKey' => 'client_id',
         ]);
-        $this->hasMany('Companies', [
+        $this->hasMany('Documents', [
             'foreignKey' => 'client_id',
         ]);
         $this->hasMany('Users', [
@@ -83,9 +83,9 @@ class ClientsTable extends Table
             ->notEmptyString('contactno');
 
         $validator
-            ->scalar('adress')
-            ->requirePresence('adress', 'create')
-            ->notEmptyString('adress');
+            ->scalar('address')
+            ->requirePresence('address', 'create')
+            ->notEmptyString('address');
 
         $validator
             ->email('email')
