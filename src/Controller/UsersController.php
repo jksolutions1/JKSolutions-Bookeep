@@ -147,23 +147,35 @@ class UsersController extends AppController
         $this -> Auth -> allow(['register','logout']);
     }
 
+    // public function isAuthorized($user) {
+
+    // if ($this->request->getParam('action') === 'add') {
+    //     return true;
+    // }
+
+    // if (in_array($this->request->getParam('action'), ['edit', 'delete','view','delete'])) {
+
+    //     $articleId = (int)$this->request->getParam('pass.0');
+    //     if ($this->Articles->isOwnedBy($articleId, $user['id'])) {
+    //         return true;
+    //     }
+    // }
+
+
+    
+
+    //     return parent::isAuthorized($user);
+    // }  
+
     public function isAuthorized($user) {
-
-    if ($this->request->getParam('action') === 'add') {
-        return true;
-    }
-
-    // The owner of an article can edit and delete it
-    // Prior to 3.4.0 $this->request->param('action') was used.
-    if (in_array($this->request->getParam('action'), ['edit', 'delete','view','delete'])) {
-        // Prior to 3.4.0 $this->request->params('pass.0')
-        $articleId = (int)$this->request->getParam('pass.0');
-        if ($this->Articles->isOwnedBy($articleId, $user['id'])) {
+        // Admin can access every action
+        if (isset($user['role']) && $user['role'] === 'admin') {
             return true;
         }
+        debug($user);
+        // Default deny
+        return false;
     }
 
-    return parent::isAuthorized($user);
-}
     
 }
