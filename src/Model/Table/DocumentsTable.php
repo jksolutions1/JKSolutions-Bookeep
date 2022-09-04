@@ -11,6 +11,8 @@ use Cake\Validation\Validator;
 /**
  * Documents Model
  *
+ * @property \App\Model\Table\ClientsTable&\Cake\ORM\Association\BelongsTo $Clients
+ *
  * @method \App\Model\Entity\Document newEmptyEntity()
  * @method \App\Model\Entity\Document newEntity(array $data, array $options = [])
  * @method \App\Model\Entity\Document[] newEntities(array $data, array $options = [])

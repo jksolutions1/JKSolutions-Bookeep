@@ -19,12 +19,12 @@
             <h3><?= h($document->id) ?></h3>
             <table>
                 <tr>
-                    <th><?= __('Id') ?></th>
-                    <td><?= $this->Number->format($document->id) ?></td>
+                    <th><?= __('Client') ?></th>
+                    <td><?= $document->has('client') ? $this->Html->link($document->client->id, ['controller' => 'Clients', 'action' => 'view', $document->client->id]) : '' ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Client Id') ?></th>
-                    <td><?= $this->Number->format($document->client_id) ?></td>
+                    <th><?= __('Id') ?></th>
+                    <td><?= $this->Number->format($document->id) ?></td>
                 </tr>
             </table>
             <div class="text">

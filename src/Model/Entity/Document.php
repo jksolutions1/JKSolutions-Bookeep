@@ -13,7 +13,7 @@ use Cake\ORM\Entity;
  * @property string $document_type
  * @property int $client_id
  *
- * @property \App\Model\Entity\Clientdocument[] $client_documents
+ * @property \App\Model\Entity\Client $client
  */
 class Document extends Entity
 {
@@ -30,6 +30,6 @@ class Document extends Entity
         'document_path' => true,
         'document_type' => true,
         'client_id' => true,
-        'client_documents' => true,
+        'client' => true,
     ];
 }

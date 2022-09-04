@@ -25,7 +25,7 @@ class DocumentsTableTest extends TestCase
      */
     protected $fixtures = [
         'app.Documents',
-        'app.ClientDocuments',
+        'app.Clients',
     ];
 
     /**
@@ -59,6 +59,17 @@ class DocumentsTableTest extends TestCase
      * @uses \App\Model\Table\DocumentsTable::validationDefault()
      */
     public function testValidationDefault(): void
+    {
+        $this->markTestIncomplete('Not implemented yet.');
+    }
+
+    /**
+     * Test buildRules method
+     *
+     * @return void
+     * @uses \App\Model\Table\DocumentsTable::buildRules()
+     */
+    public function testBuildRules(): void
     {
         $this->markTestIncomplete('Not implemented yet.');
     }
