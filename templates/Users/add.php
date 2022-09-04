@@ -20,7 +20,7 @@
                 <?php
                     echo $this->Form->control('firstname');
                     echo $this->Form->control('lastname');
-                    echo $this->Form->control('role');
+                    echo $this->Form->control('role', [ 'options' => ['admin' => 'Admin', 'regular' => 'Regular']]);
                     echo $this->Form->control('client_id', ['options' => $clients, 'empty' => true]);
                     echo $this->Form->control('username');
                     echo $this->Form->control('password');

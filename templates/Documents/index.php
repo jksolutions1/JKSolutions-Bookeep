@@ -20,7 +20,7 @@
                 <?php foreach ($documents as $document): ?>
                 <tr>
                     <td><?= $this->Number->format($document->id) ?></td>
-                    <td><?= $this->Number->format($document->client_id) ?></td>
+                    <td><?= $document->has('client') ? $this->Html->link($document->client->id, ['controller' => 'Clients', 'action' => 'view', $document->client->id]) : '' ?></td>
                     <td class="actions">
                         <?= $this->Html->link(__('View'), ['action' => 'view', $document->id]) ?>
                         <?= $this->Html->link(__('Edit'), ['action' => 'edit', $document->id]) ?>

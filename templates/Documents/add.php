@@ -2,6 +2,7 @@
 /**
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Document $document
+ * @var \Cake\Collection\CollectionInterface|string[] $clients
  */
 ?>
 <div class="row">
@@ -19,7 +20,7 @@
                 <?php
                     echo $this->Form->control('document_path');
                     echo $this->Form->control('document_type');
-                    echo $this->Form->control('client_id');
+                    echo $this->Form->control('client_id', ['options' => $clients]);
                 ?>
             </fieldset>
             <?= $this->Form->button(__('Submit')) ?>

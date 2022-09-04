@@ -144,7 +144,38 @@ class UsersController extends AppController
     }
 
     public function beforeFilter(EventInterface $event) {
-        $this -> Auth -> allow(['register']);
+        $this -> Auth -> allow(['register','logout']);
     }
 
+    // public function isAuthorized($user) {
+
+    // if ($this->request->getParam('action') === 'add') {
+    //     return true;
+    // }
+
+    // if (in_array($this->request->getParam('action'), ['edit', 'delete','view','delete'])) {
+
+    //     $articleId = (int)$this->request->getParam('pass.0');
+    //     if ($this->Articles->isOwnedBy($articleId, $user['id'])) {
+    //         return true;
+    //     }
+    // }
+
+
+    
+
+    //     return parent::isAuthorized($user);
+    // }  
+
+    public function isAuthorized($user) {
+        // Admin can access every action
+        if (isset($user['role']) && $user['role'] === 'admin') {
+            return true;
+        }
+        debug($user);
+        // Default deny
+        return false;
+    }
+
+    
 }

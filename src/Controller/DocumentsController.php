@@ -18,6 +18,9 @@ class DocumentsController extends AppController
      */
     public function index()
     {
+        $this->paginate = [
+            'contain' => ['Clients'],
+        ];
         $documents = $this->paginate($this->Documents);
 
         $this->set(compact('documents'));
@@ -33,7 +36,7 @@ class DocumentsController extends AppController
     public function view($id = null)
     {
         $document = $this->Documents->get($id, [
-            'contain' => ['ClientDocuments'],
+            'contain' => ['Clients'],
         ]);
 
         $this->set(compact('document'));
@@ -56,7 +59,8 @@ class DocumentsController extends AppController
             }
             $this->Flash->error(__('The document could not be saved. Please, try again.'));
         }
-        $this->set(compact('document'));
+        $clients = $this->Documents->Clients->find('list', ['limit' => 200])->all();
+        $this->set(compact('document', 'clients'));
     }
 
     /**
@@ -80,7 +84,8 @@ class DocumentsController extends AppController
             }
             $this->Flash->error(__('The document could not be saved. Please, try again.'));
         }
-        $this->set(compact('document'));
+        $clients = $this->Documents->Clients->find('list', ['limit' => 200])->all();
+        $this->set(compact('document', 'clients'));
     }
 
     /**
