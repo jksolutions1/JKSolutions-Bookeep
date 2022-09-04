@@ -109,9 +109,7 @@ class DocumentsController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
-<<<<<<< HEAD
-    
-    
+       
     //NEW Uploading Function
     public function upload(){
         if($this->request->is('post')){
@@ -129,20 +127,4 @@ class DocumentsController extends AppController
             }
         }
     }
-=======
-
-    public function beforeFilter(EventInterface $event)
-    {
-        if ($this->request->getParam('admin')) {
-            $this->Auth->allow(['view','index','add','delete']);
-        }
-        else {
-            $this->Auth->deny(['view','index','add','delete']);
-
-        }    }
-
-
-
-    
->>>>>>> c0059fe8a9cfae32ea90c781d549c243ba5eb400
 }
