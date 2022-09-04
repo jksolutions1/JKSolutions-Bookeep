@@ -1,7 +1,9 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Controller;
+use Cake\Event\EventInterface;
 
 /**
  * Documents Controller
@@ -107,4 +109,18 @@ class DocumentsController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+
+    public function beforeFilter(EventInterface $event)
+    {
+        if ($this->request->getParam('admin')) {
+            $this->Auth->allow(['view','index','add','delete']);
+        }
+        else {
+            $this->Auth->deny(['view','index','add','delete']);
+
+        }    }
+
+
+
+    
 }
