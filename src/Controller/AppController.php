@@ -44,17 +44,22 @@ class AppController extends Controller
 
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
-        $this->loadComponent('Auth',  [
-            'authorize' => ['Controller'], // Added this line
-            'loginRedirect' => [
-                'controller' => 'Documents',
-                'action' => 'index'
+        $this->loadComponent('Auth', [
+            'authenticate' => [
+                'Form' => [
+                    'fields' => [
+                        'username' => 'username',
+                        'password' => 'password'
+                    ]
+                ]
             ],
-            'logoutRedirect' => [
+            'loginAction' => [
                 'controller' => 'Users',
                 'action' => 'login'
             ]
         ]);
+
+
 
 
         /*
@@ -66,12 +71,10 @@ class AppController extends Controller
 
 
     public function isAuthorized($user) {
-
-        // Admin can access every action
         if (isset($user['role']) && $user['role'] === 'admin') {
             return true;
         }
-        // Default deny
+        stackTrace();
 
         return false;
     }
@@ -83,6 +86,11 @@ class AppController extends Controller
         } else {
             $this->set('loggedIn', false); 
         }
+    }
+
+    public function beforeFilter(EventInterface $event)
+    {
+        $this->Auth->allow(['index']);
     }
 
 

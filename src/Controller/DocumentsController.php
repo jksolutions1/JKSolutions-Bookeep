@@ -1,7 +1,9 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Controller;
+use Cake\Event\EventInterface;
 
 /**
  * Documents Controller
@@ -107,6 +109,7 @@ class DocumentsController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+<<<<<<< HEAD
     
     
     //NEW Uploading Function
@@ -126,4 +129,20 @@ class DocumentsController extends AppController
             }
         }
     }
+=======
+
+    public function beforeFilter(EventInterface $event)
+    {
+        if ($this->request->getParam('admin')) {
+            $this->Auth->allow(['view','index','add','delete']);
+        }
+        else {
+            $this->Auth->deny(['view','index','add','delete']);
+
+        }    }
+
+
+
+    
+>>>>>>> c0059fe8a9cfae32ea90c781d549c243ba5eb400
 }
