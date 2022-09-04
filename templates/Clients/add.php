@@ -23,7 +23,9 @@
                     echo $this->Form->control('address');
                     echo $this->Form->control('email');
                     echo $this->Form->control('appointment_list');
-                    echo $this->Form->control('required_documents');
+                    //echo $this->Form->control('required_documents');
+                    echo '<label for="required_documents">Required documents</label>';
+                    echo $this->Form->control('required_documents', ['type'=>'select', 'label'=>false, 'multiple'=>'checkbox', 'options'=>['1'=>'Autorithy for Agents', '2'=>'Client engagement agreements', '3'=>'Option3', '4'=>'Option4', '5'=>'Option5']]);
                     echo $this->Form->control('payment');
                 ?>
             </fieldset>
