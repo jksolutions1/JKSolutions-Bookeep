@@ -16,7 +16,7 @@
     </aside>
     <div class="column-responsive column-80">
         <div class="documents view content">
-            <h3><?= h($document->id) ?></h3>
+            <h3 class="h3 mb-2 text-gray-800">Client</h3>
             <table>
                 <tr>
                     <th><?= __('Type') ?></th>

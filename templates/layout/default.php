@@ -64,20 +64,20 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="/fit3047team105/appointments/index">
+                <a class="nav-link collapsed" href="<?= $this->Url->build(['controller' => 'appointments', 'action' => 'index']); ?>">
                     <i class="fas fa-solid fa-calendar-check"></i>
                     <span>Appointements</span></a>
             </li>
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="/fit3047team105/documents/index">
+                <a class="nav-link collapsed" href="<?= $this->Url->build(['controller' => 'documents', 'action' => 'index']); ?>">
                     <i class="fas fa-regular fa-folder-open"></i>
                     <span>Documents</span></a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="/fit3047team105/Clients/index">
+                <a class="nav-link collapsed" href="<?= $this->Url->build(['controller' => 'clients', 'action' => 'index']); ?>">
                     <i class="fas fa-regular fa-user"></i>
                     <span>Clients</span></a>
             </li>
