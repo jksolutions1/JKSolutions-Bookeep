@@ -13,6 +13,7 @@ use Cake\Validation\Validator;
  *
  * @property \App\Model\Table\AppointmentsTable&\Cake\ORM\Association\HasMany $Appointments
  * @property \App\Model\Table\CompaniesTable&\Cake\ORM\Association\HasMany $Companies
+ * @property \App\Model\Table\DocumentsTable&\Cake\ORM\Association\HasMany $Documents
  * @property \App\Model\Table\UsersTable&\Cake\ORM\Association\HasMany $Users
  *
  * @method \App\Model\Entity\Client newEmptyEntity()
@@ -91,11 +92,6 @@ class ClientsTable extends Table
             ->email('email')
             ->requirePresence('email', 'create')
             ->notEmptyString('email');
-
-        $validator
-            ->scalar('appointment_list')
-            ->requirePresence('appointment_list', 'create')
-            ->notEmptyString('appointment_list');
 
         $validator
             ->scalar('required_documents')

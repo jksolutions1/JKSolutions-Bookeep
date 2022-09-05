@@ -56,12 +56,6 @@
                 </blockquote>
             </div>
             <div class="text">
-                <strong><?= __('Appointment List') ?></strong>
-                <blockquote>
-                    <?= $this->Text->autoParagraph(h($client->appointment_list)); ?>
-                </blockquote>
-            </div>
-            <div class="text">
                 <strong><?= __('Required Documents') ?></strong>
                 <blockquote>
                     <?= $this->Text->autoParagraph(h($client->required_documents)); ?>
@@ -124,6 +118,35 @@
                                 <?= $this->Html->link(__('View'), ['controller' => 'Companies', 'action' => 'view', $companies->id]) ?>
                                 <?= $this->Html->link(__('Edit'), ['controller' => 'Companies', 'action' => 'edit', $companies->id]) ?>
                                 <?= $this->Form->postLink(__('Delete'), ['controller' => 'Companies', 'action' => 'delete', $companies->id], ['confirm' => __('Are you sure you want to delete # {0}?', $companies->id)]) ?>
+                            </td>
+                        </tr>
+                        <?php endforeach; ?>
+                    </table>
+                </div>
+                <?php endif; ?>
+            </div>
+            <div class="related">
+                <h4><?= __('Related Documents') ?></h4>
+                <?php if (!empty($client->documents)) : ?>
+                <div class="table-responsive">
+                    <table>
+                        <tr>
+                            <th><?= __('Id') ?></th>
+                            <th><?= __('Type') ?></th>
+                            <th><?= __('Client Id') ?></th>
+                            <th><?= __('File') ?></th>
+                            <th class="actions"><?= __('Actions') ?></th>
+                        </tr>
+                        <?php foreach ($client->documents as $documents) : ?>
+                        <tr>
+                            <td><?= h($documents->id) ?></td>
+                            <td><?= h($documents->type) ?></td>
+                            <td><?= h($documents->client_id) ?></td>
+                            <td><?= h($documents->file) ?></td>
+                            <td class="actions">
+                                <?= $this->Html->link(__('View'), ['controller' => 'Documents', 'action' => 'view', $documents->id]) ?>
+                                <?= $this->Html->link(__('Edit'), ['controller' => 'Documents', 'action' => 'edit', $documents->id]) ?>
+                                <?= $this->Form->postLink(__('Delete'), ['controller' => 'Documents', 'action' => 'delete', $documents->id], ['confirm' => __('Are you sure you want to delete # {0}?', $documents->id)]) ?>
                             </td>
                         </tr>
                         <?php endforeach; ?>

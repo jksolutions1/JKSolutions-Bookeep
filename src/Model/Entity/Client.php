@@ -14,13 +14,12 @@ use Cake\ORM\Entity;
  * @property int $contactno
  * @property string $address
  * @property string $email
- * @property string $appointment_list
  * @property string $required_documents
  * @property int $payment
  *
  * @property \App\Model\Entity\Appointment[] $appointments
- * @property \App\Model\Entity\Clientdocument[] $client_documents
  * @property \App\Model\Entity\Company[] $companies
+ * @property \App\Model\Entity\Document[] $documents
  * @property \App\Model\Entity\User[] $users
  */
 class Client extends Entity
@@ -40,12 +39,11 @@ class Client extends Entity
         'contactno' => true,
         'address' => true,
         'email' => true,
-        'appointment_list' => true,
         'required_documents' => true,
         'payment' => true,
         'appointments' => true,
-        'client_documents' => true,
         'companies' => true,
+        'documents' => true,
         'users' => true,
     ];
 }

@@ -23,9 +23,9 @@
             <fieldset>
                 <legend><?= __('Edit Document') ?></legend>
                 <?php
-                    echo $this->Form->control('document_path');
-                    echo $this->Form->control('document_type');
+                    echo $this->Form->control('type');
                     echo $this->Form->control('client_id', ['options' => $clients]);
+                    echo $this->Form->control('file');
                 ?>
             </fieldset>
             <?= $this->Form->button(__('Submit')) ?>

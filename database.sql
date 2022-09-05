@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 04, 2022 at 06:26 AM
+-- Generation Time: Sep 05, 2022 at 08:18 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `cake`
+-- Database: `fit3047`
 --
 
 -- --------------------------------------------------------
@@ -49,7 +49,6 @@ CREATE TABLE `clients` (
   `contactno` int(11) NOT NULL,
   `address` text NOT NULL,
   `email` text NOT NULL,
-  `appointment_list` text NOT NULL,
   `required_documents` text NOT NULL,
   `payment` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -58,8 +57,8 @@ CREATE TABLE `clients` (
 -- Dumping data for table `clients`
 --
 
-INSERT INTO `clients` (`id`, `firstname`, `lastname`, `contactno`, `address`, `email`, `appointment_list`, `required_documents`, `payment`) VALUES
-(1, 'asd', 'asd', 213, 'asd', 'asd@asd.com', '1', 'asda', 123);
+INSERT INTO `clients` (`id`, `firstname`, `lastname`, `contactno`, `address`, `email`, `required_documents`, `payment`) VALUES
+(1, 'asd', 'asd', 213, 'asd', 'asd@asd.com', 'asda', 123);
 
 -- --------------------------------------------------------
 
@@ -90,9 +89,9 @@ INSERT INTO `companies` (`id`, `name`, `address`, `contactno`, `client_id`) VALU
 
 CREATE TABLE `documents` (
   `id` int(11) NOT NULL,
-  `document_path` text NOT NULL,
-  `document_type` text NOT NULL,
-  `client_id` int(11) NOT NULL
+  `type` varchar(255) NOT NULL,
+  `client_id` int(11) NOT NULL,
+  `file` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------

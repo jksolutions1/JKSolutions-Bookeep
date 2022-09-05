@@ -58,19 +58,21 @@ class DocumentsTable extends Table
     public function validationDefault(Validator $validator): Validator
     {
         $validator
-            ->scalar('document_path')
-            ->requirePresence('document_path', 'create')
-            ->notEmptyString('document_path');
-
-        $validator
-            ->scalar('document_type')
-            ->requirePresence('document_type', 'create')
-            ->notEmptyString('document_type');
+            ->scalar('type')
+            ->maxLength('type', 255)
+            ->requirePresence('type', 'create')
+            ->notEmptyString('type');
 
         $validator
             ->integer('client_id')
             ->requirePresence('client_id', 'create')
             ->notEmptyString('client_id');
+
+        $validator
+            ->scalar('file')
+            ->maxLength('file', 255)
+            ->requirePresence('file', 'create')
+            ->notEmptyFile('file');
 
         return $validator;
     }

@@ -12,6 +12,7 @@ use Cake\Validation\Validator;
  * Companies Model
  *
  * @property \App\Model\Table\ClientsTable&\Cake\ORM\Association\BelongsTo $Clients
+ * @property \App\Model\Table\AppointmentsTable&\Cake\ORM\Association\HasMany $Appointments
  *
  * @method \App\Model\Entity\Company newEmptyEntity()
  * @method \App\Model\Entity\Company newEntity(array $data, array $options = [])

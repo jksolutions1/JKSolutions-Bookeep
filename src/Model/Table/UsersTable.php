@@ -69,11 +69,7 @@ class UsersTable extends Table
         $validator
             ->scalar('role')
             ->requirePresence('role', 'create')
-            ->notEmptyString('role')
-            ->add('role', 'inList', [
-                'rule' => ['inList', ['admin', 'regular']],
-                'message' => 'Please enter a valid role'
-            ]);
+            ->notEmptyString('role');
 
         $validator
             ->integer('client_id')

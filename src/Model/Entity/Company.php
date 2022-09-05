@@ -15,6 +15,7 @@ use Cake\ORM\Entity;
  * @property int $client_id
  *
  * @property \App\Model\Entity\Client $client
+ * @property \App\Model\Entity\Appointment[] $appointments
  */
 class Company extends Entity
 {
@@ -33,5 +34,6 @@ class Company extends Entity
         'contactno' => true,
         'client_id' => true,
         'client' => true,
+        'appointments' => true,
     ];
 }

@@ -19,26 +19,22 @@
             <h3><?= h($document->id) ?></h3>
             <table>
                 <tr>
+                    <th><?= __('Type') ?></th>
+                    <td><?= h($document->type) ?></td>
+                </tr>
+                <tr>
                     <th><?= __('Client') ?></th>
                     <td><?= $document->has('client') ? $this->Html->link($document->client->id, ['controller' => 'Clients', 'action' => 'view', $document->client->id]) : '' ?></td>
+                </tr>
+                <tr>
+                    <th><?= __('File') ?></th>
+                    <td><?= h($document->file) ?></td>
                 </tr>
                 <tr>
                     <th><?= __('Id') ?></th>
                     <td><?= $this->Number->format($document->id) ?></td>
                 </tr>
             </table>
-            <div class="text">
-                <strong><?= __('Document Path') ?></strong>
-                <blockquote>
-                    <?= $this->Text->autoParagraph(h($document->document_path)); ?>
-                </blockquote>
-            </div>
-            <div class="text">
-                <strong><?= __('Document Type') ?></strong>
-                <blockquote>
-                    <?= $this->Text->autoParagraph(h($document->document_type)); ?>
-                </blockquote>
-            </div>
         </div>
     </div>
 </div>

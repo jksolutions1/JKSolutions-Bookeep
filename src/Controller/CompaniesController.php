@@ -36,7 +36,7 @@ class CompaniesController extends AppController
     public function view($id = null)
     {
         $company = $this->Companies->get($id, [
-            'contain' => ['Clients'],
+            'contain' => ['Clients', 'Appointments'],
         ]);
 
         $this->set(compact('company'));

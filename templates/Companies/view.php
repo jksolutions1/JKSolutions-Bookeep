@@ -43,6 +43,39 @@
                     <?= $this->Text->autoParagraph(h($company->address)); ?>
                 </blockquote>
             </div>
+            <div class="related">
+                <h4><?= __('Related Appointments') ?></h4>
+                <?php if (!empty($company->appointments)) : ?>
+                <div class="table-responsive">
+                    <table>
+                        <tr>
+                            <th><?= __('Id') ?></th>
+                            <th><?= __('Appointment Description') ?></th>
+                            <th><?= __('Client Id') ?></th>
+                            <th><?= __('Company Id') ?></th>
+                            <th><?= __('Date') ?></th>
+                            <th><?= __('Address') ?></th>
+                            <th class="actions"><?= __('Actions') ?></th>
+                        </tr>
+                        <?php foreach ($company->appointments as $appointments) : ?>
+                        <tr>
+                            <td><?= h($appointments->id) ?></td>
+                            <td><?= h($appointments->appointment_description) ?></td>
+                            <td><?= h($appointments->client_id) ?></td>
+                            <td><?= h($appointments->company_id) ?></td>
+                            <td><?= h($appointments->date) ?></td>
+                            <td><?= h($appointments->address) ?></td>
+                            <td class="actions">
+                                <?= $this->Html->link(__('View'), ['controller' => 'Appointments', 'action' => 'view', $appointments->id]) ?>
+                                <?= $this->Html->link(__('Edit'), ['controller' => 'Appointments', 'action' => 'edit', $appointments->id]) ?>
+                                <?= $this->Form->postLink(__('Delete'), ['controller' => 'Appointments', 'action' => 'delete', $appointments->id], ['confirm' => __('Are you sure you want to delete # {0}?', $appointments->id)]) ?>
+                            </td>
+                        </tr>
+                        <?php endforeach; ?>
+                    </table>
+                </div>
+                <?php endif; ?>
+            </div>
         </div>
     </div>
 </div>

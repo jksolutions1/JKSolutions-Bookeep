@@ -1,9 +1,7 @@
 <?php
-
 declare(strict_types=1);
 
 namespace App\Controller;
-use Cake\Event\EventInterface;
 
 /**
  * Documents Controller
@@ -108,23 +106,5 @@ class DocumentsController extends AppController
         }
 
         return $this->redirect(['action' => 'index']);
-    }
-       
-    //NEW Uploading Function
-    public function upload(){
-        if($this->request->is('post')){
-            $myname = $this->request->getData()['document']['name'];
-            $mytmp = $this->request->getData()['document']['tmp_name'];
-            $myext = substr(strrchr($myname, "."), 1);
-            $mypath = 'upload/'.Security::hash($myname).".".$myext;
-            $document = $this->Documents->newEntity();
-            $document->name = $myname;
-            $document->path = $mypath;
-            $document->created_at = date('Y-m-d H:i:s');
-            if(move_upload_document($mytmp, WWW_RROOT.$mypath)){
-                $this->Documents->save($document);
-                return $this->redirect(['action'=>'index']);
-            }
-        }
     }
 }
