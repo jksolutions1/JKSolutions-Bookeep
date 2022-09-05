@@ -65,7 +65,6 @@ class UsersTable extends Table
             ->scalar('lastname')
             ->requirePresence('lastname', 'create')
             ->notEmptyString('lastname');
-        ->
         $validator
             ->scalar('role')
             ->requirePresence('role', 'create')
