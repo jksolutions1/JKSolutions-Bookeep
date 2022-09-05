@@ -47,6 +47,10 @@ class DocumentsTable extends Table
             'foreignKey' => 'client_id',
             'joinType' => 'INNER',
         ]);
+        
+        $this->addBehavior('Josegonzalez/Upload.Upload', [
+            'file'=>[]
+        ]);
     }
 
     /**
@@ -68,11 +72,11 @@ class DocumentsTable extends Table
             ->requirePresence('client_id', 'create')
             ->notEmptyString('client_id');
 
-        $validator
+        /*$validator
             ->scalar('file')
             ->maxLength('file', 255)
             ->requirePresence('file', 'create')
-            ->notEmptyFile('file');
+            ->notEmptyFile('file');*/
 
         return $validator;
     }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 05, 2022 at 08:18 AM
+-- Generation Time: Sep 06, 2022 at 12:00 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `appointments` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `appointment_description` text DEFAULT NULL,
   `client_id` int(11) NOT NULL,
   `company_id` int(11) NOT NULL,
@@ -43,7 +43,7 @@ CREATE TABLE `appointments` (
 --
 
 CREATE TABLE `clients` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `firstname` text NOT NULL,
   `lastname` text NOT NULL,
   `contactno` int(11) NOT NULL,
@@ -67,7 +67,7 @@ INSERT INTO `clients` (`id`, `firstname`, `lastname`, `contactno`, `address`, `e
 --
 
 CREATE TABLE `companies` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `name` text NOT NULL,
   `address` text NOT NULL,
   `contactno` int(11) NOT NULL,
@@ -88,11 +88,19 @@ INSERT INTO `companies` (`id`, `name`, `address`, `contactno`, `client_id`) VALU
 --
 
 CREATE TABLE `documents` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `type` varchar(255) NOT NULL,
   `client_id` int(11) NOT NULL,
-  `file` varchar(255) NOT NULL
+  `file` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `documents`
+--
+
+INSERT INTO `documents` (`id`, `type`, `client_id`, `file`) VALUES
+(9, 'image/jpeg', 1, 'TEST.JPG'),
+(10, 'image/jpeg', 1, 'TEST.JPG');
 
 -- --------------------------------------------------------
 
@@ -101,7 +109,7 @@ CREATE TABLE `documents` (
 --
 
 CREATE TABLE `users` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `firstname` text NOT NULL,
   `lastname` text NOT NULL,
   `role` text NOT NULL,
@@ -170,6 +178,24 @@ ALTER TABLE `users`
 --
 ALTER TABLE `appointments`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `clients`
+--
+ALTER TABLE `clients`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `companies`
+--
+ALTER TABLE `companies`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
+
+--
+-- AUTO_INCREMENT for table `documents`
+--
+ALTER TABLE `documents`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `users`
