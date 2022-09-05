@@ -2,6 +2,8 @@
 declare(strict_types=1);
 
 namespace App\Controller;
+use App\Controller\AppController;
+use Cake\Event\EventInterface;
 
 /**
  * Users Controller
@@ -107,4 +109,46 @@ class UsersController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+
+    public function login()
+    {
+        $user = $this->Auth->identify();
+        if ($user) {
+            $this->Auth->setUser($user);
+            $this->set('auth', $_SESSION);
+            return $this->redirect(['controller' => 'documents']);
+        }
+        $this->Flash->set('Incorrect Login');
+    }
+
+
+    public function logout()
+    {
+        $this->Flash->success('Successfully Logged Out');
+        return $this->redirect($this->Auth->logout());
+    }
+
+    public function register()
+    {
+
+        $user = $this->Users->newEmptyEntity();
+        if ($this->request->is('post')) {
+            $user = $this->Users->patchEntity($user, $this->request->getData());
+            if ($this->Users->save($user)) {
+                $this->Flash->success('You are registered and can login');
+                return $this->redirect(['action' => 'login']);
+            } else {
+                $this->Flash->error('You are not registered');
+            }
+        }
+        $this->set(compact('user'));
+        $this->set('_serialize', ['user']);
+    }
+
+    public function beforeFilter(EventInterface $event)
+    {
+        parent::beforeFilter($event);
+        $this->Auth->allow(['register', 'logout']);
+    }
+
 }
