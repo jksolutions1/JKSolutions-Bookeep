@@ -5,26 +5,14 @@
  * @var \Cake\Collection\CollectionInterface|string[] $clients
  */
 ?>
-<div class="row">
-    <aside class="column">
-        <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Html->link(__('List Documents'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
-        </div>
-    </aside>
-    <div class="column-responsive column-80">
-        <div class="documents form content">
-            <?= $this->Form->create($document) ?>
-            <fieldset>
-                <legend><?= __('Add Document') ?></legend>
-                <?php
-                    echo $this->Form->control('type');
-                    echo $this->Form->control('client_id', ['options' => $clients]);
-                    echo $this->Form->control('file');
-                ?>
-            </fieldset>
-            <?= $this->Form->button(__('Submit')) ?>
-            <?= $this->Form->end() ?>
-        </div>
-    </div>
-</div>
+
+<h1 class="h3 mb-2 text-gray-800">Add Document</h1>
+<?= $this->Form->create($document)?>
+    <?php
+        echo $this->Form->control('type');
+        echo $this->Form->control('client_id', ['options' => $clients]);
+        echo $this->Form->control('file');
+    ?>
+  
+<?= $this->Form->button(__('Submit')) ?>
+<?= $this->Form->end() ?>

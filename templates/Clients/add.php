@@ -4,30 +4,18 @@
  * @var \App\Model\Entity\Client $client
  */
 ?>
-<div class="row">
-    <aside class="column">
-        <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Html->link(__('List Clients'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
-        </div>
-    </aside>
-    <div class="column-responsive column-80">
-        <div class="clients form content">
-            <?= $this->Form->create($client) ?>
-            <fieldset>
-                <legend><?= __('Add Client') ?></legend>
-                <?php
-                    echo $this->Form->control('firstname');
-                    echo $this->Form->control('lastname');
-                    echo $this->Form->control('contactno');
-                    echo $this->Form->control('address');
-                    echo $this->Form->control('email');
-                    echo $this->Form->control('required_documents');
-                    echo $this->Form->control('payment');
-                ?>
-            </fieldset>
-            <?= $this->Form->button(__('Submit')) ?>
-            <?= $this->Form->end() ?>
-        </div>
-    </div>
-</div>
+
+<h1 class="h3 mb-2 text-gray-800">Add Client</h1>
+<?= $this->Form->create($client) ?>
+    <?php
+        echo $this->Form->control('firstname');
+        echo $this->Form->control('lastname');
+        echo $this->Form->control('contactno');
+        echo $this->Form->control('address');
+        echo $this->Form->control('email');
+        echo $this->Form->control('required_documents');
+        echo $this->Form->control('payment');
+    ?>
+  
+<?= $this->Form->button(__('Submit')) ?>
+<?= $this->Form->end() ?>
