@@ -94,10 +94,15 @@ class ClientsController extends AppController
     {
         $this->request->allowMethod(['post', 'delete']);
         $client = $this->Clients->get($id);
+        try {
         if ($this->Clients->delete($client)) {
             $this->Flash->success(__('The client has been deleted.'));
         } else {
             $this->Flash->error(__('The client could not be deleted. Please, try again.'));
+        }
+        } catch (\Exception $e) {
+            $error = 'The item you are trying to delete is associated with other records.';
+            $this->Flash->error(__($error));
         }
 
         return $this->redirect(['action' => 'index']);
