@@ -13,7 +13,12 @@
         echo $this->Form->control('appointment_description');
         echo $this->Form->control('client_id', ['options' => $clients]);
         echo $this->Form->control('company_id', ['options' => $companies]);
-        echo $this->Form->control('date');
+        echo $this->Form->input('date', [
+            'type' => 'date',
+            'required',
+            'default' => date('Y-m-d'),
+            'min' => date('Y-m-d')
+        ]);
         echo $this->Form->control('address');
     ?>
   
