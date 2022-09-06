@@ -3,6 +3,9 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Company $company
  */
+echo $this->Html->css('/vendor/datatables/dataTables.bootstrap4.min.css', ['block' => true]);
+echo $this->Html->script('/vendor/datatables/jquery.dataTables.min.js', ['block' => true]);
+echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['block' => true]);
 ?>
 
 <div class="column-responsive column-80">
@@ -43,11 +46,11 @@
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
-                                <th><?= __('Id') ?></th>
-                                <th><?= __('Appointment Description') ?></th>
-                                <th><?= __('Client Name') ?></th>
-                                <th><?= __('Date') ?></th>
-                                <th><?= __('Address') ?></th>
+                                <th><?= $this->Paginator->sort('id') ?></th>
+                                <th><?= __('appointment description') ?></th>
+                                <th><?= $this->Paginator->sort('client name') ?></th>
+                                <th><?= $this->Paginator->sort('date') ?></th>
+                                <th><?= $this->Paginator->sort('address') ?></th>
                                 <th class="actions"><?= __('Actions') ?></th>
                             </tr>
                         </thead>
