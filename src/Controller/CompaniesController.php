@@ -49,6 +49,7 @@ class CompaniesController extends AppController
      */
     public function add()
     {
+        try {
         $company = $this->Companies->newEmptyEntity();
         if ($this->request->is('post')) {
             $company = $this->Companies->patchEntity($company, $this->request->getData());
@@ -61,6 +62,9 @@ class CompaniesController extends AppController
         }
         $clients = $this->Companies->Clients->find('list', ['limit' => 200])->all();
         $this->set(compact('company', 'clients'));
+        } catch(\Exception $e) {
+            $this->Flash->error(__('Badly Formatted Phone number.'));
+        }
     }
 
     /**

@@ -79,11 +79,10 @@ class ClientsTable extends Table
             ->notEmptyString('lastname');
 
         $validator
-            ->integer('contactno')
+            ->scalar('contactno')
             ->requirePresence('contactno', 'create')
-            ->notEmptyString('contactno')
-            ->range('contactno',[0,9999999999]);
-
+            ->notEmptyString('contactno');
+            
         $validator
             ->scalar('address')
             ->requirePresence('address', 'create')

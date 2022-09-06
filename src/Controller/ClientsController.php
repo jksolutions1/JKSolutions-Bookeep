@@ -46,6 +46,7 @@ class ClientsController extends AppController
      */
     public function add()
     {
+        try {
         $client = $this->Clients->newEmptyEntity();
         if ($this->request->is('post')) {
             $client = $this->Clients->patchEntity($client, $this->request->getData());
@@ -54,9 +55,13 @@ class ClientsController extends AppController
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The client could not be saved. Please, try again.'));
+            $this->Flash->error(__('Badly Formatted Phone number. Please try again.'));
         }
         $this->set(compact('client'));
+    } catch (\Exception $e){
+        $this->Flash->error(__('Malformatted phone number.'));
+
+    }
     }
 
     /**
