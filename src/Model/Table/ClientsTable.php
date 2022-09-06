@@ -82,7 +82,7 @@ class ClientsTable extends Table
             ->scalar('contactno')
             ->requirePresence('contactno', 'create')
             ->notEmptyString('contactno');
-            
+
         $validator
             ->scalar('address')
             ->requirePresence('address', 'create')

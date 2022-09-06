@@ -11,7 +11,7 @@ use Cake\ORM\Entity;
  * @property int $id
  * @property string $firstname
  * @property string $lastname
- * @property int $contactno
+ * @property string $contactno
  * @property string $address
  * @property string $email
  * @property string $required_documents
@@ -46,13 +46,4 @@ class Client extends Entity
         'documents' => true,
         'users' => true,
     ];
-
-    protected $_virtual = [
-        'fullname'
-    ];
-
-    protected function _getFullname()
-{
-    return $this->firstname . ' ' . $this->lastname;
-}
 }
