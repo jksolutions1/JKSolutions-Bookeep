@@ -75,7 +75,7 @@ class CompaniesTable extends Table
             ->integer('contactno')
             ->requirePresence('contactno', 'create')
             ->notEmptyString('contactno')
-            ->range('contactno',[0000000000,9999999999]);
+            ->range('contactno',[0,9999999999]);
 
         $validator
             ->integer('client_id')
