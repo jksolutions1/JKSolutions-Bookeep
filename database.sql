@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 06, 2022 at 10:28 AM
+-- Generation Time: Sep 06, 2022 at 02:09 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `cake`
+-- Database: `fit3047`
 --
 
 -- --------------------------------------------------------
@@ -101,17 +101,18 @@ INSERT INTO `companies` (`id`, `name`, `address`, `contactno`, `client_id`) VALU
 
 CREATE TABLE `documents` (
   `id` int(11) NOT NULL,
-  `type` varchar(255) NOT NULL,
+  `doctype` varchar(255) NOT NULL,
   `client_id` int(11) NOT NULL,
-  `file` varchar(255) NOT NULL
+  `docfile` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `documents`
 --
 
-INSERT INTO `documents` (`id`, `type`, `client_id`, `file`) VALUES
-(2, 'application/pdf', 1, 'Lesson 10_1perpage.pdf');
+INSERT INTO `documents` (`id`, `doctype`, `client_id`, `docfile`) VALUES
+(2, 'application/pdf', 1, 'Lesson 10_1perpage.pdf'),
+(3, 'Client Engagement Agreement', 3, 'TEST2_database.sql');
 
 -- --------------------------------------------------------
 
@@ -206,7 +207,7 @@ ALTER TABLE `companies`
 -- AUTO_INCREMENT for table `documents`
 --
 ALTER TABLE `documents`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `users`
