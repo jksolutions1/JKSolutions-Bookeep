@@ -60,6 +60,9 @@ class AppController extends Controller
         ]);
 
 
+        $appointments = $this->fetchTable('Appointments')->find('all') ->all();
+        $this -> set('appointments',$appointments);
+
 
 
         /*

@@ -7,11 +7,7 @@ class DashboardController extends AppController {
 
     public function index()
     {
-        $appointments=$this->loadModel ( 'Appointments' );
-
-
-        $appointments->find('all');
-
+        $appointments = $this->fetchTable('Appointments')->find('all') ->all();
     }
 
 }
