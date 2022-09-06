@@ -48,12 +48,9 @@ class DocumentsTable extends Table
             'joinType' => 'INNER',
         ]);
         
-        
-        //Uploading Function
         $this->addBehavior('Josegonzalez/Upload.Upload', [
-            'docfile'=>[]
+            'file'=>[]
         ]);
-        
     }
 
     /**
@@ -65,10 +62,10 @@ class DocumentsTable extends Table
     public function validationDefault(Validator $validator): Validator
     {
         $validator
-            ->scalar('doctype')
-            ->maxLength('doctype', 255)
-            ->requirePresence('doctype', 'create')
-            ->notEmptyString('doctype');
+            ->scalar('type')
+            ->maxLength('type', 255)
+            ->requirePresence('type', 'create')
+            ->notEmptyString('type');
 
         $validator
             ->integer('client_id')
@@ -76,10 +73,10 @@ class DocumentsTable extends Table
             ->notEmptyString('client_id');
 
         /*$validator
-            ->scalar('docfile')
-            ->maxLength('docfile', 255)
-            ->requirePresence('docfile', 'create')
-            ->notEmptyFile('docfile');*/
+            ->scalar('file')
+            ->maxLength('file', 255)
+            ->requirePresence('file', 'create')
+            ->notEmptyFile('file');*/
 
         return $validator;
     }

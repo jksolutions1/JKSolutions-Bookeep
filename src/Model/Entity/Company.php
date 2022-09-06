@@ -11,7 +11,7 @@ use Cake\ORM\Entity;
  * @property int $id
  * @property string $name
  * @property string $address
- * @property string $contactno
+ * @property int $contactno
  * @property int $client_id
  *
  * @property \App\Model\Entity\Client $client

@@ -72,9 +72,10 @@ class CompaniesTable extends Table
             ->notEmptyString('address');
 
         $validator
-            ->scalar('contactno')
+            ->integer('contactno')
             ->requirePresence('contactno', 'create')
-            ->notEmptyString('contactno');
+            ->notEmptyString('contactno')
+            ->range('contactno',[0,9999999999]);
 
         $validator
             ->integer('client_id')

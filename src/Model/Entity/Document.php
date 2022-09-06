@@ -9,9 +9,9 @@ use Cake\ORM\Entity;
  * Document Entity
  *
  * @property int $id
- * @property string $doctype
+ * @property string $type
  * @property int $client_id
- * @property string $docfile
+ * @property string $file
  *
  * @property \App\Model\Entity\Client $client
  */
@@ -27,9 +27,9 @@ class Document extends Entity
      * @var array<string, bool>
      */
     protected $_accessible = [
-        'doctype' => true,
+        'type' => true,
         'client_id' => true,
-        'docfile' => true,
+        'file' => true,
         'client' => true,
     ];
 }

@@ -5,6 +5,7 @@
  * @var \Cake\Collection\CollectionInterface|string[] $clients
  */
 ?>
+
 <h1 class="h3 mb-2 text-gray-800">Add Company</h1>
 <?= $this->Form->create($company) ?>
     <?php

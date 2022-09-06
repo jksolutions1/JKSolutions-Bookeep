@@ -18,19 +18,19 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['bl
             <thead>
                 <tr>
                     <th><?= $this->Paginator->sort('id') ?></th>
-                    <th><?= $this->Paginator->sort('doctype') ?></th>
-                    <th><?= $this->Paginator->sort('client_id') ?></th>
-                    <th><?= $this->Paginator->sort('docfile') ?></th>
+                    <th><?= $this->Paginator->sort('type') ?></th>
+                    <th><?= $this->Paginator->sort('client_name') ?></th>
+                    <th><?= $this->Paginator->sort('file') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>
             </thead>
             <tbody>
                 <?php foreach ($documents as $document): ?>
                 <tr>
-                <td><?= $this->Number->format($document->id) ?></td>
-                    <td><?= h($document->doctype) ?></td>
-                    <td><?= $document->has('client') ? $this->Html->link($document->client->fullname, ['controller' => 'Clients', 'action' => 'view', $document->client->id]) : '' ?></td>
-                    <td><?= h($document->docfile) ?></td>
+                    <td><?= $this->Number->format($document->id) ?></td>
+                    <td><?= h($document->type) ?></td>
+                    <td><?= h($document->client->firstname)?> <?= h($document->client->lastname)?></td>
+                    <td><?= h($document->file) ?></td>
                     <td class="actions">
                         <?= $this->Html->link(__('View'), ['action' => 'view', $document->id]) ?>
                         <?= $this->Html->link(__('Edit'), ['action' => 'edit', $document->id]) ?>

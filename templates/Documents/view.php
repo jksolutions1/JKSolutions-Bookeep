@@ -6,19 +6,19 @@
 ?>
 <div class="column-responsive column-80">
         <div class="documents view content">
-            <h3><?= h($document->id) ?></h3>
+            <h3 class="h3 mb-2 text-gray-800">Document Details</h3>
             <table>
                 <tr>
-                    <th><?= __('Doctype') ?></th>
-                    <td><?= h($document->doctype) ?></td>
+                    <th><?= __('Type') ?></th>
+                    <td><?= h($document->type) ?></td>
                 </tr>
                 <tr>
                     <th><?= __('Client') ?></th>
-                    <td><?= $document->has('client') ? $this->Html->link($document->client->fullname, ['controller' => 'Clients', 'action' => 'view', $document->client->id]) : '' ?></td>
+                    <td><?= h($document->client->firstname)?> <?= h($document->client->lastname)?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Docfile') ?></th>
-                    <td><?= h($document->docfile) ?></td>
+                    <th><?= __('File') ?></th>
+                    <td><?= h($document->file) ?></td>
                 </tr>
                 <tr>
                     <th><?= __('Id') ?></th>

@@ -20,9 +20,9 @@ class DocumentsFixture extends TestFixture
         $this->records = [
             [
                 'id' => 1,
-                'doctype' => 'Lorem ipsum dolor sit amet',
+                'type' => 'Lorem ipsum dolor sit amet',
                 'client_id' => 1,
-                'docfile' => 'Lorem ipsum dolor sit amet',
+                'file' => 'Lorem ipsum dolor sit amet',
             ],
         ];
         parent::init();

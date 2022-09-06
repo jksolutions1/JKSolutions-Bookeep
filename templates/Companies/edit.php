@@ -5,6 +5,7 @@
  * @var string[]|\Cake\Collection\CollectionInterface $clients
  */
 ?>
+
 <h1 class="h3 mb-2 text-gray-800">Edit Company</h1>
 <?= $this->Form->create($company)?>
     <?php
@@ -16,3 +17,4 @@
   
 <?= $this->Form->button(__('Submit')) ?>
 <?= $this->Form->end() ?>
+

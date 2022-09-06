@@ -49,7 +49,6 @@ class CompaniesController extends AppController
      */
     public function add()
     {
-        try {
         $company = $this->Companies->newEmptyEntity();
         if ($this->request->is('post')) {
             $company = $this->Companies->patchEntity($company, $this->request->getData());
@@ -62,9 +61,6 @@ class CompaniesController extends AppController
         }
         $clients = $this->Companies->Clients->find('list', ['limit' => 200])->all();
         $this->set(compact('company', 'clients'));
-        } catch(\Exception $e) {
-            $this->Flash->error(__('Badly Formatted Phone number.'));
-        }
     }
 
     /**
@@ -103,11 +99,18 @@ class CompaniesController extends AppController
     {
         $this->request->allowMethod(['post', 'delete']);
         $company = $this->Companies->get($id);
+        try {
         if ($this->Companies->delete($company)) {
             $this->Flash->success(__('The company has been deleted.'));
         } else {
             $this->Flash->error(__('The company could not be deleted. Please, try again.'));
         }
+    }
+    catch (\Exception $e) {
+        $error = 'The item you are trying to delete is associated with other records';
+        $this->Flash->error(__($error));
+    }
+
 
         return $this->redirect(['action' => 'index']);
     }
