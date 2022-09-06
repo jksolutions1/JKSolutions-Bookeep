@@ -5,16 +5,32 @@
  * @var string[]|\Cake\Collection\CollectionInterface $clients
  */
 ?>
-
-<h1 class="h3 mb-2 text-gray-800">Edit Company</h1>
-<?= $this->Form->create($company)?>
-    <?php
-        echo $this->Form->control('name');
-        echo $this->Form->control('address');
-        echo $this->Form->control('contactno');
-        echo $this->Form->control('client_id', ['options' => $clients]);
-    ?>
-  
-<?= $this->Form->button(__('Submit')) ?>
-<?= $this->Form->end() ?>
-
+<div class="row">
+    <aside class="column">
+        <div class="side-nav">
+            <h4 class="heading"><?= __('Actions') ?></h4>
+            <?= $this->Form->postLink(
+                __('Delete'),
+                ['action' => 'delete', $company->id],
+                ['confirm' => __('Are you sure you want to delete # {0}?', $company->id), 'class' => 'side-nav-item']
+            ) ?>
+            <?= $this->Html->link(__('List Companies'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
+        </div>
+    </aside>
+    <div class="column-responsive column-80">
+        <div class="companies form content">
+            <?= $this->Form->create($company) ?>
+            <fieldset>
+                <legend><?= __('Edit Company') ?></legend>
+                <?php
+                    echo $this->Form->control('name');
+                    echo $this->Form->control('address');
+                    echo $this->Form->control('contactno');
+                    echo $this->Form->control('client_id', ['options' => $clients]);
+                ?>
+            </fieldset>
+            <?= $this->Form->button(__('Submit')) ?>
+            <?= $this->Form->end() ?>
+        </div>
+    </div>
+</div>
