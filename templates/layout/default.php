@@ -49,7 +49,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#">
+                <a class="nav-link collapsed" href="<?= $this->Url->build(['controller' => 'dashboard', 'action' => 'index']); ?>">
                     <i class="fas fa-solid fa-house-user"></i>
                     <span>Home</span></a>
             </li>
