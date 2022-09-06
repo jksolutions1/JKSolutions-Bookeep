@@ -80,6 +80,7 @@ class AppointmentsTable extends Table
             ->date('date')
             ->requirePresence('date', 'create')
             ->notEmptyDate('date');
+            
 
         $validator
             ->scalar('address')

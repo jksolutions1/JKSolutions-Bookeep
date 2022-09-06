@@ -1,3 +1,14 @@
+<?php
+/**
+ * @var \App\View\AppView $this
+ * @var \App\Model\Entity\Appointment[]|\Cake\Collection\CollectionInterface $appointments
+ */
+
+echo $this->Html->css('/vendor/datatables/dataTables.bootstrap4.min.css', ['block' => true]);
+echo $this->Html->script('/vendor/datatables/jquery.dataTables.min.js', ['block' => true]);
+echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['block' => true]);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -61,17 +72,8 @@
 				</div>
 			</div>
 		</div>
-        <?php
-/**
- * @var \App\View\AppView $this
- * @var \App\Model\Entity\Appointment[]|\Cake\Collection\CollectionInterface $appointments
- */
 
-echo $this->Html->css('/vendor/datatables/dataTables.bootstrap4.min.css', ['block' => true]);
-echo $this->Html->script('/vendor/datatables/jquery.dataTables.min.js', ['block' => true]);
-echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['block' => true]);
 
-?>
 <div class="appointments index content">
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Appointment List</h1>
@@ -94,7 +96,7 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['bl
                 <tr>
                     <td><?= $this->Number->format($appointment->id) ?></td>
                     <td><?= h($appointment->client->firstname)?> <?= h($appointment->client->lastname)?></td>
-                    <td><?= h($appointment->company->name)?></td>
+                    <td><?= h($appointment->companies->name)?></td>
                     <td><?= h($appointment->date) ?></td>
                     <td class="actions">
                         <?= $this->Html->link(__('View'), ['action' => 'view', $appointment->id]) ?>
@@ -102,6 +104,7 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['bl
                         <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $appointment->id], ['confirm' => __('Are you sure you want to delete # {0}?', $appointment->id)]) ?>
                     </td>
                 </tr>
+
                 <?php endforeach; ?>
             </tbody>
         </table>
