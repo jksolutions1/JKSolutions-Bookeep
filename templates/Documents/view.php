@@ -13,7 +13,7 @@
                     <td><?= h($document->type) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Client Name') ?></th>
+                    <th><?= __('Client') ?></th>
                     <td><?= h($document->client->firstname)?> <?= h($document->client->lastname)?></td>
                 </tr>
                 <tr>
