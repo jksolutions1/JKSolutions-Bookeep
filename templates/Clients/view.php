@@ -64,19 +64,17 @@
             </blockquote>
         </div>
 
-
-
         <div class="related">
             <h4><?= __('Related Appointments') ?></h4>
             <?php if (!empty($client->appointments)) : ?>
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                    <th><?= __('Id') ?></th>
-                        <th><?= __('Appointment Description') ?></th>
-                        <th><?= __('Company Id') ?></th>
-                        <th><?= __('Date') ?></th>
-                        <th><?= __('Address') ?></th>
+                        <th><?= $this->Paginator->sort('id') ?></th>
+                        <th><?= __('appointment description') ?></th>
+                        <th><?= $this->Paginator->sort('company_id') ?></th>
+                        <th><?= $this->Paginator->sort('date') ?></th>
+                        <th><?= $this->Paginator->sort('address') ?></th>
                         <th class="actions"><?= __('Actions') ?></th>
                     </tr>
                 </thead>
@@ -89,8 +87,8 @@
                         <td><?= h($appointments->date) ?></td>
                         <td><?= h($appointments->address) ?></td>
                         <td class="actions">
-                            <?= $this->Html->link(__('View'), ['action' => 'view', $appointments->id]) ?>
-                            <?= $this->Html->link(__('Edit'), ['action' => 'edit', $appointments->id]) ?>
+                            <?= $this->Html->link(__('View'), ['controller' => 'Appointments', 'action' => 'view', $appointments->id]) ?>
+                            <?= $this->Html->link(__('Edit'), ['controller' => 'Appointments', 'action' => 'edit', $appointments->id]) ?>
                             <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $appointments->id], ['confirm' => __('Are you sure you want to delete # {0}?', $appointments->id)]) ?>
                         </td>
                     </tr>
@@ -104,96 +102,66 @@
             <h4><?= __('Related Companies') ?></h4>
             <?php if (!empty($client->companies)) : ?>
             <div class="table-responsive">
-                <table>
-                    <tr>
-                        <th><?= __('Id') ?></th>
-                        <th><?= __('Name') ?></th>
-                        <th><?= __('Address') ?></th>
-                        <th><?= __('Contactno') ?></th>
-                        <th><?= __('Client Id') ?></th>
-                        <th class="actions"><?= __('Actions') ?></th>
-                    </tr>
-                    <?php foreach ($client->companies as $companies) : ?>
-                    <tr>
-                        <td><?= h($companies->id) ?></td>
-                        <td><?= h($companies->name) ?></td>
-                        <td><?= h($companies->address) ?></td>
-                        <td><?= h($companies->contactno) ?></td>
-                        <td><?= h($companies->client_id) ?></td>
-                        <td class="actions">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th><?= $this->Paginator->sort('id') ?></th>
+                            <th><?= $this->Paginator->sort('name') ?></th>
+                            <th><?= $this->Paginator->sort('contactno') ?></th>
+                            <th><?= $this->Paginator->sort('client_id') ?></th>
+                            <th class="actions"><?= __('Actions') ?></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($client->companies as $companies) : ?>
+                        <tr>
+                            <td><?= $this->Number->format($companies->id) ?></td>
+                            <td><?= h($companies->name)?></td>
+                            <td><?= $this->Number->format($companies->contactno) ?></td>
+                            <td><?= h($companies->client_id) ?></td>
+                            <td class="actions">
                             <?= $this->Html->link(__('View'), ['controller' => 'Companies', 'action' => 'view', $companies->id]) ?>
                             <?= $this->Html->link(__('Edit'), ['controller' => 'Companies', 'action' => 'edit', $companies->id]) ?>
-                            <?= $this->Form->postLink(__('Delete'), ['controller' => 'Companies', 'action' => 'delete', $companies->id], ['confirm' => __('Are you sure you want to delete # {0}?', $companies->id)]) ?>
-                        </td>
-                    </tr>
-                    <?php endforeach; ?>
+                            <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $companies->id], ['confirm' => __('Are you sure you want to delete # {0}?', $companies->id)]) ?>
+                            </td>
+                        </tr>
+                        <?php endforeach; ?>
+                    </tbody>
                 </table>
             </div>
             <?php endif; ?>
         </div>
+
         <div class="related">
             <h4><?= __('Related Documents') ?></h4>
             <?php if (!empty($client->documents)) : ?>
             <div class="table-responsive">
-                <table>
-                    <tr>
-                        <th><?= __('Id') ?></th>
-                        <th><?= __('Type') ?></th>
-                        <th><?= __('Client Id') ?></th>
-                        <th><?= __('File') ?></th>
-                        <th class="actions"><?= __('Actions') ?></th>
-                    </tr>
-                    <?php foreach ($client->documents as $documents) : ?>
-                    <tr>
-                        <td><?= h($documents->id) ?></td>
-                        <td><?= h($documents->type) ?></td>
-                        <td><?= h($documents->client_id) ?></td>
-                        <td><?= h($documents->file) ?></td>
-                        <td class="actions">
-                            <?= $this->Html->link(__('View'), ['controller' => 'Documents', 'action' => 'view', $documents->id]) ?>
-                            <?= $this->Html->link(__('Edit'), ['controller' => 'Documents', 'action' => 'edit', $documents->id]) ?>
-                            <?= $this->Form->postLink(__('Delete'), ['controller' => 'Documents', 'action' => 'delete', $documents->id], ['confirm' => __('Are you sure you want to delete # {0}?', $documents->id)]) ?>
-                        </td>
-                    </tr>
-                    <?php endforeach; ?>
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th><?= $this->Paginator->sort('id') ?></th>
+                            <th><?= $this->Paginator->sort('type') ?></th>
+                            <th><?= $this->Paginator->sort('file') ?></th>
+                            <th class="actions"><?= __('Actions') ?></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($client->documents as $document) : ?>
+                        <tr>
+                            <td><?= $this->Number->format($document->id) ?></td>
+                            <td><?= h($document->type) ?></td>
+                            <td><?= h($document->file) ?></td>
+                            <td class="actions">
+                                <?= $this->Html->link(__('View'), ['action' => 'view', $document->id]) ?>
+                                <?= $this->Html->link(__('Edit'), ['action' => 'edit', $document->id]) ?>
+                                <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $document->id], ['confirm' => __('Are you sure you want to delete # {0}?', $document->id)]) ?>
+                            </td>
+                        </tr>
+                        <?php endforeach; ?>
+                    </tbody>
                 </table>
             </div>
-            <?php endif; ?>
         </div>
-        <div class="related">
-            <h4><?= __('Related Users') ?></h4>
-            <?php if (!empty($client->users)) : ?>
-            <div class="table-responsive">
-                <table>
-                    <tr>
-                        <th><?= __('Id') ?></th>
-                        <th><?= __('Firstname') ?></th>
-                        <th><?= __('Lastname') ?></th>
-                        <th><?= __('Role') ?></th>
-                        <th><?= __('Client Id') ?></th>
-                        <th><?= __('Username') ?></th>
-                        <th><?= __('Password') ?></th>
-                        <th class="actions"><?= __('Actions') ?></th>
-                    </tr>
-                    <?php foreach ($client->users as $users) : ?>
-                    <tr>
-                        <td><?= h($users->id) ?></td>
-                        <td><?= h($users->firstname) ?></td>
-                        <td><?= h($users->lastname) ?></td>
-                        <td><?= h($users->role) ?></td>
-                        <td><?= h($users->client_id) ?></td>
-                        <td><?= h($users->username) ?></td>
-                        <td><?= h($users->password) ?></td>
-                        <td class="actions">
-                            <?= $this->Html->link(__('View'), ['controller' => 'Users', 'action' => 'view', $users->id]) ?>
-                            <?= $this->Html->link(__('Edit'), ['controller' => 'Users', 'action' => 'edit', $users->id]) ?>
-                            <?= $this->Form->postLink(__('Delete'), ['controller' => 'Users', 'action' => 'delete', $users->id], ['confirm' => __('Are you sure you want to delete # {0}?', $users->id)]) ?>
-                        </td>
-                    </tr>
-                    <?php endforeach; ?>
-                </table>
-            </div>
-            <?php endif; ?>
-        </div>
+        <?php endif; ?>
     </div>
 </div>
