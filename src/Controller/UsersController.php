@@ -119,7 +119,7 @@ class UsersController extends AppController
             return $this->redirect(['controller' => 'dashboard']);
             
         }
-        $this->Flash->set('Incorrect Login');
+        $this->Flash->error('Incorrect Login');
     }
 
 
