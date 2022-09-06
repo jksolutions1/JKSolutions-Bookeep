@@ -98,7 +98,7 @@ INSERT INTO `companies` (`id`, `name`, `address`, `contactno`, `client_id`) VALU
 --
 DELIMITER $$
 CREATE TRIGGER `comp_phone_check` BEFORE INSERT ON `companies` FOR EACH ROW BEGIN 
-IF (NEW.contactno REGEXP '^(?:\+?(61))? ?(?:\((?=.*\)))?(0?[2-57-8])\)? ?(\d\d(?:[- ](?=\d{3})|(?!\d\d[- ]?\d[- ]))\d\d[- ]?\d[- ]?\d{3})$' ) = 0 THEN 
+IF (NEW.contactno REGEXP '^[0-9\-\+]{9,15}$' ) = 0 THEN 
   SIGNAL SQLSTATE '12345'
      SET MESSAGE_TEXT = 'Malformatted Phone Number';
 END IF; 
@@ -109,7 +109,7 @@ DELIMITER ;
 
 DELIMITER $$
 CREATE TRIGGER `clients_phone_check` BEFORE INSERT ON `clients` FOR EACH ROW BEGIN 
-IF (NEW.contactno REGEXP '^(?:\+?(61))? ?(?:\((?=.*\)))?(0?[2-57-8])\)? ?(\d\d(?:[- ](?=\d{3})|(?!\d\d[- ]?\d[- ]))\d\d[- ]?\d[- ]?\d{3})$' ) = 0 THEN 
+IF (NEW.contactno REGEXP '^[0-9\-\+]{9,15}$' ) = 0 THEN 
   SIGNAL SQLSTATE '12345'
      SET MESSAGE_TEXT = 'Malformatted Phone Number';
 END IF; 
