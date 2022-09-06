@@ -46,10 +46,6 @@ class PagesController extends AppController
     public function display(string ...$path): ?Response
     {
 
-        if($this->Auth->user()) {
-            return $this->redirect('/documents');
-         }
-
         if (!$path) {
             return $this->redirect('/');
         }

@@ -70,14 +70,14 @@ class AppController extends Controller
     }
 
 
-    public function isAuthorized($user) {
-        if (isset($user['role']) && $user['role'] === 'admin') {
-            return true;
-        }
-        stackTrace();
+    // public function isAuthorized($user) {
+    //     if (isset($user['role']) && $user['role'] === 'admin') {
+    //         return true;
+    //     }
+    //     stackTrace();
 
-        return false;
-    }
+    //     return false;
+    // }
 
     public function beforeRender(EventInterface $event)
     {
@@ -88,10 +88,6 @@ class AppController extends Controller
         }
     }
 
-    public function beforeFilter(EventInterface $event)
-    {
-        $this->Auth->allow(['index']);
-    }
 
 
     

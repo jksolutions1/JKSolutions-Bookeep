@@ -37,7 +37,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= $this->Url->build(['controller' => 'home', 'action' => 'index']) ?>">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-solid fa-book"></i>
                 </div>
@@ -66,7 +66,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="<?= $this->Url->build(['controller' => 'appointments', 'action' => 'index']); ?>">
                     <i class="fas fa-solid fa-calendar-check"></i>
-                    <span>Appointements</span></a>
+                    <span>Appointments</span></a>
             </li>
 
             <!-- Nav Item - Utilities Collapse Menu -->
