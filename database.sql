@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 06, 2022 at 10:28 AM
+-- Generation Time: Sep 06, 2022 at 12:39 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -54,7 +54,7 @@ CREATE TABLE `clients` (
   `id` int(11) NOT NULL,
   `firstname` text NOT NULL,
   `lastname` text NOT NULL,
-  `contactno` int(11) NOT NULL,
+  `contactno` text NOT NULL,
   `address` text NOT NULL,
   `email` text NOT NULL,
   `required_documents` text NOT NULL,
@@ -66,10 +66,10 @@ CREATE TABLE `clients` (
 --
 
 INSERT INTO `clients` (`id`, `firstname`, `lastname`, `contactno`, `address`, `email`, `required_documents`, `payment`) VALUES
-(1, 'asd', 'asd', 213, 'asd', 'asd@asd.com', 'asda', 123),
-(2, 'jhon', 'smith', 1, '1', '1@gmail.com', 'as', 323),
-(3, 'df', 'fv', 11, 'sad', 'asd@gmail.com', 'asd', 33),
-(4, 'hello', 'ga', 212, 'ASDA', 'ffds@xvdc.com', 'asda', 333);
+(1, 'asd', 'asd', '213', 'asd', 'asd@asd.com', 'asda', 123),
+(2, 'jhon', 'smith', '1', '1', '1@gmail.com', 'as', 323),
+(3, 'df', 'fv', '11', 'sad', 'asd@gmail.com', 'asd', 33),
+(4, 'hello', 'ga', '212', 'ASDA', 'ffds@xvdc.com', 'asda', 333);
 
 -- --------------------------------------------------------
 
@@ -81,7 +81,7 @@ CREATE TABLE `companies` (
   `id` int(11) NOT NULL,
   `name` text NOT NULL,
   `address` text NOT NULL,
-  `contactno` int(10) NOT NULL,
+  `contactno` text NOT NULL,
   `client_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -90,8 +90,32 @@ CREATE TABLE `companies` (
 --
 
 INSERT INTO `companies` (`id`, `name`, `address`, `contactno`, `client_id`) VALUES
-(123, 'asd', 'asd', 123, 1),
-(125, 'asd', 'asd', 2147483647, 1);
+(123, 'asd', 'asd', '123', 1),
+(125, 'asd', 'asd', '2147483647', 1);
+
+--
+-- Triggers `companies`
+--
+DELIMITER $$
+CREATE TRIGGER `comp_phone_check` BEFORE INSERT ON `companies` FOR EACH ROW BEGIN 
+IF (NEW.contactno REGEXP '^(?:\+?(61))? ?(?:\((?=.*\)))?(0?[2-57-8])\)? ?(\d\d(?:[- ](?=\d{3})|(?!\d\d[- ]?\d[- ]))\d\d[- ]?\d[- ]?\d{3})$' ) = 0 THEN 
+  SIGNAL SQLSTATE '12345'
+     SET MESSAGE_TEXT = 'Malformatted Phone Number';
+END IF; 
+END
+$$
+DELIMITER ;
+
+
+DELIMITER $$
+CREATE TRIGGER `clients_phone_check` BEFORE INSERT ON `clients` FOR EACH ROW BEGIN 
+IF (NEW.contactno REGEXP '^(?:\+?(61))? ?(?:\((?=.*\)))?(0?[2-57-8])\)? ?(\d\d(?:[- ](?=\d{3})|(?!\d\d[- ]?\d[- ]))\d\d[- ]?\d[- ]?\d{3})$' ) = 0 THEN 
+  SIGNAL SQLSTATE '12345'
+     SET MESSAGE_TEXT = 'Malformatted Phone Number';
+END IF; 
+END
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -247,26 +271,3 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
-
-DELIMITER $$
-CREATE TRIGGER trig_phone_check BEFORE INSERT ON companies
-FOR EACH ROW 
-BEGIN 
-IF (NEW.contactno REGEXP '[0-9]{3}-[0-9]{3}-[0-9]{4}' ) = 0 THEN 
-  SIGNAL SQLSTATE '12345'
-     SET MESSAGE_TEXT = 'Malformatted Phone Number';
-END IF; 
-END$$
-DELIMITER ;
-
-DELIMITER $$
-CREATE TRIGGER trig_phone_check BEFORE INSERT ON clients
-FOR EACH ROW 
-BEGIN 
-IF (NEW.contactno REGEXP '[0-9]{3}-[0-9]{3}-[0-9]{4}' ) = 0 THEN 
-  SIGNAL SQLSTATE '12345'
-     SET MESSAGE_TEXT = 'Malformatted Phone Number';
-END IF; 
-END$$
-DELIMITER ;
