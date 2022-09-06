@@ -152,8 +152,8 @@
                             <td><?= h($document->type) ?></td>
                             <td><?= h($document->file) ?></td>
                             <td class="actions">
-                                <?= $this->Html->link(__('View'), ['action' => 'view', $document->id]) ?>
-                                <?= $this->Html->link(__('Edit'), ['action' => 'edit', $document->id]) ?>
+                                <?= $this->Html->link(__('View'), ['controller' => 'Documents', 'action' => 'view', $document->id]) ?>
+                                <?= $this->Html->link(__('Edit'), ['controller' => 'Documents', 'action' => 'edit', $document->id]) ?>
                                 <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $document->id], ['confirm' => __('Are you sure you want to delete # {0}?', $document->id)]) ?>
                             </td>
                         </tr>
