@@ -18,11 +18,11 @@
 
 <div class="column-responsive column-80">
         <div class="appointments view content">
-            <h3 class="h3 mb-2 text-gray-800">Client</h3>
+            <h3 class="h3 mb-2 text-gray-800">Appointment Details</h3>
             <table>
                 <tr>
                     <th><?= __('Client') ?></th>
-                    <td><?= $this->Number->format($appointment->client->id) ?></td>
+                    <td><?= h($appointment->client->firstname)?> <?= h($appointment->client->lastname)?></td>
                 </tr>
                 <tr>
                     <th><?= __('Company') ?></th>

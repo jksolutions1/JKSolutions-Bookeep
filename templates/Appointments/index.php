@@ -20,7 +20,7 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['bl
             <thead>
                 <tr>
                     <th><?= $this->Paginator->sort('id') ?></th>
-                    <th><?= $this->Paginator->sort('client_id') ?></th>
+                    <th><?= $this->Paginator->sort('client_name') ?></th>
                     <th><?= $this->Paginator->sort('company_id') ?></th>
                     <th><?= $this->Paginator->sort('date') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
@@ -30,7 +30,7 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['bl
                 <?php foreach ($appointments as $appointment): ?>
                 <tr>
                     <td><?= $this->Number->format($appointment->id) ?></td>
-                    <td><?= $this->Number->format($appointment->client->id) ?></td>
+                    <td><?= h($appointment->client->firstname)?> <?= h($appointment->client->lastname)?></td>
                     <td><?= h($appointment->company->name)?></td>
                     <td><?= h($appointment->date) ?></td>
                     <td class="actions">

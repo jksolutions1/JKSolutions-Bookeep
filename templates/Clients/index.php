@@ -18,6 +18,7 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['bl
             <thead>
                 <tr>
                     <th><?= $this->Paginator->sort('id') ?></th>
+                    <th><?= $this->Paginator->sort('name') ?></th>
                     <th><?= $this->Paginator->sort('contactno') ?></th>
                     <th><?= $this->Paginator->sort('payment') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
@@ -27,6 +28,7 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['bl
                 <?php foreach ($clients as $client): ?>
                 <tr>
                     <td><?= $this->Number->format($client->id) ?></td>
+                    <td><?= h($client->firstname)?> <?= h($client->lastname)?></td>
                     <td><?= $this->Number->format($client->contactno) ?></td>
                     <td><?= $this->Number->format($client->payment) ?></td>
                     <td class="actions">
