@@ -62,7 +62,12 @@
                 Interface
             </div>
 
-            
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="<?= $this->Url->build(['controller' => 'clients', 'action' => 'index']); ?>">
+                    <i class="fas fa-regular fa-user"></i>
+                    <span>Clients</span></a>
+            </li>
+
             <li class="nav-item">
                 <a class="nav-link collapsed" href="<?= $this->Url->build(['controller' => 'appointments', 'action' => 'index']); ?>">
                     <i class="fas fa-solid fa-calendar-check"></i>
@@ -74,12 +79,6 @@
                 <a class="nav-link collapsed" href="<?= $this->Url->build(['controller' => 'documents', 'action' => 'index']); ?>">
                     <i class="fas fa-regular fa-folder-open"></i>
                     <span>Documents</span></a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="<?= $this->Url->build(['controller' => 'clients', 'action' => 'index']); ?>">
-                    <i class="fas fa-regular fa-user"></i>
-                    <span>Clients</span></a>
             </li>
 
             <li class="nav-item">
