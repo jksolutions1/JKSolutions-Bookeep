@@ -253,7 +253,7 @@ DELIMITER $$
 CREATE TRIGGER trig_phone_check BEFORE INSERT ON companies
 FOR EACH ROW 
 BEGIN 
-IF (NEW.contactno REGEXP '^(\\+?[0-9]{1,4}-)?[0-9]{3,10}$' ) = 0 THEN 
+IF (NEW.contactno REGEXP '[0-9]{3}-[0-9]{3}-[0-9]{4}' ) = 0 THEN 
   SIGNAL SQLSTATE '12345'
      SET MESSAGE_TEXT = 'Malformatted Phone Number';
 END IF; 
