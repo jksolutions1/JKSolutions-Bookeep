@@ -116,7 +116,7 @@ class UsersController extends AppController
         if ($user) {
             $this->Auth->setUser($user);
             $this->set('auth', $_SESSION);
-            return $this->redirect(['controller' => 'documents']);
+            return $this->redirect(['controller' => 'dashboard']);
         }
         $this->Flash->set('Incorrect Login');
     }
