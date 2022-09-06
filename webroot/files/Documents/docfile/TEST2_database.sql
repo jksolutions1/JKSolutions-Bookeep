@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 06, 2022 at 01:20 PM
+-- Generation Time: Sep 06, 2022 at 12:00 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -36,14 +36,6 @@ CREATE TABLE `appointments` (
   `address` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `appointments`
---
-
-INSERT INTO `appointments` (`id`, `appointment_description`, `client_id`, `company_id`, `date`, `address`) VALUES
-(3, 'ffd', 1, 123, '2022-10-01', 'dfdfg'),
-(4, 'gdfdgf', 3, 123, '2022-10-09', 'dfffg');
-
 -- --------------------------------------------------------
 
 --
@@ -54,7 +46,7 @@ CREATE TABLE `clients` (
   `id` int(11) NOT NULL,
   `firstname` text NOT NULL,
   `lastname` text NOT NULL,
-  `contactno` text NOT NULL,
+  `contactno` int(11) NOT NULL,
   `address` text NOT NULL,
   `email` text NOT NULL,
   `required_documents` text NOT NULL,
@@ -66,23 +58,7 @@ CREATE TABLE `clients` (
 --
 
 INSERT INTO `clients` (`id`, `firstname`, `lastname`, `contactno`, `address`, `email`, `required_documents`, `payment`) VALUES
-(1, 'asd', 'asd', '213', 'asd', 'asd@asd.com', 'asda', 123),
-(2, 'jhon', 'smith', '1', '1', '1@gmail.com', 'as', 323),
-(3, 'df', 'fv', '11', 'sad', 'asd@gmail.com', 'asd', 33),
-(4, 'hello', 'ga', '212', 'ASDA', 'ffds@xvdc.com', 'asda', 333);
-
---
--- Triggers `clients`
---
-DELIMITER $$
-CREATE TRIGGER `clients_phone_check` BEFORE INSERT ON `clients` FOR EACH ROW BEGIN 
-IF (NEW.contactno REGEXP '^[0-9-+]{9,15}$' ) = 0 THEN 
-  SIGNAL SQLSTATE '12345'
-     SET MESSAGE_TEXT = 'Malformatted Phone Number';
-END IF; 
-END
-$$
-DELIMITER ;
+(1, 'asd', 'asd', 213, 'asd', 'asd@asd.com', 'asda', 123);
 
 -- --------------------------------------------------------
 
@@ -94,7 +70,7 @@ CREATE TABLE `companies` (
   `id` int(11) NOT NULL,
   `name` text NOT NULL,
   `address` text NOT NULL,
-  `contactno` text NOT NULL,
+  `contactno` int(11) NOT NULL,
   `client_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -103,22 +79,7 @@ CREATE TABLE `companies` (
 --
 
 INSERT INTO `companies` (`id`, `name`, `address`, `contactno`, `client_id`) VALUES
-(123, 'asd', 'asd', '123', 1),
-(125, 'asd', 'asd', '2147483647', 1),
-(126, '123', '123', '123123123', 1);
-
---
--- Triggers `companies`
---
-DELIMITER $$
-CREATE TRIGGER `comp_phone_check` BEFORE INSERT ON `companies` FOR EACH ROW BEGIN 
-IF (NEW.contactno REGEXP '^[0-9-+]{9,15}$' ) = 0 THEN 
-  SIGNAL SQLSTATE '12345'
-     SET MESSAGE_TEXT = 'Malformatted Phone Number';
-END IF; 
-END
-$$
-DELIMITER ;
+(123, 'asd', 'asd', 123, 1);
 
 -- --------------------------------------------------------
 
@@ -128,21 +89,18 @@ DELIMITER ;
 
 CREATE TABLE `documents` (
   `id` int(11) NOT NULL,
-  `doctype` varchar(255) NOT NULL,
+  `type` varchar(255) NOT NULL,
   `client_id` int(11) NOT NULL,
-  `docfile` varchar(255) NOT NULL
+  `file` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `documents`
 --
 
-INSERT INTO `documents` (`id`, `doctype`, `client_id`, `docfile`) VALUES
-(2, 'application/pdf', 1, 'Lesson 10_1perpage.pdf'),
-(3, '1', 1, 'TEST2_database.sql'),
-(4, '2', 2, 'TEST2_database.sql'),
-(5, 'Authority for Agency', 1, 'TEST2_database.sql'),
-(6, 'Client Engagement Agreement', 1, 'TEST2_database.sql');
+INSERT INTO `documents` (`id`, `type`, `client_id`, `file`) VALUES
+(9, 'image/jpeg', 1, 'TEST.JPG'),
+(10, 'image/jpeg', 1, 'TEST.JPG');
 
 -- --------------------------------------------------------
 
@@ -219,25 +177,25 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `appointments`
 --
 ALTER TABLE `appointments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `clients`
 --
 ALTER TABLE `clients`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `companies`
 --
 ALTER TABLE `companies`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=127;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
 
 --
 -- AUTO_INCREMENT for table `documents`
 --
 ALTER TABLE `documents`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -260,7 +218,7 @@ ALTER TABLE `appointments`
 -- Constraints for table `companies`
 --
 ALTER TABLE `companies`
-  ADD CONSTRAINT `companies_ibfk_1` FOREIGN KEY (`client_id`) REFERENCES `clients` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `companies_ibfk_1` FOREIGN KEY (`client_id`) REFERENCES `clients` (`id`);
 
 --
 -- Constraints for table `documents`

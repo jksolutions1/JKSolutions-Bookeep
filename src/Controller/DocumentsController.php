@@ -52,13 +52,7 @@ class DocumentsController extends AppController
         $document = $this->Documents->newEmptyEntity();
         if ($this->request->is('post')) {
             $document = $this->Documents->patchEntity($document, $this->request->getData());
-            
-                //debug($this->request->getData());
-                //$document->client_id = 1;
-                //debug($document);
-            
             if ($this->Documents->save($document)) {
-                //debug($document); exit;
                 $this->Flash->success(__('The document has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
