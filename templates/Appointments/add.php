@@ -13,6 +13,8 @@
         echo $this->Form->control('appointment_description',array('type'=>'text','maxlength'=>'100','size'=>'8'));
         echo $this->Form->control('client_id', ['options' => $clients]);
         echo $this->Form->control('company_id', ['options' => $companies]);
+
+        echo $this->Form->label('Appointment Date');
         echo $this->Form->input('date', [
             'type' => 'date',
             'required',
