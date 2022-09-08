@@ -1,4 +1,4 @@
-<?php
+w<?php
 /**
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Client[]|\Cake\Collection\CollectionInterface $clients
@@ -20,6 +20,11 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['bl
                     <th><?= $this->Paginator->sort('id') ?></th>
                     <th><?= $this->Paginator->sort('name') ?></th>
                     <th><?= $this->Paginator->sort('contactno') ?></th>
+                    
+                    <!-- Iteration 1 -->
+                    <th><?= $this->Paginator->sort('address') ?></th>
+                    <th><?= $this->Paginator->sort('email') ?></th>
+                    
                     <th><?= $this->Paginator->sort('payment') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>
@@ -30,6 +35,11 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['bl
                     <td><?= $this->Number->format($client->id) ?></td>
                     <td><?= h($client->firstname)?> <?= h($client->lastname)?></td>
                     <td><?= $this->Number->format($client->contactno) ?></td>
+                    
+                    <!-- Iteration 1 -->
+                    <td><?= h($client->address)?></td>
+                    <td><?= h($client->email)?></td>
+                    
                     <td><?= $this->Number->format($client->payment) ?></td>
                     <td class="actions">
                         <?= $this->Html->link(__('View'), ['action' => 'view', $client->id]) ?>
