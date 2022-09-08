@@ -9,9 +9,9 @@
 <h1 class="h3 mb-2 text-gray-800">Add Company</h1>
 <?= $this->Form->create($company) ?>
     <?php
-        echo $this->Form->control('name');
-        echo $this->Form->control('address');
-        echo $this->Form->control('contactno');
+        echo $this->Form->control('name',array('type'=>'text','maxlength'=>'8','size'=>'8'));
+        echo $this->Form->control('address',array('type'=>'text','maxlength'=>'8','size'=>'8'));
+        echo $this->Form->control('contactno',array('type'=>'text','maxlength'=>'8','size'=>'8'));
         echo $this->Form->control('client_id', ['options' => $clients]);
     ?>
   
