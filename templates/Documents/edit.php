@@ -5,31 +5,18 @@
  * @var string[]|\Cake\Collection\CollectionInterface $clients
  */
 ?>
-<div class="row">
-    <aside class="column">
-        <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Form->postLink(
-                __('Delete'),
-                ['action' => 'delete', $document->id],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $document->id), 'class' => 'side-nav-item']
-            ) ?>
-            <?= $this->Html->link(__('List Documents'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
-        </div>
-    </aside>
-    <div class="column-responsive column-80">
-        <div class="documents form content">
-            <?= $this->Form->create($document) ?>
-            <fieldset>
-                <legend><?= __('Edit Document') ?></legend>
-                <?php
-                    echo $this->Form->control('doctype');
-                    echo $this->Form->control('client_id', ['options' => $clients]);
-                    echo $this->Form->control('docfile');
-                ?>
-            </fieldset>
-            <?= $this->Form->button(__('Submit')) ?>
-            <?= $this->Form->end() ?>
-        </div>
-    </div>
-</div>
+
+<h1 class="h3 mb-2 text-gray-800">Add Document</h1>
+<?= $this->Form->create($document, ['type'=>'file']) ?>
+    <?php
+        //echo $this->Form->control('type');
+        echo $this->Form->label('Document Type');
+        $options = ['Authority for Agency' => 'Authority for Agency', 'Client Engagement Agreement' => 'Client Engagement Agreement', 'Option3' => 'Option3', 'Option4' => 'Option4'];
+        echo $this->Form->select('doctype', $options, ['empty' => true]);
+        
+        echo $this->Form->control('client_id', ['options' => $clients]);
+        echo $this->Form->control('docfile',['type'=>'file']);
+    ?>
+  
+<?= $this->Form->button(__('Submit')) ?>
+<?= $this->Form->end() ?>

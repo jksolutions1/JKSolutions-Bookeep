@@ -129,8 +129,8 @@
                     <thead>
                         <tr>
                             <th><?= $this->Paginator->sort('id') ?></th>
-                            <th><?= $this->Paginator->sort('type') ?></th>
-                            <th><?= $this->Paginator->sort('file') ?></th>
+                            <th><?= $this->Paginator->sort('doctype') ?></th>
+                            <th><?= $this->Paginator->sort('docfile') ?></th>
                             <th class="actions"><?= __('Actions') ?></th>
                         </tr>
                     </thead>
@@ -138,11 +138,11 @@
                         <?php foreach ($client->documents as $document) : ?>
                         <tr>
                             <td><?= $this->Number->format($document->id) ?></td>
-                            <td><?= h($document->type) ?></td>
-                            <td><?= h($document->file) ?></td>
+                            <td><?= h($document->doctype) ?></td>
+                            <td><?= h($document->docfile) ?></td>
                             <td class="actions">
-                                <?= $this->Html->link(__('View'), ['controller' => 'Documents', 'action' => 'view', $document->id]) ?>
-                                <?= $this->Html->link(__('Edit'), ['controller' => 'Documents', 'action' => 'edit', $document->id]) ?>
+                                <?= $this->Html->link(__('View'), ['action' => 'view', $document->id]) ?>
+                                <?= $this->Html->link(__('Edit'), ['action' => 'edit', $document->id]) ?>
                                 <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $document->id], ['confirm' => __('Are you sure you want to delete # {0}?', $document->id)]) ?>
                             </td>
                         </tr>
