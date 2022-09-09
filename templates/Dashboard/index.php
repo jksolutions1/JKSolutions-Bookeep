@@ -53,13 +53,13 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['bl
 				<div class="col-md-6">
 					<div class="jumbotron">
 						<h2>
-							Managing an existing client?
+							Making a new appointment?
 						</h2>
 						<p>
                             <br>
 						</p>
 						<p>
-							<a class="btn btn-primary btn-large" href="<?= $this->Url->build(['controller' => 'clients', 'action' => 'index']); ?>">Manage clients</a>
+							<a class="btn btn-primary btn-large" href="<?= $this->Url->build(['controller' => 'appointments', 'action' => 'add']); ?>">Make Appointment</a>
 						</p>
 					</div>
 				</div>
