@@ -21,7 +21,12 @@
             'default' => date('Y-m-d'),
             'min' => date('Y-m-d')
         ]);
-        echo $this->Form->control('address',array('type'=>'text','size'=>'8'));
+        //echo $this->Form->label('Address');
+        //echo $this->Form->control('address',array('type'=>'text','size'=>'8'));
+
+        echo $this->Form->label('Appointment Place(address)');
+        $options = ['1' => 'Home (Virtual meeting)', '2' => 'At Bookeep company (Face meeting)', '3' => 'Option3', '4' => 'Option4'];
+        echo $this->Form->select('address', $options, ['empty' => true]);
     ?>
   
 <?= $this->Form->button(__('Submit')) ?>

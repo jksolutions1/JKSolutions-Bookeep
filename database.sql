@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.7
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- 主机： localhost:3306
--- 生成日期： 2022-09-08 16:54:21
--- 服务器版本： 5.7.39
--- PHP 版本： 7.4.30
+-- Host: 127.0.0.1
+-- Generation Time: Sep 19, 2022 at 09:51 AM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,35 +18,28 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- 数据库： `u22s2105_team_105`
+-- Database: `fit3047`
 --
 
 -- --------------------------------------------------------
 
 --
--- 表的结构 `appointments`
+-- Table structure for table `appointments`
 --
 
 CREATE TABLE `appointments` (
   `id` int(11) NOT NULL,
-  `appointment_description` text,
+  `appointment_description` text DEFAULT NULL,
   `client_id` int(11) NOT NULL,
   `company_id` int(11) NOT NULL,
   `date` date NOT NULL,
-  `address` text
+  `address` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- 转存表中的数据 `appointments`
---
-
-INSERT INTO `appointments` (`id`, `appointment_description`, `client_id`, `company_id`, `date`, `address`) VALUES
-(5, 'To visit', 7, 131, '2022-09-14', 'gjgjhgjhgjhgjhg');
 
 -- --------------------------------------------------------
 
 --
--- 表的结构 `clients`
+-- Table structure for table `clients`
 --
 
 CREATE TABLE `clients` (
@@ -57,22 +49,20 @@ CREATE TABLE `clients` (
   `contactno` text NOT NULL,
   `address` text NOT NULL,
   `email` text NOT NULL,
-  `required_documents` text NOT NULL,
-  `payment` int(11) NOT NULL
+  `required_documents` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 转存表中的数据 `clients`
+-- Dumping data for table `clients`
 --
 
-INSERT INTO `clients` (`id`, `firstname`, `lastname`, `contactno`, `address`, `email`, `required_documents`, `payment`) VALUES
-(6, 'Mariane', 'Mariane', '0267384756', 'Street:  44 Springhill Bottom Road\r\nCity:  Acacia Hills\r\nState/province/area:   Tasmania\r\nZip code  7306\r\nCountry  Australia', 'aslkdj@gmail.com', 'asdlkfj', 123514),
-(7, 'Mary', 'khkhkj', '11313', 'whkjwqhkjeqweeqk;lkqw;ekqw', 'mary.jabbarzadh@monash.edu', 'hgjhgjhgj.erjwhgrjhewrgjwe', 112000);
+INSERT INTO `clients` (`id`, `firstname`, `lastname`, `contactno`, `address`, `email`, `required_documents`) VALUES
+(6, 'Mariane', 'Handerson', '0412345678', 'Street:  44 Springhill Bottom Road\r\nCity:  Acacia Hills\r\nState/province/area:   Tasmania\r\nZip code  7306\r\nCountry  Australia', 'mariane22@gmail.com', 'Authority for agents');
 
 -- --------------------------------------------------------
 
 --
--- 表的结构 `companies`
+-- Table structure for table `companies`
 --
 
 CREATE TABLE `companies` (
@@ -84,38 +74,70 @@ CREATE TABLE `companies` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 转存表中的数据 `companies`
+-- Dumping data for table `companies`
 --
 
 INSERT INTO `companies` (`id`, `name`, `address`, `contactno`, `client_id`) VALUES
-(131, 'Mariane Pty Ltd', 'Street:  44 Springhill Bottom Road\r\nCity:  Acacia Hills\r\nState/province/area:   Tasmania\r\nZip code  7306\r\nCountry  Australia', '0273647589', 6),
-(132, 'jkhkjhkj', 'hiuiu', '4354353', 7);
+(131, 'Mariane Pty Ltd', 'Street:  44 Springhill Bottom Road\r\nCity:  Acacia Hills\r\nState/province/area:   Tasmania\r\nZip code  7306\r\nCountry  Australia', '0273647589', 6);
 
 -- --------------------------------------------------------
 
 --
--- 表的结构 `documents`
+-- Table structure for table `conversations`
+--
+
+CREATE TABLE `conversations` (
+  `id` int(11) NOT NULL,
+  `con_type` varchar(255) NOT NULL,
+  `con_description` varchar(255) NOT NULL,
+  `client_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='Keep all conversations with clients';
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `conversationtypes`
+--
+
+CREATE TABLE `conversationtypes` (
+  `id` int(11) NOT NULL,
+  `con_id` int(11) NOT NULL,
+  `contype_type` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='Types for conversation';
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `documents`
 --
 
 CREATE TABLE `documents` (
   `id` int(11) NOT NULL,
   `doctype` varchar(255) NOT NULL,
   `client_id` int(11) NOT NULL,
-  `docfile` varchar(255) NOT NULL
+  `docfile` varchar(255) NOT NULL,
+  `doc_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- 转存表中的数据 `documents`
---
-
-INSERT INTO `documents` (`id`, `doctype`, `client_id`, `docfile`) VALUES
-(4, 'Option3', 6, 'Screen Shot 2022-09-08 at 1.57.00 pm.png'),
-(5, 'Option3', 7, 'Screen Shot 2022-09-08 at 1.57.00 pm.png');
 
 -- --------------------------------------------------------
 
 --
--- 表的结构 `users`
+-- Table structure for table `staffs`
+--
+
+CREATE TABLE `staffs` (
+  `id` int(11) NOT NULL,
+  `staff_firstname` int(11) NOT NULL,
+  `staff_lastname` int(11) NOT NULL,
+  `staff_contactno` int(11) NOT NULL,
+  `staff_address` int(11) NOT NULL,
+  `staff_email` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -129,20 +151,20 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 转存表中的数据 `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `firstname`, `lastname`, `role`, `client_id`, `username`, `password`) VALUES
-(10, 'Mariane', 'Mariane', 'regular', NULL, 'Mariane', '$2y$10$YPXR5dgvve/QBExdnLsay.PhLy/rtNQhmu.eDmyYukb.3SN9Nag8i'),
-(11, 'Leslie', 'Leslie', 'admin', NULL, 'Leslie', '$2y$10$bcvgOplK34Rwm279LAd/d.ODL6XmzoaGfHzooV25F.fUjsl3A9F3W'),
+(10, 'Mariane', 'Handerson', 'regular', NULL, 'Mariane', '$2y$10$YPXR5dgvve/QBExdnLsay.PhLy/rtNQhmu.eDmyYukb.3SN9Nag8i'),
+(11, 'Leslie', 'Horland', 'admin', NULL, 'Leslie', '$2y$10$bcvgOplK34Rwm279LAd/d.ODL6XmzoaGfHzooV25F.fUjsl3A9F3W'),
 (12, 'Lacey', 'Lacey', 'admin', NULL, 'Lacey', '$2y$10$U6CDWWQKDCixW32/8Cb.kOmjl3Z/D1EncYCdEbbEHGc4DtiMYqjAe');
 
 --
--- 转储表的索引
+-- Indexes for dumped tables
 --
 
 --
--- 表的索引 `appointments`
+-- Indexes for table `appointments`
 --
 ALTER TABLE `appointments`
   ADD PRIMARY KEY (`id`),
@@ -150,91 +172,141 @@ ALTER TABLE `appointments`
   ADD KEY `company_id` (`company_id`);
 
 --
--- 表的索引 `clients`
+-- Indexes for table `clients`
 --
 ALTER TABLE `clients`
   ADD PRIMARY KEY (`id`);
 
 --
--- 表的索引 `companies`
+-- Indexes for table `companies`
 --
 ALTER TABLE `companies`
   ADD PRIMARY KEY (`id`),
   ADD KEY `client_id` (`client_id`);
 
 --
--- 表的索引 `documents`
+-- Indexes for table `conversations`
+--
+ALTER TABLE `conversations`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `client_id` (`client_id`);
+
+--
+-- Indexes for table `conversationtypes`
+--
+ALTER TABLE `conversationtypes`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `con_id` (`con_id`);
+
+--
+-- Indexes for table `documents`
 --
 ALTER TABLE `documents`
   ADD PRIMARY KEY (`id`),
   ADD KEY `client_id` (`client_id`);
 
 --
--- 表的索引 `users`
+-- Indexes for table `staffs`
+--
+ALTER TABLE `staffs`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD KEY `FK_USERS_CLIENTS` (`client_id`);
 
 --
--- 在导出的表使用AUTO_INCREMENT
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- 使用表AUTO_INCREMENT `appointments`
+-- AUTO_INCREMENT for table `appointments`
 --
 ALTER TABLE `appointments`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- 使用表AUTO_INCREMENT `clients`
+-- AUTO_INCREMENT for table `clients`
 --
 ALTER TABLE `clients`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- 使用表AUTO_INCREMENT `companies`
+-- AUTO_INCREMENT for table `companies`
 --
 ALTER TABLE `companies`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=133;
 
 --
--- 使用表AUTO_INCREMENT `documents`
+-- AUTO_INCREMENT for table `conversations`
 --
-ALTER TABLE `documents`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+ALTER TABLE `conversations`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- 使用表AUTO_INCREMENT `users`
+-- AUTO_INCREMENT for table `conversationtypes`
+--
+ALTER TABLE `conversationtypes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `documents`
+--
+ALTER TABLE `documents`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `staffs`
+--
+ALTER TABLE `staffs`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- 限制导出的表
+-- Constraints for dumped tables
 --
 
 --
--- 限制表 `appointments`
+-- Constraints for table `appointments`
 --
 ALTER TABLE `appointments`
   ADD CONSTRAINT `appointments_ibfk_1` FOREIGN KEY (`client_id`) REFERENCES `clients` (`id`),
   ADD CONSTRAINT `appointments_ibfk_2` FOREIGN KEY (`company_id`) REFERENCES `companies` (`id`);
 
 --
--- 限制表 `companies`
+-- Constraints for table `companies`
 --
 ALTER TABLE `companies`
   ADD CONSTRAINT `companies_ibfk_1` FOREIGN KEY (`client_id`) REFERENCES `clients` (`id`) ON DELETE CASCADE;
 
 --
--- 限制表 `documents`
+-- Constraints for table `conversations`
+--
+ALTER TABLE `conversations`
+  ADD CONSTRAINT `conversations_ibfk_1` FOREIGN KEY (`client_id`) REFERENCES `clients` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `conversationtypes`
+--
+ALTER TABLE `conversationtypes`
+  ADD CONSTRAINT `conversationtypes_ibfk_1` FOREIGN KEY (`con_id`) REFERENCES `conversations` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `documents`
 --
 ALTER TABLE `documents`
   ADD CONSTRAINT `documents_ibfk_1` FOREIGN KEY (`client_id`) REFERENCES `clients` (`id`);
 
 --
--- 限制表 `users`
+-- Constraints for table `users`
 --
 ALTER TABLE `users`
   ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`client_id`) REFERENCES `clients` (`id`);
