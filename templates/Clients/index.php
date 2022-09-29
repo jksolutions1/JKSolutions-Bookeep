@@ -1,4 +1,4 @@
-w<?php
+<?php
 /**
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Client[]|\Cake\Collection\CollectionInterface $clients
