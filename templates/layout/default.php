@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
+
 <head>
 
     <?= $this->Html->charset() ?>
@@ -62,12 +64,13 @@
                 Interface
             </div>
 
+            <?php if ($isAdmin) : ?>
             <li class="nav-item">
                 <a class="nav-link collapsed" href="<?= $this->Url->build(['controller' => 'clients', 'action' => 'index']); ?>">
                     <i class="fas fa-regular fa-user"></i>
                     <span>Clients</span></a>
             </li>
-
+            <?php endif ?>
             <li class="nav-item">
                 <a class="nav-link collapsed" href="<?= $this->Url->build(['controller' => 'appointments', 'action' => 'index']); ?>">
                     <i class="fas fa-solid fa-calendar-check"></i>
@@ -81,11 +84,13 @@
                     <span>Documents</span></a>
             </li>
 
+            <?php if ($isAdmin) : ?>
             <li class="nav-item">
                 <a class="nav-link collapsed" href="<?= $this->Url->build(['controller' => 'companies', 'action' => 'index']); ?>">
                     <i class="fas fa-solid fa-building"></i>
                     <span>Companies</span></a>
             </li>
+            <?php endif ?>
 
 
             <!-- Divider -->
