@@ -25,7 +25,6 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['bl
                     <th><?= $this->Paginator->sort('address') ?></th>
                     <th><?= $this->Paginator->sort('email') ?></th>
                     
-                    <th><?= $this->Paginator->sort('payment') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>
             </thead>
@@ -40,7 +39,6 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['bl
                     <td><?= h($client->address)?></td>
                     <td><?= h($client->email)?></td>
                     
-                    <td><?= $this->Number->format($client->payment) ?></td>
                     <td class="actions">
                         <?= $this->Html->link(__('View'), ['action' => 'view', $client->id]) ?>
                         <?= $this->Html->link(__('Edit'), ['action' => 'edit', $client->id]) ?>
