@@ -73,6 +73,14 @@ return static function (RouteBuilder $routes) {
         $builder->fallbacks();
     });
 
+    $routes->prefix('admin', function (RouteBuilder $routes) {
+        
+        $routes->connect('/', ['controller' => 'Users', 'action' => 'index']);
+
+        $routes->fallbacks(DashedRoute::class);
+    });
+    
+
     /*
      * If you need a different set of middleware or none at all,
      * open new scope and define routes there.
