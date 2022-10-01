@@ -34,7 +34,7 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['bl
                 <tr>
                     <td><?= $this->Number->format($client->id) ?></td>
                     <td><?= h($client->firstname)?> <?= h($client->lastname)?></td>
-                    <td><?= $this->Number->format($client->contactno) ?></td>
+                    <td><?= h($client->contactno) ?></td>
                     
                     <!-- Iteration 1 -->
                     <td><?= h($client->address)?></td>
