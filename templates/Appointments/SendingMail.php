@@ -33,11 +33,14 @@
 // $rr=mysqli_query($conn,$ee);
 
 include('Appointments/index.php');
-$this->set(compact('appointments'));
-$appointment = $this->Appointments->get($id);
+$appointment;
 $appdate = $appointment->$date;
 $dt = Carbon::parse($appdate);
 echo $dt->diffInDays(Carbon::now());
+
+$appointment = $this->Appointments->get($id, [
+    'contain' => ['Clients', 'Companies'],
+]);
 
 
 //if ($dt < 3)

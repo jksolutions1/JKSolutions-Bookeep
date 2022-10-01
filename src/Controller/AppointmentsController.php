@@ -109,4 +109,20 @@ class AppointmentsController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+
+    public function sendingemail(){
+        $appdate = $this->Appointments->date;
+        $dt = Carbon::parse($appdate);
+        echo $dt->diffInDays(Carbon::now());
+        if ($dt < 3){
+            $to =$this->Appointments->Clients->email;//$this->$clients->email;//destination email
+            $subject ="Appointment Notification";//mail title
+            $message ="Hello";//mail content
+            $from = "avenhuhuhu@163.com";
+            $headers = "From: $from";
+            $result = mail($to,$subject,$message,$headers);
+        }
+
+    }
+
 }
