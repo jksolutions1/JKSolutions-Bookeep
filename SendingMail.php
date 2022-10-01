@@ -31,17 +31,23 @@
 // //delete the read data
 // $ee="delete from xx where id="."'".$row["id"]."'";
 // $rr=mysqli_query($conn,$ee);
- 
 
-include('add.php');
-if ($decide['switch'] == true)
-{$to ="qhuu0013@student.monash.edu";//$this->$clients->email;//destination email
+include('Appointments/index.php');
+$this->set(compact('appointments'));
+$appointment = $this->Appointments->get($id);
+$appdate = $appointment->$date;
+$dt = Carbon::parse($appdate);
+echo $dt->diffInDays(Carbon::now());
+
+
+//if ($dt < 3)
+$to ="qhuu0013@student.monash.edu";//$this->$clients->email;//destination email
 $subject ="Appointment Notification";//mail title
 $message ="Hello";//mail content
 $from = "avenhuhuhu@163.com";
 $headers = "From: $from";
 $result = mail($to,$subject,$message,$headers);
-}
+//}
 
 
  
