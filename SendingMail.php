@@ -6,11 +6,10 @@
  */
 ?>
 
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <?php
  
-ignore_user_abort(); //run php all the time
-set_time_limit(0); // run the code all the time
+// ignore_user_abort(); //run php all the time
+// set_time_limit(0); // run the code all the time
  
 //link data
 // $servername = "localhost";
@@ -34,13 +33,13 @@ set_time_limit(0); // run the code all the time
 // $rr=mysqli_query($conn,$ee);
  
 //sending email
-$to ="avenhuhuhu@163.com";//destination email
+$to ="qhuu0013@student.monash.edu";//destination email
 $subject ="Hello";//mail title
 $message ="Hello";//mail content
 $from = "avenhuhuhu@163.com";
 $headers = "From: $from";
 $result = mail($to,$subject,$message,$headers);
-sleep(10); //time interval
+// sleep(10); //time interval
 
  
 ?>
