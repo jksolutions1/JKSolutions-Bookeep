@@ -37,27 +37,39 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['bl
 					}
 
 					 else {				
-						echo "Dashboard" ;
+						echo "Welcome back ".  $this->request->getSession()->read('Auth.User.firstname') . "!" ;
 					 }
 					 ?>
 					 </h1>
 				</div>
 				<div class="row">
 					<div class="col-md-6">
+
 						<div class="jumbotron">
 							<h2>
-								Adding a new client?
+							<?php if ($isAdmin) {						
+						echo "Adding a new client?";
+							}
+					 else {				
+						echo "Need to make some changes to your account?" ;
+					 }
+					 ?>
 
 							</h2>
 							<p>
 								<br>
 							</p>
 							<p>
-								<a class="btn btn-primary btn-large" href="<?= $this->Url->build(['controller' => 'clients', 'action' => 'add']); ?>">Add Client</a>
+								<?php if ($isAdmin) : ?>
+									<a class="btn btn-primary btn-large" href="<?= $this->Url->build(['controller' => 'clients', 'action' => 'add']); ?>">Add Client</a>
+								<?php else : ?>
+									<a class="btn btn-primary btn-large" href="<?= $this->Url->build(['controller' => 'users', 'action' => 'view']); ?>">Manage Account</a>
+								<?php endif ?>
 							</p>
 						</div>
 					</div>
 					<div class="col-md-6">
+
 						<div class="jumbotron">
 							<h2>
 								Making a new appointment?
