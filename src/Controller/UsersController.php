@@ -112,14 +112,27 @@ class UsersController extends AppController
 
     public function login()
     {
-        $user = $this->Auth->identify();
-        if ($user) {
-            $this->Auth->setUser($user);
-            $this->set('auth', $_SESSION);
-            return $this->redirect(['controller' => 'dashboard']);
+        // $user = $this->Auth->identify();
+        // if ($user) {
+        //     $this->Auth->setUser($user);
+        //     $this->set('auth', $_SESSION);
+        //     return $this->redirect(['controller' => 'dashboard']);
             
+        // }
+        // $this->Flash->error('Incorrect Login');
+
+        if ($this->request->is('post')) {
+            $user = $this->Auth->identify();
+            if ($user) {
+                $this->Auth->setUser($user);
+                return $this->redirect($this->Auth->redirectUrl());
+            }
         }
-        $this->Flash->error('Incorrect Login');
+        else {
+            $this->Flash->error(__('Username or password is incorrect'));
+
+        }
+
     }
 
 
