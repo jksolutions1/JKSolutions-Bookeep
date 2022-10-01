@@ -7,7 +7,7 @@
 ?>
 
 <?php
- 
+
 // ignore_user_abort(); //run php all the time
 // set_time_limit(0); // run the code all the time
  
@@ -32,14 +32,17 @@
 // $ee="delete from xx where id="."'".$row["id"]."'";
 // $rr=mysqli_query($conn,$ee);
  
-//sending email
-$to ="qhuu0013@student.monash.edu";//destination email
-$subject ="Hello";//mail title
+
+include('add.php');
+if ($decide['switch'] == true)
+{$to ="qhuu0013@student.monash.edu";//$this->$clients->email;//destination email
+$subject ="Appointment Notification";//mail title
 $message ="Hello";//mail content
 $from = "avenhuhuhu@163.com";
 $headers = "From: $from";
 $result = mail($to,$subject,$message,$headers);
-// sleep(10); //time interval
+}
+
 
  
 ?>

@@ -21,6 +21,7 @@
             'default' => date('Y-m-d'),
             'min' => date('Y-m-d')
         ]);
+        $decide['switch'] = true;
         //echo $this->Form->label('Address');
         //echo $this->Form->control('address',array('type'=>'text','size'=>'8'));
 
