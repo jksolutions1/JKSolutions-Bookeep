@@ -112,13 +112,15 @@ class AppointmentsController extends AppController
 
     public function sendingemail(){
         $appdate = $this->Appointments->date;
+        $clients = $this->Appointments->Clients->find('list', ['limit' => 200])->all();
         $dt = Carbon::parse($appdate);
-        echo $dt->diffInDays(Carbon::now());
+        echo $dt->diffInDays(Carbon::now());//calculate the how many days left from appointment to now
+
         if ($dt < 3){
-            $to =$this->Appointments->Clients->email;//$this->$clients->email;//destination email
+            $to =$clients->email;//destination email
             $subject ="Appointment Notification";//mail title
             $message ="Hello";//mail content
-            $from = "avenhuhuhu@163.com";
+            $from = "avenhuhuhu@163.com";//personal email just for testing now
             $headers = "From: $from";
             $result = mail($to,$subject,$message,$headers);
         }
