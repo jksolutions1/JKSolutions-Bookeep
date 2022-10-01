@@ -45,6 +45,7 @@ class AppController extends Controller
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
         $this->loadComponent('Auth', [
+            'authorize' => ['Controller'], // Added this line
             'authenticate' => [
                 'Form' => [
                     'fields' => [
@@ -74,14 +75,15 @@ class AppController extends Controller
     }
 
 
-    // public function isAuthorized($user) {
-    //     if (isset($user['role']) && $user['role'] === 'admin') {
-    //         return true;
-    //     }
-    //     stackTrace();
+    public function isAuthorized($user) {
+        // if (isset($user['role']) && $user['role'] === 'admin') {
+        //     return true;
+        // }
+        // stackTrace();
 
-    //     return false;
-    // }
+        // return false;
+        return true;
+    }
 
     public function beforeRender(EventInterface $event)
     {

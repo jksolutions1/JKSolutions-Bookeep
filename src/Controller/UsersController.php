@@ -146,10 +146,32 @@ class UsersController extends AppController
         $this->set('_serialize', ['user']);
     }
 
+    
+    public function isAuthorized($user) {
+        // // Admin can access every action
+        // if (isset($user['role']) && $user['role'] === 'admin') {
+        //     return true;
+        // }
+        // debug($user);
+        // // Default deny
+        // return false;
+    }
+
     public function beforeFilter(EventInterface $event)
     {
         parent::beforeFilter($event);
         $this->Auth->allow(['register', 'logout']);
     }
 
+
+    public function dashboard() {
+        $role = $this->Auth->user('role');
+        if (!empty($role)) {
+        $this->redirect(array($role => true, 'action' => 'dashboard'));
+        }
+        }
+        public function admin_dashboard() {
+        }
+        public function manager_dashboard() {
+        }
 }

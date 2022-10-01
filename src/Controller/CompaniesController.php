@@ -2,6 +2,8 @@
 declare(strict_types=1);
 
 namespace App\Controller;
+use Cake\Event\EventInterface;
+use Cake\View\Helper\BreadcrumbsHelper;
 
 /**
  * Companies Controller
@@ -113,5 +115,28 @@ class CompaniesController extends AppController
 
 
         return $this->redirect(['action' => 'index']);
+    }
+
+    public function isAuthorized($user) {
+        // // Admin can access every action
+        // if (isset($user['role']) && $user['role'] === 'admin') {
+        //     return true;
+        // }
+        // debug($user);
+        // // Default deny
+        // return false;
+
+        if ($this->Auth->user('role') == 'admin') {
+
+            return true;
+
+        }
+        
+        return false;
+    }
+
+    public function beforeFilter(EventInterface $event)
+    {
+        parent::beforeFilter($event);
     }
 }
