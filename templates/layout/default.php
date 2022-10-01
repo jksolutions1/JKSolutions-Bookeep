@@ -43,7 +43,7 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-solid fa-book"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">Bookeep Admin <sup>1</sup></div>
+                <div class="sidebar-brand-text mx-3">Bookeep</div>
             </a>
 
             <!-- Divider -->
