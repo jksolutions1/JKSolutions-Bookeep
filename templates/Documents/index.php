@@ -15,7 +15,6 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['bl
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
             <thead>
                 <tr>
-                    <th><?= $this->Paginator->sort('id') ?></th>
                     <th><?= $this->Paginator->sort('client_id') ?></th>
                     <th><?= $this->Paginator->sort('Document Type') ?></th>
                     <th><?= $this->Paginator->sort('Document Name') ?></th>
@@ -29,7 +28,6 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['bl
             <tbody>
                 <?php foreach ($documents as $document): ?>
                 <tr>
-                    <td><?= $this->Number->format($document->id) ?></td>
                     <td><?= $document->has('client') ? $this->Html->link($document->client->fullname, ['controller' => 'Clients', 'action' => 'view', $document->client->id]) : '' ?></td>
                     <td><?= h($document->doctype) ?></td>
                     <td><?= h($document->docfile) ?></td>

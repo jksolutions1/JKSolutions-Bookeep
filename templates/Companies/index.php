@@ -19,7 +19,6 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['bl
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
             <thead>
                 <tr>
-                    <th><?= $this->Paginator->sort('id') ?></th>
                     <th><?= $this->Paginator->sort('name') ?></th>
                     <th><?= $this->Paginator->sort('contactno') ?></th>
                     <th><?= $this->Paginator->sort('client_id') ?></th>
@@ -29,7 +28,6 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['bl
             <tbody>
                 <?php foreach ($companies as $company): ?>
                 <tr>
-                    <td><?= $this->Number->format($company->id) ?></td>
                     <td><?= h($company->name)?></td>
                     <td><?= $this->Number->format($company->contactno) ?></td>
                     <td><?= $company->has('client') ? $this->Html->link($company->client->id, ['controller' => 'Clients', 'action' => 'view', $company->client->id]) : '' ?></td>
