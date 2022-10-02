@@ -8,7 +8,7 @@
 
 <?php
 
-
+sendingemail();
 
 
  
