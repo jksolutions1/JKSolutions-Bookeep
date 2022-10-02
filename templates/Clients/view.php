@@ -6,9 +6,8 @@
 ?>
 
 <div class="column-responsive column-80">
-    <h2 class="h3 mb-2 text-gray-800">Client Details</h2>
     <div class="clients view content">
-        <div class = "container-fluid">
+        <h2 class="h3 mb-2 text-gray-800">Client Details</h2>
             <div class = "row">
                 <div class = "col-lg-4">
                     <span class="d-flex mb-2">
@@ -130,5 +129,3 @@
                 </div>
             </div>
         </div>
-    </div>
-</div>
