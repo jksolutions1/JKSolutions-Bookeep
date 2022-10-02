@@ -46,7 +46,6 @@
                                     <th><?= $this->Paginator->sort('appointment description') ?></th>
                                     <th><?= $this->Paginator->sort('company_id') ?></th>
                                     <th><?= $this->Paginator->sort('date') ?></th>
-                                    <th><?= $this->Paginator->sort('address') ?></th>
                                     <th class="actions"><?= __('Actions') ?></th>
                                 </tr>
                             </thead>
@@ -56,7 +55,6 @@
                                     <td><?= h($appointments->appointment_description) ?></td>
                                     <td><?= h($appointments->company_id) ?></td>
                                     <td><?= h($appointments->date) ?></td>
-                                    <td><?= h($appointments->address) ?></td>
                                     <td class="actions">
                                         <?= $this->Html->link(__('View'), ['controller' => 'Appointments', 'action' => 'view', $appointments->id]) ?>
                                         <?= $this->Html->link(__('Edit'), ['controller' => 'Appointments', 'action' => 'edit', $appointments->id]) ?>
@@ -77,7 +75,6 @@
                                     <tr>
                                         <th><?= $this->Paginator->sort('name') ?></th>
                                         <th><?= $this->Paginator->sort('contactno') ?></th>
-                                        <th><?= $this->Paginator->sort('client_id') ?></th>
                                         <th class="actions"><?= __('Actions') ?></th>
                                     </tr>
                                 </thead>
@@ -86,7 +83,6 @@
                                     <tr>
                                         <td><?= h($companies->name)?></td>
                                         <td><?= $this->Number->format($companies->contactno) ?></td>
-                                        <td><?= h($companies->client_id) ?></td>
                                         <td class="actions">
                                         <?= $this->Html->link(__('View'), ['controller' => 'Companies', 'action' => 'view', $companies->id]) ?>
                                         <?= $this->Html->link(__('Edit'), ['controller' => 'Companies', 'action' => 'edit', $companies->id]) ?>
