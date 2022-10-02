@@ -163,7 +163,7 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['bl
                 <tr>
                     <td><?= h($appointment->client->firstname)?> <?= h($appointment->client->lastname)?></td>
                     <td><?= h($appointment->company->name)?></td>
-                    <td><?= h($appointment->date) ?></td>
+                    <td><?= h($appointment->date->format('d/m/y')) ?></td>
                     <td class="actions">
                         <?= $this->Html->link(__('View'), ['action' => 'view', $appointment->id]) ?>
                         <?= $this->Html->link(__('Edit'), ['action' => 'edit', $appointment->id]) ?>

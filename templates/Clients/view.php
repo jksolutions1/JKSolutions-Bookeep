@@ -53,7 +53,7 @@
                                 <tr>
                                     <td><?= h($appointments->appointment_description) ?></td>
                                     <td><?= h($appointments->company_id) ?></td>
-                                    <td><?= h($appointments->date) ?></td>
+                                    <td><?= h($appointments->date->format('d/m/y')) ?></td>
                                     <td class="actions">
                                         <?= $this->Html->link(__('View'), ['controller' => 'Appointments', 'action' => 'view', $appointments->id]) ?>
                                         <?= $this->Html->link(__('Edit'), ['controller' => 'Appointments', 'action' => 'edit', $appointments->id]) ?>
