@@ -11,9 +11,15 @@ class DashboardController extends AppController {
             'contain' => ['Clients', 'Companies'],
         ];
         
+
         $appointments = $this->fetchTable('Appointments')->find('all') ->all();
+        $this->set('appointments', $appointments);
+
         $clients = $this->fetchTable('Clients')->find('all') ->all();
         $companies = $this->fetchTable('Companies')->find('all') ->all();
+
+        $this->set('clients', $clients);
+
     }
 
 }

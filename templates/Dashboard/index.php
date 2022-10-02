@@ -96,7 +96,142 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['bl
 
 
 		</div>
+
 	</div>
+
+	<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="row">
+				<div class="col-md-12">
+					<h3>
+						Recently Added Clients
+					</h3>
+					<div class="row">
+					<div class="table-responsive">
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+                <tr>
+                    <th><?= $this->Paginator->sort('name') ?></th>
+                    <th><?= $this->Paginator->sort('contactno') ?></th>
+                    
+                    <!-- Iteration 1 -->
+                    <th><?= $this->Paginator->sort('address') ?></th>
+                    <th><?= $this->Paginator->sort('email') ?></th>
+                    
+                    <th class="actions"><?= __('Actions') ?></th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($clients as $client): ?>
+                <tr>
+                    <td><?= h($client->firstname)?> <?= h($client->lastname)?></td>
+                    <td><?= h($client->contactno) ?></td>
+                    
+                    <!-- Iteration 1 -->
+                    <td><?= h($client->address)?></td>
+                    <td><?= h($client->email)?></td>
+                    
+                    <td class="actions">
+                        <?= $this->Html->link(__('View'), ['action' => 'view', $client->id]) ?>
+                        <?= $this->Html->link(__('Edit'), ['action' => 'edit', $client->id]) ?>
+                        <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $client->id], ['confirm' => __('Are you sure you want to delete # {0}?', $client->id)]) ?>
+                    </td>
+                </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+					</div>
+					<h3>
+						h3. Lorem ipsum dolor sit amet.
+					</h3>
+					<div class="row">
+						<div class="col-md-12">
+							<table class="table">
+								<thead>
+									<tr>
+										<th>
+											#
+										</th>
+										<th>
+											Product
+										</th>
+										<th>
+											Payment Taken
+										</th>
+										<th>
+											Status
+										</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>
+											1
+										</td>
+										<td>
+											TB - Monthly
+										</td>
+										<td>
+											01/04/2012
+										</td>
+										<td>
+											Default
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<h3>
+						h3. Lorem ipsum dolor sit amet.
+					</h3>
+					<div class="row">
+						<div class="col-md-12">
+							<table class="table">
+								<thead>
+									<tr>
+										<th>
+											#
+										</th>
+										<th>
+											Product
+										</th>
+										<th>
+											Payment Taken
+										</th>
+										<th>
+											Status
+										</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>
+											1
+										</td>
+										<td>
+											TB - Monthly
+										</td>
+										<td>
+											01/04/2012
+										</td>
+										<td>
+											Default
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
 
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

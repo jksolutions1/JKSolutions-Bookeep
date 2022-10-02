@@ -62,11 +62,11 @@ class AppController extends Controller
         ]);
 
 
-        $appointments = $this->fetchTable('Appointments')->find()->all();
-        $this -> set('appointments',$appointments);
+        // $appointments = $this->fetchTable('Appointments')->find()->all();
+        // $this -> set('appointments',$appointments);
 
-        $clients = $this->fetchTable('Clients')->find('all') ->all();
-        $this -> set('clients',$clients);
+        // $clients = $this->fetchTable('Clients')->find('all') ->all();
+        // $this -> set('clients',$clients);
 
         /*
          * Enable the following component for recommended CakePHP form protection settings.
