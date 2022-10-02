@@ -16,7 +16,6 @@
                     echo $this->Form->control('contactno',array('type'=>'text','maxlength'=>'12','size'=>'8'));
                     echo $this->Form->control('client_id', ['options' => $clients]);
                 ?>
-            
             <?= $this->Form->button(__('Submit')) ?>
             <?= $this->Form->end() ?>
         </div>
