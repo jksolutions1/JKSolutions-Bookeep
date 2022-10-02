@@ -28,7 +28,7 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['bl
                 <?php foreach ($companies as $company): ?>
                 <tr>
                     <td><?= h($company->name)?></td>
-                    <td><?= $this->Number->format($company->contactno) ?></td>
+                    <td><?= h($company->contactno) ?></td>
                         <td class="actions">
                         <?= $this->Html->link(__('View'), ['action' => 'view', $company->id]) ?>
                         <?= $this->Html->link(__('Edit'), ['action' => 'edit', $company->id]) ?>
