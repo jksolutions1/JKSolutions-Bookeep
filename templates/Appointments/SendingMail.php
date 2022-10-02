@@ -44,7 +44,7 @@
 $to ="qhuu0013@student.monash.edu";//$this->$clients->email;//destination email
 $subject ="Appointment Notification";//mail title
 $message ="Hello";//mail content
-$from = "avenhuhuhu@163.com";
+$from = "bookeep@u22s2105.monash-ie.me";
 $headers = "From: $from";
 $result = mail($to,$subject,$message,$headers);
 //}
