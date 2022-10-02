@@ -20,7 +20,7 @@
                     </span>
                     <span class="d-flex mb-2">
                             <strong class="mr-1"><?= __('Name') ?>:</strong> 
-                            <?= $this->Text->autoParagraph(h($client->firstname). " " .h($client->lastname)); ?>
+                            <?= h($client->firstname)?> <?= h($client->lastname)?>
                     </span>
                     <span class="d-flex mb-2">
                             <strong class="mr-1"><?= __('Address') ?>:</strong> 
@@ -28,7 +28,7 @@
                     </span>
                     <span class="d-flex mb-2">
                             <strong class="mr-1"><?= __('Email') ?>:</strong> 
-                            <?= $this->Text->autoParagraph(h($client->email)); ?>
+                            <?= h($client->email)?>
                     </span>
                     <span class="d-flex mb-2">
                             <strong class="mr-1"><?= __('Required Documents') ?>:</strong> 
