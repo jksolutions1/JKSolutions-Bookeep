@@ -112,11 +112,8 @@ class AppointmentsController extends AppController
     }
 
     public function sendingemail(){
-        $mailer = new Mailer('default');
-$mailer->setFrom(['bookeep@u22s2105.monash-ie.me' => 'My Site'])
-    ->setTo('qhuu0013@student.monash.edu')
-    ->setSubject('About')
-    ->deliver('My message');
+
+
     }
 
 }
