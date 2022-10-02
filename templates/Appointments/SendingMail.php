@@ -32,12 +32,12 @@
 // $ee="delete from xx where id="."'".$row["id"]."'";
 // $rr=mysqli_query($conn,$ee);
 
-include('Appointments/index.php');
-$this->set(compact('appointments'));
-$appointment = $this->Appointments->get($id);
-$appdate = $appointment->$date;
-$dt = Carbon::parse($appdate);
-echo $dt->diffInDays(Carbon::now());
+// include('Appointments/index.php');
+// $this->set(compact('appointments'));
+// $appointment = $this->Appointments->get($id);
+// $appdate = $appointment->$date;
+// $dt = Carbon::parse($appdate);
+// echo $dt->diffInDays(Carbon::now());
 
 
 //if ($dt < 3)
