@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 namespace App\Controller;
+use Cake\Mailer\Mailer;
 
 /**
  * Appointments Controller
@@ -111,31 +112,11 @@ class AppointmentsController extends AppController
     }
 
     public function sendingemail(){
-        $this->paginate = [
-            'contain' => ['Clients', 'Companies'],
-        ];
-        $appointments = $this->paginate($this->Appointments);
-
-        $appdate = $this->appointments->date;
-
-        
-        $dt = Carbon::parse($appdate);
-        echo $dt->diffInDays(Carbon::now());//calculate the how many days left from appointment to now
-
-        if ($dt < 3){
-            $to =$clients->email;//destination email
-            $subject ="Appointment Notification";//mail title
-            $message ="Hello";//mail content
-            $from = "avenhuhuhu@163.com";//personal email just for testing now
-            $headers = "From: $from";
-            $result = mail($to,$subject,$message,$headers);
-        }
-        
-        if(!$mail->Send()) {
-            echo "Fail: " . $mail->ErrorInfo;
-        } else {
-            echo "Success";
-        }
+        $mailer = new Mailer('default');
+$mailer->setFrom(['bookeep@u22s2105.monash-ie.me' => 'My Site'])
+    ->setTo('qhuu0013@student.monash.edu')
+    ->setSubject('About')
+    ->deliver('My message');
     }
 
 }
