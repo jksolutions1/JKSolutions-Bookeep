@@ -84,12 +84,21 @@
                     <span>Documents</span></a>
             </li>
 
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="<?= $this->Url->build(['controller' => 'companies', 'action' => 'index']); ?>">
+                    <i class="fas fa-solid fa-comment"></i>
+                    <span>Conversations</span></a>
+            </li>
+            
             <?php if ($isAdmin) : ?>
             <li class="nav-item">
                 <a class="nav-link collapsed" href="<?= $this->Url->build(['controller' => 'companies', 'action' => 'index']); ?>">
                     <i class="fas fa-solid fa-building"></i>
                     <span>Companies</span></a>
             </li>
+
+
+
             <?php endif ?>
 
 
