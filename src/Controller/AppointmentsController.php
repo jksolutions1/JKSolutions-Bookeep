@@ -111,8 +111,14 @@ class AppointmentsController extends AppController
     }
 
     public function sendingemail(){
-        $appdate = $this->Appointments->date;
-        $clients = $this->Appointments->Clients->find('list', ['limit' => 200])->all();
+        $this->paginate = [
+            'contain' => ['Clients', 'Companies'],
+        ];
+        $appointments = $this->paginate($this->Appointments);
+
+        $appdate = $this->appointments->date;
+
+        
         $dt = Carbon::parse($appdate);
         echo $dt->diffInDays(Carbon::now());//calculate the how many days left from appointment to now
 
@@ -124,7 +130,12 @@ class AppointmentsController extends AppController
             $headers = "From: $from";
             $result = mail($to,$subject,$message,$headers);
         }
-
+        
+        if(!$mail->Send()) {
+            echo "Fail: " . $mail->ErrorInfo;
+        } else {
+            echo "Success";
+        }
     }
 
 }
