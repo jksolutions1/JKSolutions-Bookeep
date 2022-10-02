@@ -5,38 +5,37 @@
  */
 ?>
 
+
 <div class="column-responsive column-80">
-        <div class="appointments view content">
-            <h3 class="h3 mb-2 text-gray-800">Appointment Details</h3>
-            <table>
-                <tr>
-                    <th><?= __('Client') ?></th>
-                    <td><?= h($appointment->client->firstname)?> <?= h($appointment->client->lastname)?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Company') ?></th>
-                    <td><?= h($appointment->company->name)?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Id') ?></th>
-                    <td><?= $this->Number->format($appointment->id) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Date') ?></th>
-                    <td><?= h($appointment->date) ?></td>
-                </tr>
-            </table>
-            <div class="text">
-                <strong><?= __('Appointment Description') ?></strong>
-                <blockquote>
-                    <?= $this->Text->autoParagraph(h($appointment->appointment_description)); ?>
-                </blockquote>
+    <div class="appointments view content">
+        <h2 class="h3 mb-2 text-gray-800">Appointment Details</h2>
+            <div class = "row">
+                <div class = "col-lg-4">
+                    <span class="d-flex mb-2">
+                            <strong class="mr-1"><th><?= __('Client') ?></th>:</strong> 
+                            <?= h($appointment->client->firstname)?> <?= h($appointment->client->lastname)?>
+                    </span>
+                    <span class="d-flex mb-2">
+                            <strong class="mr-1"><th><?= __('Company') ?></th>:</strong> 
+                            <?= h($appointment->company->name)?>
+                    </span>
+                    <span class="d-flex mb-2">
+                            <strong class="mr-1"><th><?= __('Id') ?></th>:</strong> 
+                            <?= $this->Number->format($appointment->id) ?>
+                    </span>
+                    <span class="d-flex mb-2">
+                            <strong class="mr-1"><th><?= __('Date') ?></th>:</strong> 
+                            <?= h($appointment->date) ?>
+                    </span>
+                    <span class="d-flex mb-2">
+                            <strong class="mr-1"><th><?= __('Address') ?></th>:</strong> 
+                            <?= $this->Text->autoParagraph(h($appointment->address)); ?>
+                    </span>
+                    <span class="d-flex mb-2">
+                            <strong class="mr-1"><th><?= __('Appointment Description') ?></th>:</strong> 
+                            <?= $this->Text->autoParagraph(h($appointment->appointment_description)); ?>
+                    </span>
+                </div>
             </div>
-            <div class="text">
-                <strong><?= __('Address') ?></strong>
-                <blockquote>
-                    <?= $this->Text->autoParagraph(h($appointment->address)); ?>
-                </blockquote>
-            </div>
-        </div>
     </div>
+</div>

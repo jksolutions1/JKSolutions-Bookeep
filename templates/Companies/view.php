@@ -15,7 +15,7 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['bl
                 <div class = "col-lg-4">
                     <span class="d-flex mb-2">
                             <strong class="mr-1"><th><?= __('Id') ?></th>:</strong> 
-                            <td><?= $this->Number->format($company->id) ?></td>
+                            <?= $this->Number->format($company->id) ?>
                     </span>
                     <span class="d-flex mb-2">
                             <strong class="mr-1"><th><?= __('Name') ?></th>:</strong> 
@@ -23,11 +23,11 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['bl
                     </span>
                     <span class="d-flex mb-2">
                             <strong class="mr-1"><th><?= __('Client') ?></th>:</strong> 
-                            <td><?= h($company->client->firstname)?> <?= h($company->client->lastname)?></td>
+                            <?= h($company->client->firstname)?> <?= h($company->client->lastname)?>
                     </span>
                     <span class="d-flex mb-2">
                             <strong class="mr-1"><th><?= __('Contactno') ?></th>:</strong> 
-                            <td><?= $this->Number->format($company->contactno) ?></td>
+                            <?= $this->Number->format($company->contactno) ?>
                     </span>
                     <span class="d-flex mb-2">
                             <strong class="mr-1"><th><?= __('Address') ?></th>:</strong> 

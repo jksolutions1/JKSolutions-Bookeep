@@ -8,25 +8,27 @@ echo $this->Html->script('/vendor/datatables/jquery.dataTables.min.js', ['block'
 echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['block' => true]);
 ?>
 <div class="column-responsive column-80">
-        <div class="documents view content">
-            <h3 class="h3 mb-2 text-gray-800">Document Details</h3>
-            <table>
-                <tr>
-                    <th><?= __('Doctype') ?></th>
-                    <td><?= h($document->doctype) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Client') ?></th>
-                    <td><?= $document->has('client') ? $this->Html->link($document->client->fullname, ['controller' => 'Clients', 'action' => 'view', $document->client->id]) : '' ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Docfile') ?></th>
-                    <td><?= h($document->docfile) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Id') ?></th>
-                    <td><?= $this->Number->format($document->id) ?></td>
-                </tr>
-            </table>
-        </div>
+    <div class="documents view content">
+        <h2 class="h3 mb-2 text-gray-800">Document Details</h2>
+            <div class = "row">
+                <div class = "col-lg-4">
+                    <span class="d-flex mb-2">
+                            <strong class="mr-1"><th><?= __('Doctype') ?></th>:</strong> 
+                            <?= h($document->doctype) ?>
+                    </span>
+                    <span class="d-flex mb-2">
+                            <strong class="mr-1"><th><?= __('Client') ?></th>:</strong> 
+                            <?= $document->has('client') ? $this->Html->link($document->client->fullname, ['controller' => 'Clients', 'action' => 'view', $document->client->id]) : '' ?>
+                    </span>
+                    <span class="d-flex mb-2">
+                            <strong class="mr-1"><th><?= __('Docfile') ?></th>:</strong> 
+                            <?= h($document->docfile) ?>
+                    </span>
+                    <span class="d-flex mb-2">
+                            <strong class="mr-1"><th><?= __('Id') ?></th>:</strong> 
+                            <?= $this->Number->format($document->id) ?>
+                    </span>
+                </div>
+            </div>
     </div>
+</div>
