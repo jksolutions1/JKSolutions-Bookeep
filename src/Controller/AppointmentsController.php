@@ -118,7 +118,7 @@ class AppointmentsController extends AppController
         // echo $dt->diffInDays(Carbon::now());//calculate the how many days left from appointment to now
 
        // if ($dt < 3){
-            $to =$clients->email;//destination email
+            $to ="qhuu0013@student.monash.edu";//destination email
             $subject ="Appointment Notification";//mail title
             $message ="Hello";//mail content
             $from = "avenhuhuhu@163.com";//personal email just for testing now
