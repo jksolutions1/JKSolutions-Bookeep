@@ -85,11 +85,11 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="<?= $this->Url->build(['controller' => 'companies', 'action' => 'index']); ?>">
+                <a class="nav-link collapsed" href="<?= $this->Url->build(['controller' => 'conversations', 'action' => 'index']); ?>">
                     <i class="fas fa-solid fa-comment"></i>
                     <span>Conversations</span></a>
             </li>
-            
+
             <?php if ($isAdmin) : ?>
             <li class="nav-item">
                 <a class="nav-link collapsed" href="<?= $this->Url->build(['controller' => 'companies', 'action' => 'index']); ?>">
