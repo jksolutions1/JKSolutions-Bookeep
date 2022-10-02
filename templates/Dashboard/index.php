@@ -123,7 +123,7 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['bl
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($clients as $client): ?>
+                <?php foreach ($recentclients as $client): ?>
                 <tr>
                     <td><?= h($client->firstname)?> <?= h($client->lastname)?></td>
                     <td><?= h($client->contactno) ?></td>

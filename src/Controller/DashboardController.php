@@ -13,12 +13,15 @@ class DashboardController extends AppController {
         
 
         $appointments = $this->fetchTable('Appointments')->find('all') ->all();
-        $this->set('appointments', $appointments);
 
-        $clients = $this->fetchTable('Clients')->find('all') ->all();
+
+        $recentclients = $this->fetchTable('Clients')->find('all', ['limit' => 3, 'order' => 'Clients.id DESC']) ->all();
+
         $companies = $this->fetchTable('Companies')->find('all') ->all();
 
-        $this->set('clients', $clients);
+        $this->set('recentclients', $recentclients);
+        $this->set('appointments', $appointments);
+
 
     }
 
