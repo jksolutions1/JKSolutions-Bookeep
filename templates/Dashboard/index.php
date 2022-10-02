@@ -156,16 +156,7 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['bl
                 <tr>
                     <td><?= h($appointment->client->firstname)?> <?= h($appointment->client->lastname)?></td>
                     <td><?= h($appointment->company->name)?></td>
-<<<<<<< HEAD
-                    <td><?= h($appointment->date->format('d-m-y')) ?></td>
-=======
-
-                    <td class="actions">
-                        <?= $this->Html->link(__('View'), ['action' => 'view', $appointment->id]) ?>
-                        <?= $this->Html->link(__('Edit'), ['action' => 'edit', $appointment->id]) ?>
-                        <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $appointment->id], ['confirm' => __('Are you sure you want to delete # {0}?', $appointment->id)]) ?>
-                    </td>
->>>>>>> 525f18a4958941a502a7ee0e7cec45e16e06165b
+                    <td><?= h($appointment->date->format('d/m/y'))?></td>
                 </tr>
                 <?php endforeach; ?>
             </tbody>
