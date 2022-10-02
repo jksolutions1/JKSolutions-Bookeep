@@ -98,12 +98,13 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['bl
 		</div>
 
 	</div>
-
+	
 	<div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">
 			<div class="row">
 				<div class="col-md-12">
+					<?php if ($isAdmin) : ?>
 					<h3>
 						Recently Added Clients
 					</h3>
@@ -135,6 +136,7 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['bl
                 <?php endforeach; ?>
             </tbody>
         </table>
+
     </div>
 					</div>
 					<br>
@@ -161,6 +163,8 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['bl
                 <?php endforeach; ?>
             </tbody>
         </table>
+		<?php endif ?>
+
     </div>
 					</div>
 
