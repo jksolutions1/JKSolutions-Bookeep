@@ -1,28 +1,29 @@
 <?php
+
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\I18n\FrozenTime;
 
-class DashboardController extends AppController {
+class DashboardController extends AppController
+{
 
     public function index()
-    {   
+    {
         $this->paginate = [
             'contain' => ['Clients', 'Companies'],
         ];
-        
 
-        $recentAppointments = $this->fetchTable('Appointments')->find('all') ->all();
+        $currentTime = FrozenTime::now();
+
+        $recentAppointments = $this->fetchTable('Appointments')->find('all', [
+            'conditions' => ['Appointments.date <' => date('d-m-Y')],
+            'contain' => ['Clients', 'Companies']])->all();
 
 
-        $recentclients = $this->fetchTable('Clients')->find('all', ['limit' => 3, 'order' => 'Clients.id DESC']) ->all();
+        $recentclients = $this->fetchTable('Clients')->find('all', ['limit' => 3, 'order' => 'Clients.id DESC'])->all();
 
         $this->set('recentclients', $recentclients);
         $this->set('recentAppointments', $recentAppointments);
-
-
     }
-
 }
-
-

@@ -143,46 +143,37 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['bl
         </table>
     </div>
 					</div>
+					<br>
 					<h3>
-						h3. Lorem ipsum dolor sit amet.
+						Upcoming appointments
 					</h3>
 					<div class="row">
-						<div class="col-md-12">
-							<table class="table">
-								<thead>
-									<tr>
-										<th>
-											#
-										</th>
-										<th>
-											Product
-										</th>
-										<th>
-											Payment Taken
-										</th>
-										<th>
-											Status
-										</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>
-											1
-										</td>
-										<td>
-											TB - Monthly
-										</td>
-										<td>
-											01/04/2012
-										</td>
-										<td>
-											Default
-										</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
+					<div class="table-responsive">
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+                <tr>
+                    <th><?= $this->Paginator->sort('client_name') ?></th>
+                    <th><?= $this->Paginator->sort('company_id') ?></th>
+                    <th><?= $this->Paginator->sort('date') ?></th>
+                    <th class="actions"><?= __('Actions') ?></th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($recentAppointments as $appointment): ?>
+                <tr>
+                    <td><?= h($appointment->client->firstname)?> <?= h($appointment->client->lastname)?></td>
+                    <td><?= h($appointment->company->name)?></td>
+                    <td><?= h($appointment->date) ?></td>
+                    <td class="actions">
+                        <?= $this->Html->link(__('View'), ['action' => 'view', $appointment->id]) ?>
+                        <?= $this->Html->link(__('Edit'), ['action' => 'edit', $appointment->id]) ?>
+                        <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $appointment->id], ['confirm' => __('Are you sure you want to delete # {0}?', $appointment->id)]) ?>
+                    </td>
+                </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
 					</div>
 					<h3>
 						h3. Lorem ipsum dolor sit amet.
