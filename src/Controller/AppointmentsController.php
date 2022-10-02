@@ -24,6 +24,8 @@ class AppointmentsController extends AppController
         ];
         $appointments = $this->paginate($this->Appointments);
 
+        $recentAppointments = $this->fetchTable('Clients')->find('all');
+
         $this->set(compact('appointments'));
     }
 
