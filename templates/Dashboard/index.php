@@ -175,47 +175,7 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['bl
         </table>
     </div>
 					</div>
-					<h3>
-						h3. Lorem ipsum dolor sit amet.
-					</h3>
-					<div class="row">
-						<div class="col-md-12">
-							<table class="table">
-								<thead>
-									<tr>
-										<th>
-											#
-										</th>
-										<th>
-											Product
-										</th>
-										<th>
-											Payment Taken
-										</th>
-										<th>
-											Status
-										</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>
-											1
-										</td>
-										<td>
-											TB - Monthly
-										</td>
-										<td>
-											01/04/2012
-										</td>
-										<td>
-											Default
-										</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
+
 				</div>
 			</div>
 		</div>
@@ -228,5 +188,4 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['bl
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/scripts.js"></script>
 </body>
-
 </html>
