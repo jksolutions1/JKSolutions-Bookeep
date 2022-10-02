@@ -17,7 +17,7 @@ class DashboardController extends AppController
         $currentTime = FrozenTime::now();
 
         $recentAppointments = $this->fetchTable('Appointments')->find('all', [
-            'conditions' => ['Appointments.date <' => date('d-m-Y')],
+            'conditions' => ['Appointments.date >' => $currentTime],
             'contain' => ['Clients', 'Companies']])->all();
 
 
@@ -25,5 +25,7 @@ class DashboardController extends AppController
 
         $this->set('recentclients', $recentclients);
         $this->set('recentAppointments', $recentAppointments);
+        $this->set('current', $currentTime);
+
     }
 }
