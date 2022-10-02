@@ -7,51 +7,35 @@
 
 <div class="column-responsive column-80">
     <div class="clients view content">
-        <h3 class="h3 mb-2 text-gray-800">Client Details</h3>
-        <table>
-            <tr>
-                <th><?= __('Id') ?></th>
-                <td><?= $this->Number->format($client->id) ?></td>
-            </tr>
-            <tr>
-                <th><?= __('Contactno') ?></th>
-                <td><?= $this->Number->format($client->contactno) ?></td>
-            </tr>
-            <tr>
-                <th><?= __('Payment') ?></th>
-                <td><?= $this->Number->format($client->payment) ?></td>
-            </tr>
-        </table>
-        <div class="text">
-            <strong><?= __('Firstname') ?></strong>
-            <blockquote>
-                <?= $this->Text->autoParagraph(h($client->firstname)); ?>
-            </blockquote>
-        </div>
-        <div class="text">
-            <strong><?= __('Lastname') ?></strong>
-            <blockquote>
-                <?= $this->Text->autoParagraph(h($client->lastname)); ?>
-            </blockquote>
-        </div>
-        <div class="text">
-            <strong><?= __('Address') ?></strong>
-            <blockquote>
-                <?= $this->Text->autoParagraph(h($client->address)); ?>
-            </blockquote>
-        </div>
-        <div class="text">
-            <strong><?= __('Email') ?></strong>
-            <blockquote>
-                <?= $this->Text->autoParagraph(h($client->email)); ?>
-            </blockquote>
-        </div>
-        <div class="text">
-            <strong><?= __('Required Documents') ?></strong>
-            <blockquote>
-                <?= $this->Text->autoParagraph(h($client->required_documents)); ?>
-            </blockquote>
-        </div>
+        <h2 class="h3 mb-2 text-gray-800">Client Details</h2>
+            <span class="d-flex mb-2">
+                    <strong class="mr-1"><th><?= __('Id') ?></th>:</strong> 
+                    <?= $this->Number->format($client->id) ?>
+            </span>
+            <span class="d-flex mb-2">
+                    <strong class="mr-1"><th><?= __('Contactno') ?></th>:</strong> 
+                    <?= $this->Number->format($client->contactno) ?>
+            </span>
+            <span class="d-flex mb-2">
+                    <strong class="mr-1"><?= __('Firstname') ?>:</strong> 
+                    <?= $this->Text->autoParagraph(h($client->firstname)); ?>
+            </span>
+            <span class="d-flex mb-2">
+                    <strong class="mr-1"><?= __('Lastname') ?>:</strong> 
+                    <?= $this->Text->autoParagraph(h($client->lastname)); ?>
+            </span>
+            <span class="d-flex mb-2">
+                    <strong class="mr-1"><?= __('Address') ?>:</strong> 
+                    <?= $this->Text->autoParagraph(h($client->address)); ?>
+            </span>
+            <span class="d-flex mb-2">
+                    <strong class="mr-1"><?= __('Email') ?>:</strong> 
+                    <?= $this->Text->autoParagraph(h($client->email)); ?>
+            </span>
+            <span class="d-flex mb-2">
+                    <strong class="mr-1"><?= __('Required Documents') ?>:</strong> 
+                    <?= $this->Text->autoParagraph(h($client->required_documents)); ?>
+            </span>
 
         <div class="related">
             <h4><?= __('Related Appointments') ?></h4>
@@ -59,8 +43,7 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th><?= $this->Paginator->sort('id') ?></th>
-                        <th><?= __('appointment description') ?></th>
+                        <th><?= $this->Paginator->sort('appointment description') ?></th>
                         <th><?= $this->Paginator->sort('company_id') ?></th>
                         <th><?= $this->Paginator->sort('date') ?></th>
                         <th><?= $this->Paginator->sort('address') ?></th>
@@ -70,7 +53,6 @@
                 <tbody>
                     <?php foreach ($client->appointments as $appointments) : ?>
                     <tr>
-                        <td><?= h($appointments->id) ?></td>
                         <td><?= h($appointments->appointment_description) ?></td>
                         <td><?= h($appointments->company_id) ?></td>
                         <td><?= h($appointments->date) ?></td>
@@ -94,7 +76,6 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th><?= $this->Paginator->sort('id') ?></th>
                             <th><?= $this->Paginator->sort('name') ?></th>
                             <th><?= $this->Paginator->sort('contactno') ?></th>
                             <th><?= $this->Paginator->sort('client_id') ?></th>
@@ -104,7 +85,6 @@
                     <tbody>
                         <?php foreach ($client->companies as $companies) : ?>
                         <tr>
-                            <td><?= $this->Number->format($companies->id) ?></td>
                             <td><?= h($companies->name)?></td>
                             <td><?= $this->Number->format($companies->contactno) ?></td>
                             <td><?= h($companies->client_id) ?></td>
