@@ -42,16 +42,16 @@ class AppointmentsController extends AppController
             // send email
 
 
-        $currentTime = FrozenTime::now();
-        $maxTime = $currentTime->addDays(3);
-        $relativeAppointments = $this->fetchTable('Appointments')->find('all', [
-            'conditions' => ['Appointments.date <=' => $maxTime],
-            'contain' => ['Clients', 'Companies']
-            ])->all();
+        // $currentTime = FrozenTime::now();
+        // $maxTime = $currentTime->addDays(3);
+        // $relativeAppointments = $this->fetchTable('Appointments')->find('all', [
+        //     'conditions' => ['Appointments.date <=' => $maxTime],
+        //     'contain' => ['Clients', 'Companies']
+        //     ])->all();
 
-        $this->set('relativeAppointments',$relativeAppointments );
-        debug($relativeAppointments);
-        exit;
+        // $this->set('relativeAppointments',$relativeAppointments );
+        // debug($relativeAppointments);
+        // exit;
     }
 
     /**
@@ -140,14 +140,16 @@ class AppointmentsController extends AppController
 
     public function sendingemail(){
         $currentTime = FrozenTime::now();
-        $appointmentTime = $currentTime->addDays(3);
+        $maxTime = $currentTime->addDays(3);
         $relativeAppointments = $this->fetchTable('Appointments')->find('all', [
-            'conditions' => ['Appointments.date <=' => $appointmentTime],
+            'conditions' => ['Appointments.date <=' => $maxTime],
             'contain' => ['Clients', 'Companies']
             ])->all();
 
-        debug($relativeAppointments);
-        exit;
+        $this->set('relativeAppointments',$relativeAppointments );
+
+        // debug($relativeAppointments);
+        // exit;
         // , [
         //     'conditions' => ['Client->id >' => $],
         //     'contain' => ['Clients', 'Companies']])->all();
