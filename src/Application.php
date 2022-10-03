@@ -69,6 +69,7 @@ class Application extends BaseApplication
         $this->addPlugin('Josegonzalez/Upload');
         $this->addPlugin('TinyAuth');
         $this->addPlugin('TinyAuth');
+        $this->addPlugin('TinyAuth');
     }
 
     /**
