@@ -40,7 +40,6 @@ class Client extends Entity
         'address' => true,
         'email' => true,
         'required_documents' => true,
-        'payment' => true,
         'appointments' => true,
         'companies' => true,
         'documents' => true,

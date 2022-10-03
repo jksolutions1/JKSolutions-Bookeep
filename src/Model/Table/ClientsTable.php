@@ -98,12 +98,6 @@ class ClientsTable extends Table
             ->scalar('required_documents')
             ->requirePresence('required_documents', 'create')
             ->notEmptyString('required_documents');
-
-        $validator
-            ->integer('payment')
-            ->requirePresence('payment', 'create')
-            ->notEmptyString('payment');
-
         return $validator;
     }
 }
