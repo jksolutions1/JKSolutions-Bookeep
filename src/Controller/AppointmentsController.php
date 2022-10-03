@@ -28,7 +28,7 @@ class AppointmentsController extends AppController
 
         $userId = $this->Auth->user('id')
 
-        $relatedAppointments = $appointments -> find('all') -> where['Appointments.id =' => $userId]
+        $relatedAppointments = $appointments -> find('all') -> where(['Appointments.id =' => $userId])
 
         $this->set(compact('appointments'));
     }
