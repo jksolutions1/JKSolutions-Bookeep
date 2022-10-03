@@ -32,9 +32,6 @@ class AppointmentsController extends AppController
         // $relatedAppointments = $appointments -> find('all') -> where(['Appointments.id =' => $userId]);
 
         $this->set(compact('appointments'));
-        
-
-
             // currentDate
             // appointmentDate
             // diffDays = Appointmentdate - currentdate e.g. diffdays =
@@ -42,12 +39,14 @@ class AppointmentsController extends AppController
             // send email
 
 
-        // $currentTime = FrozenTime::now();
-        // $maxTime = $currentTime->addDays(3);
-        // $relativeAppointments = $this->fetchTable('Appointments')->find('all', [
-        //     'conditions' => ['Appointments.date <=' => $maxTime],
-        //     'contain' => ['Clients', 'Companies']
-        //     ])->all();
+        $currentTime = FrozenTime::now();
+        $maxTime = $currentTime->addDays(3);
+        $relativeAppointments = $this->fetchTable('Appointments')->find('all', [
+            'conditions' => ['Appointments.date <=' => $maxTime],
+            'contain' => ['Clients', 'Companies']
+            ])->all();
+
+        $this->set('relativeAppointments',$relativeAppointments );
 
         // $this->set('relativeAppointments',$relativeAppointments );
         // debug($relativeAppointments);
