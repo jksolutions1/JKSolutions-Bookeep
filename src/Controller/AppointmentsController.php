@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 use Cake\Mailer\Mailer;
+use Cake\I18n\FrozenTime;
 
 /**
  * Appointments Controller
@@ -31,10 +32,26 @@ class AppointmentsController extends AppController
         // $relatedAppointments = $appointments -> find('all') -> where(['Appointments.id =' => $userId]);
 
         $this->set(compact('appointments'));
-        // $relativeClients = $this->fetchTable('Clients')->find('all')->all();
+        
 
-        // debug($relativeClients);
-        // exit;
+
+            // currentDate
+            // appointmentDate
+            // diffDays = Appointmentdate - currentdate e.g. diffdays =
+            // if diff <= 3 then
+            // send email
+
+
+        $currentTime = FrozenTime::now();
+        $maxTime = $currentTime->addDays(3);
+        $relativeAppointments = $this->fetchTable('Appointments')->find('all', [
+            'conditions' => ['Appointments.date <=' => $maxTime],
+            'contain' => ['Clients', 'Companies']
+            ])->all();
+
+        $this->set('relativeAppointments',$relativeAppointments );
+        debug($relativeAppointments);
+        exit;
     }
 
     /**
@@ -122,17 +139,14 @@ class AppointmentsController extends AppController
     }
 
     public function sendingemail(){
-        // $appdate = $this->Appointments->date;
-        // $clients = $this->Appointments->Clients->find('list', ['limit' => 200])->all();
-        // $dt = Carbon::parse($appdate);
-        // echo $dt->diffInDays(Carbon::now());//calculate the how many days left from appointment to now
-
         $currentTime = FrozenTime::now();
+        $appointmentTime = $currentTime->addDays(3);
+        $relativeAppointments = $this->fetchTable('Appointments')->find('all', [
+            'conditions' => ['Appointments.date <=' => $appointmentTime],
+            'contain' => ['Clients', 'Companies']
+            ])->all();
 
-
-        $relativeClients = $this->fetchTable('Clients')->find('all');
-
-        debug($relativeClients);
+        debug($relativeAppointments);
         exit;
         // , [
         //     'conditions' => ['Client->id >' => $],

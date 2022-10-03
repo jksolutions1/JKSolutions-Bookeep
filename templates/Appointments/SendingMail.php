@@ -8,15 +8,13 @@
 
 <?php
 
+if ($relativeAppointments->date >= $currentTime){
+    $to = $relativeAppointments->clients->email;//$this->$clients->email;//destination email
+    $subject ="Appointment Notification";//mail title
+    $message ="Hello";//mail content
+    $from = "bookeep@u22s2105.monash-ie.me";
+    $headers = "From: $from";
+    $result = mail($to,$subject,$message,$headers);
+}
 
-
-$to ="qhuu0013@student.monash.edu";//$this->$clients->email;//destination email
-$subject ="Appointment Notification";//mail title
-$message ="Hello";//mail content
-$from = "bookeep@u22s2105.monash-ie.me";
-$headers = "From: $from";
-$result = mail($to,$subject,$message,$headers);
-
-
- 
 ?>
