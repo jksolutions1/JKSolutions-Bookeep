@@ -27,6 +27,10 @@ class AppointmentsController extends AppController
         $recentAppointments = $this->fetchTable('Clients')->find('all');
 
         $this->set(compact('appointments'));
+        $relativeClients = $this->fetchTable('Clients')->find('all')->all();
+
+        debug($relativeClients);
+        exit;
     }
 
     /**
@@ -119,14 +123,29 @@ class AppointmentsController extends AppController
         // $dt = Carbon::parse($appdate);
         // echo $dt->diffInDays(Carbon::now());//calculate the how many days left from appointment to now
 
-       // if ($dt < 3){
-            // $to ="qhuu0013@student.monash.edu";//destination email
-            // $subject ="Appointment Notification";//mail title
-            // $message ="Hello";//mail content
-            // $from = "avenhuhuhu@163.com";//personal email just for testing now
-            // $headers = "From: $from";
-            // $result = mail($to,$subject,$message,$headers);
+        $currentTime = FrozenTime::now();
+
+
+        $relativeClients = $this->fetchTable('Clients')->find('all');
+
+        debug($relativeClients);
+        exit;
+        // , [
+        //     'conditions' => ['Client->id >' => $],
+        //     'contain' => ['Clients', 'Companies']])->all();
+
+        // for ($client->appointment){
+            // if ($dt < 3){
+                // int flag;
+                // $to =$client->email;"qhuu0013@student.monash.edu";//destination email
+                // $subject ="Appointment Notification";//mail title
+                // $message ="Hello";//mail content
+                // $from = "avenhuhuhu@163.com";//personal email just for testing now
+                // $headers = "From: $from";
+                // $result = mail($to,$subject,$message,$headers);
+            //}
         //}
+       
 
 
     }
