@@ -30,7 +30,7 @@ class AppointmentsController extends AppController
 
         // $relatedAppointments = $appointments -> find('all') -> where(['Appointments.id =' => $userId]);
 
-        // $this->set(compact('appointments'));
+        $this->set(compact('appointments'));
         // $relativeClients = $this->fetchTable('Clients')->find('all')->all();
 
         // debug($relativeClients);
