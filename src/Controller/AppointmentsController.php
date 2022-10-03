@@ -47,6 +47,7 @@ class AppointmentsController extends AppController
             ])->all();
 
         $this->set('relativeAppointments',$relativeAppointments );
+        $this->set('currentTime',$currentTime );
 
         // $this->set('relativeAppointments',$relativeAppointments );
         // debug($relativeAppointments);
@@ -146,26 +147,7 @@ class AppointmentsController extends AppController
             ])->all();
 
         $this->set('relativeAppointments',$relativeAppointments );
-
-        // debug($relativeAppointments);
-        // exit;
-        // , [
-        //     'conditions' => ['Client->id >' => $],
-        //     'contain' => ['Clients', 'Companies']])->all();
-
-        // for ($client->appointment){
-            // if ($dt < 3){
-                // int flag;
-                // $to =$client->email;"qhuu0013@student.monash.edu";//destination email
-                // $subject ="Appointment Notification";//mail title
-                // $message ="Hello";//mail content
-                // $from = "avenhuhuhu@163.com";//personal email just for testing now
-                // $headers = "From: $from";
-                // $result = mail($to,$subject,$message,$headers);
-            //}
-        //}
-       
-
+        $this->set('currentTime',$currentTime );
 
     }
 
