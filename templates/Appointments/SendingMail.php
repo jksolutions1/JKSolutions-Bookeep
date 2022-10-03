@@ -3,6 +3,7 @@
  * @var \App\Model\Entity\Appointment $appointment
  * @var string[]|\Cake\Collection\CollectionInterface $clients
  * @var string[]|\Cake\Collection\CollectionInterface $companies
+ * @var \App\Model\Entity\Appointment[]|\Cake\Collection\CollectionInterface $appointments
  */
 ?>
 
