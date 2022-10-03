@@ -14,7 +14,7 @@
                     echo $this->Form->control('lastname',array('type'=>'text','maxlength'=>'20','size'=>'8'));
                     echo $this->Form->control('contactno',array('type'=>'text','maxlength'=>'12','size'=>'8'));
                     echo $this->Form->control('address',array('type'=>'text','size'=>'8'));
-                    echo $this->Form->control('email',array('type'=>'text','maxlength'=>'20','size'=>'8'));
+                    echo $this->Form->control('email',array('type'=>'text','maxlength'=>'40','size'=>'8'));
                     echo $this->Form->control('required_documents',array('type'=>'text','size'=>'8'));
                     echo $this->Form->control('payment');
                 ?>
