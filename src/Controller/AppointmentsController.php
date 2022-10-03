@@ -26,6 +26,8 @@ class AppointmentsController extends AppController
 
         $recentAppointments = $this->fetchTable('Clients')->find('all');
 
+        $relatedAppointments = $appointments -> find('all') -> where['Appointments.id =' => $this->Auth->user('id')]
+
         $this->set(compact('appointments'));
     }
 
