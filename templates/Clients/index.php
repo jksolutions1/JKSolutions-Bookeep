@@ -6,6 +6,16 @@
 echo $this->Html->css('/vendor/datatables/dataTables.bootstrap4.min.css', ['block' => true]);
 echo $this->Html->script('/vendor/datatables/jquery.dataTables.min.js', ['block' => true]);
 echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['block' => true]);
+foreach ($relativeClients as $rclient):
+    if ($rclient->required_documents != "null"){
+            $to = $rclient->email;//$this->$clients->email;//destination email
+            $subject ="Appointment Notification";//mail title
+            $message ="Please don't forget to update compulsory documents.";//mail content
+            $from = "bookeep@u22s2105.monash-ie.me";
+            $headers = "From: $from";
+            $result = mail($to,$subject,$message,$headers);
+    }
+endforeach;
 ?>
 <div class="clients index content">
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
