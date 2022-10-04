@@ -5,31 +5,17 @@
  * @var string[]|\Cake\Collection\CollectionInterface $clients
  */
 ?>
-<div class="row">
-    <aside class="column">
-        <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Form->postLink(
-                __('Delete'),
-                ['action' => 'delete', $conversation->id],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $conversation->id), 'class' => 'side-nav-item']
-            ) ?>
-            <?= $this->Html->link(__('List Conversations'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
-        </div>
-    </aside>
-    <div class="column-responsive column-80">
-        <div class="conversations form content">
+<h1 class="h3 mb-2 text-gray-800">Add Conversation</h1>
+    <div class = "row">
+        <div class = "col-lg-4">
             <?= $this->Form->create($conversation) ?>
-            <fieldset>
-                <legend><?= __('Edit Conversation') ?></legend>
                 <?php
-                    echo $this->Form->control('con_type');
+                    echo $this->Form->control('con_type',array('type'=>'text','maxlength'=>'20','size'=>'8'));
                     echo $this->Form->control('con_description');
                     echo $this->Form->control('client_id', ['options' => $clients]);
                 ?>
-            </fieldset>
+            
             <?= $this->Form->button(__('Submit')) ?>
             <?= $this->Form->end() ?>
         </div>
     </div>
-</div>

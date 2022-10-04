@@ -3,38 +3,32 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Conversation $conversation
  */
+echo $this->Html->css('/vendor/datatables/dataTables.bootstrap4.min.css', ['block' => true]);
+echo $this->Html->script('/vendor/datatables/jquery.dataTables.min.js', ['block' => true]);
+echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['block' => true]);
 ?>
-<div class="row">
-    <aside class="column">
-        <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Html->link(__('Edit Conversation'), ['action' => 'edit', $conversation->id], ['class' => 'side-nav-item']) ?>
-            <?= $this->Form->postLink(__('Delete Conversation'), ['action' => 'delete', $conversation->id], ['confirm' => __('Are you sure you want to delete # {0}?', $conversation->id), 'class' => 'side-nav-item']) ?>
-            <?= $this->Html->link(__('List Conversations'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
-            <?= $this->Html->link(__('New Conversation'), ['action' => 'add'], ['class' => 'side-nav-item']) ?>
-        </div>
-    </aside>
-    <div class="column-responsive column-80">
-        <div class="conversations view content">
-            <h3><?= h($conversation->id) ?></h3>
-            <table>
-                <tr>
-                    <th><?= __('Con Type') ?></th>
-                    <td><?= h($conversation->con_type) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Con Description') ?></th>
-                    <td><?= h($conversation->con_description) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Client') ?></th>
-                    <td><?= $conversation->has('client') ? $this->Html->link($conversation->client->fullname, ['controller' => 'Clients', 'action' => 'view', $conversation->client->id]) : '' ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Id') ?></th>
-                    <td><?= $this->Number->format($conversation->id) ?></td>
-                </tr>
-            </table>
-        </div>
+<div class="column-responsive column-80">
+    <div class="conversations view content">
+        <h2 class="h3 mb-2 text-gray-800">Conversation Details</h2>
+            <div class = "row">
+                <div class = "col-lg-4">
+                    <span class="d-flex mb-2">
+                            <strong class="mr-1"><th><?= __('Conversation Id') ?></th>:</strong> 
+                            <?= $this->Number->format($conversation->id) ?>
+                    </span>
+                    <span class="d-flex mb-2">
+                            <strong class="mr-1"><th><?= __('Conversation Type') ?></th>:</strong> 
+                            <?= h($conversation->con_type) ?>
+                    </span>
+                    <span class="d-flex mb-2">
+                            <strong class="mr-1"><th><?= __('Conversation Description') ?></th>:</strong> 
+                            <?= h($conversation->con_description) ?>
+                    </span>
+                    <span class="d-flex mb-2">
+                            <strong class="mr-1"><th><?= __('Client Name') ?></th>:</strong> 
+                            <?= $conversation->has('client') ? $this->Html->link($conversation->client->fullname, ['controller' => 'Clients', 'action' => 'view', $conversation->client->id]) : '' ?>
+                    </span>
+                </div>
+            </div>
     </div>
 </div>

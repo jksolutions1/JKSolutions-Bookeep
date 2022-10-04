@@ -4,27 +4,21 @@
  * @var \App\Model\Entity\Conversation $conversation
  * @var \Cake\Collection\CollectionInterface|string[] $clients
  */
+echo $this->Html->css('/vendor/datatables/dataTables.bootstrap4.min.css', ['block' => true]);
+echo $this->Html->script('/vendor/datatables/jquery.dataTables.min.js', ['block' => true]);
+echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['block' => true]);
 ?>
-<div class="row">
-    <aside class="column">
-        <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Html->link(__('List Conversations'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
-        </div>
-    </aside>
-    <div class="column-responsive column-80">
-        <div class="conversations form content">
+<h1 class="h3 mb-2 text-gray-800">Add Conversation</h1>
+    <div class = "row">
+        <div class = "col-lg-4">
             <?= $this->Form->create($conversation) ?>
-            <fieldset>
-                <legend><?= __('Add Conversation') ?></legend>
                 <?php
-                    echo $this->Form->control('con_type');
+                    echo $this->Form->control('con_type',array('type'=>'text','maxlength'=>'20','size'=>'8'));
                     echo $this->Form->control('con_description');
                     echo $this->Form->control('client_id', ['options' => $clients]);
                 ?>
-            </fieldset>
+            
             <?= $this->Form->button(__('Submit')) ?>
             <?= $this->Form->end() ?>
         </div>
     </div>
-</div>
