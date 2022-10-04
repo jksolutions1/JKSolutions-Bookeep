@@ -10,7 +10,7 @@ foreach ($relativeAppointments as $appointment):
     if ($appointment->date >= $currentTime){
             $to = $appointment->client->email;//$this->$clients->email;//destination email
             $subject ="Appointment Notification";//mail title
-            $message ="Hello";//mail content
+            $message ="The appointment date is comming soon, glad to see you on time.";//mail content
             $from = "bookeep@u22s2105.monash-ie.me";
             $headers = "From: $from";
             $result = mail($to,$subject,$message,$headers);
