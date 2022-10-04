@@ -58,6 +58,10 @@ class ClientsTable extends Table
         $this->hasMany('Users', [
             'foreignKey' => 'client_id',
         ]);
+
+        $this->belongsTo('Users', [
+            'foreignKey' => 'user_id',
+        ]);
     }
 
     /**
@@ -98,6 +102,12 @@ class ClientsTable extends Table
             ->scalar('required_documents')
             ->requirePresence('required_documents', 'create')
             ->notEmptyString('required_documents');
+
+
+        $validator
+            ->integer('user_id')
+            ->allowEmptyString('user_id');
+
         return $validator;
     }
 }

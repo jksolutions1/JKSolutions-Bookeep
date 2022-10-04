@@ -1,7 +1,9 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Controller;
+
 use Cake\Mailer\Mailer;
 use Cake\I18n\FrozenTime;
 
@@ -25,18 +27,22 @@ class AppointmentsController extends AppController
         ];
         $appointments = $this->paginate($this->Appointments);
 
-        $recentAppointments = $this->fetchTable('Clients')->find('all');
-
         $userId = $this->Auth->user('id');
 
-        // $relatedAppointments = $appointments -> find('all') -> where(['Appointments.id =' => $userId]);
+        $usersAppointments = $this->fetchTable('Appointments')->find('all', [
+            'contain' => ['Clients','Companies']
+        ]);
+
+        $usersAppointments = $usersAppointments->matching('Clients', function ($q) {
+            return $q->where(['Clients.user_id' => $this->Auth->user('id')]);
+        })->all();
 
         $this->set(compact('appointments'));
-            // currentDate
-            // appointmentDate
-            // diffDays = Appointmentdate - currentdate e.g. diffdays =
-            // if diff <= 3 then
-            // send email
+        // currentDate
+        // appointmentDate
+        // diffDays = Appointmentdate - currentdate e.g. diffdays =
+        // if diff <= 3 then
+        // send email
 
 
         $currentTime = FrozenTime::now();
@@ -44,10 +50,12 @@ class AppointmentsController extends AppController
         $relativeAppointments = $this->fetchTable('Appointments')->find('all', [
             'conditions' => ['Appointments.date <=' => $maxTime],
             'contain' => ['Clients', 'Companies']
-            ])->all();
+        ])->all();
 
-        $this->set('relativeAppointments',$relativeAppointments );
-        $this->set('currentTime',$currentTime );
+
+        $this->set('relativeAppointments', $relativeAppointments);
+        $this->set('currentTime', $currentTime);
+        $this->set('usersAppointments', $usersAppointments);
 
         // $this->set('relativeAppointments',$relativeAppointments );
         // debug($relativeAppointments);
@@ -138,18 +146,17 @@ class AppointmentsController extends AppController
         return $this->redirect(['action' => 'index']);
     }
 
-    public function sendingemail(){
+    public function sendingemail()
+    {
         $currentTime = FrozenTime::now();
         $maxTime = $currentTime->addDays(3);
         $relativeAppointments = $this->fetchTable('Appointments')->find('all', [
             'conditions' => ['Appointments.date <=' => $maxTime],
             'contain' => ['Clients', 'Companies']
-            ])->all();
+        ])->all();
 
-        $this->set('relativeAppointments',$relativeAppointments );
-        $this->set('currentTime',$currentTime );
+        $this->set('relativeAppointments', $relativeAppointments);
+        $this->set('currentTime', $currentTime);
         return $this->redirect(['action' => 'index']);
-
     }
-
 }

@@ -18,6 +18,11 @@ class ClientsController extends AppController
      */
     public function index()
     {
+
+        $this->paginate = [
+            'contain' => ['Users'],
+        ];
+
         $clients = $this->paginate($this->Clients);
 
         $this->set(compact('clients'));

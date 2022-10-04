@@ -34,8 +34,22 @@ endforeach;
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($appointments as $appointment): ?>
+            <?php if (!$isAdmin ) {
+                
+                $myAppointments = $usersAppointments;
+
+            }
+            
+            else {
+                $myAppointments = $appointments;
+            }
+            
+            ?>
+
+            
+                <?php foreach ($myAppointments as $appointment): ?>
                 <tr>
+
                     <td><?= h($appointment->client->firstname)?> <?= h($appointment->client->lastname)?></td>
                     <td><?= h($appointment->company->name)?></td>
                     <td><?= h($appointment->date->format('d/m/y')) ?></td>
