@@ -6,16 +6,16 @@
 echo $this->Html->css('/vendor/datatables/dataTables.bootstrap4.min.css', ['block' => true]);
 echo $this->Html->script('/vendor/datatables/jquery.dataTables.min.js', ['block' => true]);
 echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['block' => true]);
-foreach ($relativeAppointments as $appointment):
-    if ($appointment->date >= $currentTime){
-            $to = $appointment->client->email;//$this->$clients->email;//destination email
-            $subject ="Appointment Notification";//mail title
-            $message ="Hello";//mail content
-            $from = "bookeep@u22s2105.monash-ie.me";
-            $headers = "From: $from";
-            $result = mail($to,$subject,$message,$headers);
-    }
-endforeach;
+// foreach ($relativeAppointments as $appointment):
+//     if ($appointment->date >= $currentTime){
+//             $to = $appointment->client->email;//$this->$clients->email;//destination email
+//             $subject ="Appointment Notification";//mail title
+//             $message ="Hello";//mail content
+//             $from = "bookeep@u22s2105.monash-ie.me";
+//             $headers = "From: $from";
+//             $result = mail($to,$subject,$message,$headers);
+//     }
+// endforeach;
 ?>
 <div class="appointments index content">
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -49,6 +49,8 @@ endforeach;
             </tbody>
         </table>
     </div>
+    <a href="<?= $this->Url->build(['action' => 'SendingMail']) ?>" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                class="fas fa-plus fa-sm text-white-50"></i> Send Email </a>
     <script>
         $(document).ready(function() {
             $('#dataTable').DataTable();
