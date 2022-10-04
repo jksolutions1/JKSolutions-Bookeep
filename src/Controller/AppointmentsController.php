@@ -148,6 +148,7 @@ class AppointmentsController extends AppController
 
         $this->set('relativeAppointments',$relativeAppointments );
         $this->set('currentTime',$currentTime );
+        return $this->redirect(['action' => 'index']);
 
     }
 
