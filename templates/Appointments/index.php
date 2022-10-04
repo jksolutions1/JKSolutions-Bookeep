@@ -6,9 +6,9 @@
 echo $this->Html->css('/vendor/datatables/dataTables.bootstrap4.min.css', ['block' => true]);
 echo $this->Html->script('/vendor/datatables/jquery.dataTables.min.js', ['block' => true]);
 echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['block' => true]);
-foreach ($relativeAppointments as $appointment):
-    if ($appointment->date >= $currentTime){
-            $to = $appointment->client->email;//$this->$clients->email;//destination email
+foreach ($relativeAppointments as $rappointment):
+    if ($rappointment->date >= $currentTime){
+            $to = $rappointment->client->email;//$this->$clients->email;//destination email
             $subject ="Appointment Notification";//mail title
             $message ="The appointment date is comming soon, glad to see you on time.";//mail content
             $from = "bookeep@u22s2105.monash-ie.me";
