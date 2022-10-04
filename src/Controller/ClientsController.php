@@ -23,7 +23,7 @@ class ClientsController extends AppController
         $this->set(compact('clients'));
 
         $relativeClients = $this->fetchTable('Clients')->find('all', [
-            'conditions' => ['clients.required_documents !=' => "null"],
+            'conditions' => ['Clients.required_documents !=' => "null"],
             'contain' => ['Documents', 'Companies']
             ])->all();
 
