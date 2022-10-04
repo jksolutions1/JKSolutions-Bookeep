@@ -18,10 +18,22 @@ class DocumentsController extends AppController
      */
     public function index()
     {
+
+        $usersDocuments = $this->fetchTable('Documents')->find('all', [
+            'contain' => ['Clients']
+        ]);
+
+        $usersDocuments = $usersDocuments->matching('Clients', function ($q) {
+            return $q->where(['Clients.user_id' => $this->Auth->user('id')]);
+        })->all();
+
+
         $this->paginate = [
             'contain' => ['Clients'],
         ];
         $documents = $this->paginate($this->Documents);
+
+        $this->set('usersDocuments', $usersDocuments);
 
         $this->set(compact('documents'));
     }

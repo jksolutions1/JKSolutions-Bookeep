@@ -29,7 +29,18 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['bl
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($documents as $document): ?>
+
+            <?php if (!$isAdmin ) {
+                
+                $myDocuments = $usersDocuments;
+
+            }
+            
+            else {
+                $myDocuments = $documents;
+            } ?>
+
+                <?php foreach ($myDocuments as $document): ?>
                 <tr>
                     <td><?= $document->has('client') ? $this->Html->link($document->client->fullname, ['controller' => 'Clients', 'action' => 'view', $document->client->id]) : '' ?></td>
                     <td><?= h($document->doctype) ?></td>
