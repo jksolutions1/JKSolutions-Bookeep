@@ -64,12 +64,23 @@ class DocumentsController extends AppController
         $document = $this->Documents->newEmptyEntity();
         if ($this->request->is('post')) {
             $document = $this->Documents->patchEntity($document, $this->request->getData());
-            if ($this->Documents->save($document)) {
-                $this->Flash->success(__('The document has been saved.'));
 
-                return $this->redirect(['action' => 'index']);
+            try {
+
+                if ($this->Documents->save($document)) {
+                    $this->Flash->success(__('The document has been saved.'));
+    
+                    return $this->redirect(['action' => 'index']);
+                } else {
+                    $this->Flash->error(__('The document could not be saved. Please, try again.'));
+                }
             }
-            $this->Flash->error(__('The document could not be saved. Please, try again.'));
+
+            catch (\Exception $e) {
+                $this->Flash->error(__('The document could not be saved. Please, try again.'));
+
+            }
+
         }
         $clients = $this->Documents->Clients->find('list', ['limit' => 200])->all();
         $this->set(compact('document', 'clients'));
