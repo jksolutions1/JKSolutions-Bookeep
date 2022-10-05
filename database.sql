@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 05, 2022 at 10:24 AM
+-- Generation Time: Oct 05, 2022 at 11:45 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -57,7 +57,7 @@ CREATE TABLE `clients` (
   `address` text NOT NULL,
   `email` text NOT NULL,
   `required_documents` text NOT NULL,
-  `user_id` int(11) NOT NULL
+  `user_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -99,6 +99,13 @@ CREATE TABLE `conversations` (
   `conversation_description` varchar(255) NOT NULL,
   `client_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='Keep all conversations with clients';
+
+--
+-- Dumping data for table `conversations`
+--
+
+INSERT INTO `conversations` (`id`, `conversation_description`, `client_id`) VALUES
+(1, 'asd', 6);
 
 -- --------------------------------------------------------
 
@@ -246,7 +253,7 @@ ALTER TABLE `appointments`
 -- AUTO_INCREMENT for table `clients`
 --
 ALTER TABLE `clients`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=454;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=455;
 
 --
 -- AUTO_INCREMENT for table `companies`
@@ -258,7 +265,7 @@ ALTER TABLE `companies`
 -- AUTO_INCREMENT for table `conversations`
 --
 ALTER TABLE `conversations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `conversationtypes`
