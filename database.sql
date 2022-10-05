@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 04, 2022 at 12:51 PM
+-- Generation Time: Oct 05, 2022 at 10:24 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -96,8 +96,7 @@ INSERT INTO `companies` (`id`, `name`, `address`, `contactno`, `client_id`) VALU
 
 CREATE TABLE `conversations` (
   `id` int(11) NOT NULL,
-  `con_type` varchar(255) NOT NULL,
-  `con_description` varchar(255) NOT NULL,
+  `conversation_description` varchar(255) NOT NULL,
   `client_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='Keep all conversations with clients';
 
@@ -109,7 +108,6 @@ CREATE TABLE `conversations` (
 
 CREATE TABLE `conversationtypes` (
   `id` int(11) NOT NULL,
-  `con_id` int(11) NOT NULL,
   `contype_type` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='Types for conversation';
 
@@ -173,7 +171,7 @@ INSERT INTO `users` (`id`, `firstname`, `lastname`, `role`, `client_id`, `userna
 (10, 'Mariane', 'Handerson', 'regular', NULL, 'Mariane', '$2y$10$YPXR5dgvve/QBExdnLsay.PhLy/rtNQhmu.eDmyYukb.3SN9Nag8i'),
 (11, 'Leslie', 'Horland', 'admin', NULL, 'Leslie', '$2y$10$bcvgOplK34Rwm279LAd/d.ODL6XmzoaGfHzooV25F.fUjsl3A9F3W'),
 (12, 'Lacey', 'Lacey', 'admin', NULL, 'Lacey', '$2y$10$U6CDWWQKDCixW32/8Cb.kOmjl3Z/D1EncYCdEbbEHGc4DtiMYqjAe'),
-(13, 'asa', 'mankad', 'regular', NULL, 'test', '$2y$10$YgZPTyCQyBHmUEiF0zd6SOIudXcUA72LQy3SDVBQYMcHNG.VW3of.');
+(15, 'ha', 'asf', 'regular', NULL, 'test', '$2y$10$/ys00YsXSKD/tl9a5L4WE.Gizet1elUPCY1e.MLiKW.tDrp8g.t/m');
 
 --
 -- Indexes for dumped tables
@@ -212,8 +210,7 @@ ALTER TABLE `conversations`
 -- Indexes for table `conversationtypes`
 --
 ALTER TABLE `conversationtypes`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `con_id` (`con_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `documents`
@@ -285,7 +282,7 @@ ALTER TABLE `staffs`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- Constraints for dumped tables
@@ -315,12 +312,6 @@ ALTER TABLE `companies`
 --
 ALTER TABLE `conversations`
   ADD CONSTRAINT `conversations_ibfk_1` FOREIGN KEY (`client_id`) REFERENCES `clients` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `conversationtypes`
---
-ALTER TABLE `conversationtypes`
-  ADD CONSTRAINT `conversationtypes_ibfk_1` FOREIGN KEY (`con_id`) REFERENCES `conversations` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `documents`
