@@ -51,7 +51,7 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['bl
 						echo "Adding a new client?";
 							}
 					 else {				
-						echo "Need to make some changes to your account?" ;
+						echo "Adding a new document?" ;
 					 }
 					 ?>
 
@@ -63,7 +63,7 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['bl
 								<?php if ($isAdmin) : ?>
 									<a class="btn btn-primary btn-large" href="<?= $this->Url->build(['controller' => 'clients', 'action' => 'add']); ?>">Add Client</a>
 								<?php else : ?>
-									<a class="btn btn-primary btn-large" href="<?= $this->Url->build(['controller' => 'users', 'action' => 'view']); ?>">Manage Account</a>
+									<a class="btn btn-primary btn-large" href="<?= $this->Url->build(['controller' => 'documents', 'action' => 'add']); ?>">Add Document</a>
 								<?php endif ?>
 							</p>
 						</div>
