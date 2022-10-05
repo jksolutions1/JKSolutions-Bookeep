@@ -13,7 +13,6 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['bl
         <div class = "col-lg-4">
             <?= $this->Form->create($conversation) ?>
                 <?php
-                    echo $this->Form->control('con_type',array('type'=>'text','maxlength'=>'20','size'=>'8'));
                     echo $this->Form->control('con_description');
                     echo $this->Form->control('client_id', ['options' => $clients]);
                 ?>
