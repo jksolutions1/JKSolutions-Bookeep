@@ -20,8 +20,7 @@ class ConversationsFixture extends TestFixture
         $this->records = [
             [
                 'id' => 1,
-                'con_type' => 'Lorem ipsum dolor sit amet',
-                'con_description' => 'Lorem ipsum dolor sit amet',
+                'conversation_description' => 'Lorem ipsum dolor sit amet',
                 'client_id' => 1,
             ],
         ];

@@ -9,8 +9,7 @@ use Cake\ORM\Entity;
  * Conversation Entity
  *
  * @property int $id
- * @property string $con_type
- * @property string $con_description
+ * @property string $conversation_description
  * @property int $client_id
  *
  * @property \App\Model\Entity\Client $client
@@ -27,8 +26,7 @@ class Conversation extends Entity
      * @var array<string, bool>
      */
     protected $_accessible = [
-        'con_type' => true,
-        'con_description' => true,
+        'conversation_description' => true,
         'client_id' => true,
         'client' => true,
     ];

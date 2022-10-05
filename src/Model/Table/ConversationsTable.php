@@ -58,16 +58,10 @@ class ConversationsTable extends Table
     public function validationDefault(Validator $validator): Validator
     {
         $validator
-            ->scalar('con_type')
-            ->maxLength('con_type', 255)
-            ->requirePresence('con_type', 'create')
-            ->notEmptyString('con_type');
-
-        $validator
-            ->scalar('con_description')
-            ->maxLength('con_description', 255)
-            ->requirePresence('con_description', 'create')
-            ->notEmptyString('con_description');
+            ->scalar('conversation_description')
+            ->maxLength('conversation_description', 255)
+            ->requirePresence('conversation_description', 'create')
+            ->notEmptyString('conversation_description');
 
         $validator
             ->integer('client_id')
