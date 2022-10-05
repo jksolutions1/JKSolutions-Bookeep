@@ -11,6 +11,7 @@ use Cake\Validation\Validator;
 /**
  * Clients Model
  *
+ * @property \App\Model\Table\UsersTable&\Cake\ORM\Association\BelongsTo $Users
  * @property \App\Model\Table\AppointmentsTable&\Cake\ORM\Association\HasMany $Appointments
  * @property \App\Model\Table\CompaniesTable&\Cake\ORM\Association\HasMany $Companies
  * @property \App\Model\Table\DocumentsTable&\Cake\ORM\Association\HasMany $Documents
@@ -46,10 +47,17 @@ class ClientsTable extends Table
         $this->setDisplayField('fullname');
         $this->setPrimaryKey('id');
 
+        $this->belongsTo('Users', [
+            'foreignKey' => 'user_id',
+            'joinType' => 'INNER',
+        ]);
         $this->hasMany('Appointments', [
             'foreignKey' => 'client_id',
         ]);
         $this->hasMany('Companies', [
+            'foreignKey' => 'client_id',
+        ]);
+        $this->hasMany('Conversations', [
             'foreignKey' => 'client_id',
         ]);
         $this->hasMany('Documents', [
@@ -57,10 +65,6 @@ class ClientsTable extends Table
         ]);
         $this->hasMany('Users', [
             'foreignKey' => 'client_id',
-        ]);
-
-        $this->belongsTo('Users', [
-            'foreignKey' => 'user_id',
         ]);
     }
 
@@ -83,10 +87,9 @@ class ClientsTable extends Table
             ->notEmptyString('lastname');
 
         $validator
-            ->integer('contactno')
+            ->scalar('contactno')
             ->requirePresence('contactno', 'create')
-            ->notEmptyString('contactno')
-            ->range('contactno',[0,9999999999]);
+            ->notEmptyString('contactno');
 
         $validator
             ->scalar('address')
@@ -103,11 +106,24 @@ class ClientsTable extends Table
             ->requirePresence('required_documents', 'create')
             ->notEmptyString('required_documents');
 
-
         $validator
             ->integer('user_id')
-            ->allowEmptyString('user_id');
+            ->notEmptyString('user_id');
 
         return $validator;
+    }
+
+    /**
+     * Returns a rules checker object that will be used for validating
+     * application integrity.
+     *
+     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
+     * @return \Cake\ORM\RulesChecker
+     */
+    public function buildRules(RulesChecker $rules): RulesChecker
+    {
+        $rules->add($rules->existsIn('user_id', 'Users'), ['errorField' => 'user_id']);
+
+        return $rules;
     }
 }

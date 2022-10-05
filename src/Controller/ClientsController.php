@@ -26,13 +26,6 @@ class ClientsController extends AppController
         $clients = $this->paginate($this->Clients);
 
         $this->set(compact('clients'));
-
-        $relativeClients = $this->fetchTable('Clients')->find('all', [
-            'conditions' => ['Clients.required_documents !=' => "null"],
-            'contain' => ['Documents', 'Companies']
-            ])->all();
-
-        $this->set('relativeClients',$relativeClients );
     }
 
     /**
@@ -45,7 +38,7 @@ class ClientsController extends AppController
     public function view($id = null)
     {
         $client = $this->Clients->get($id, [
-            'contain' => ['Appointments', 'Companies', 'Documents', 'Users'],
+            'contain' => ['Users', 'Appointments', 'Companies', 'Conversations', 'Documents'],
         ]);
 
         $this->set(compact('client'));
@@ -106,25 +99,12 @@ class ClientsController extends AppController
     {
         $this->request->allowMethod(['post', 'delete']);
         $client = $this->Clients->get($id);
-        try {
         if ($this->Clients->delete($client)) {
             $this->Flash->success(__('The client has been deleted.'));
         } else {
             $this->Flash->error(__('The client could not be deleted. Please, try again.'));
         }
-        } catch (\Exception $e) {
-            $error = 'The item you are trying to delete is associated with other records.';
-            $this->Flash->error(__($error));
-        }
 
         return $this->redirect(['action' => 'index']);
-    }
-
-    public function isAuthorized($user) {
-        if ($this->Auth->user('role') == 'admin') {
-            return true;
-        }
-        
-        return false;
     }
 }

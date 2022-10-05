@@ -17,6 +17,7 @@
                     echo $this->Form->control('address',array('type'=>'text','size'=>'8'));
                     echo $this->Form->control('email',array('type'=>'text','maxlength'=>'40','size'=>'8'));
                     echo $this->Form->control('required_documents',array('type'=>'text','size'=>'8'));
+
                 ?>
 
             <?= $this->Form->button(__('Submit')) ?>

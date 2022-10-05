@@ -11,16 +11,16 @@ use Cake\ORM\Entity;
  * @property int $id
  * @property string $firstname
  * @property string $lastname
- * @property int $contactno
+ * @property string $contactno
  * @property string $address
  * @property string $email
  * @property string $required_documents
- * @property int $payment
+ * @property int $user_id
  *
  * @property \App\Model\Entity\Appointment[] $appointments
  * @property \App\Model\Entity\Company[] $companies
  * @property \App\Model\Entity\Document[] $documents
- * @property \App\Model\Entity\User[] $users
+ * @property \App\Model\Entity\User $user
  */
 class Client extends Entity
 {
@@ -44,15 +44,6 @@ class Client extends Entity
         'appointments' => true,
         'companies' => true,
         'documents' => true,
-        'users' => true,
+        'user' => true,
     ];
-
-    protected $_virtual = [
-        'fullname'
-    ];
-
-    protected function _getFullname()
-{
-    return $this->firstname . ' ' . $this->lastname;
-}
 }
