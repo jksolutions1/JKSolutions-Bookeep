@@ -26,6 +26,14 @@ class ClientsController extends AppController
         $clients = $this->paginate($this->Clients);
 
         $this->set(compact('clients'));
+
+        $relativeClients = $this->fetchTable('Clients')->find('all', [
+            'conditions' => ['Clients.required_documents !=' => "null"],
+            'contain' => ['Documents', 'Companies']
+            ])->all();
+
+        $this->set('relativeClients',$relativeClients );
+
     }
 
     /**
