@@ -46,4 +46,14 @@ class Client extends Entity
         'documents' => true,
         'user' => true,
     ];
+
+    protected $_virtual = [
+        'fullname'
+    ];
+
+    protected function _getFullname()
+{
+    return $this->firstname . ' ' . $this->lastname;
+}
+
 }
