@@ -17,16 +17,12 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['bl
                             <?= $this->Number->format($conversation->id) ?>
                     </span>
                     <span class="d-flex mb-2">
-                            <strong class="mr-1"><th><?= __('Conversation Type') ?></th>:</strong> 
-                            <?= h($conversation->con_type) ?>
+                            <strong class="mr-1"><th><?= __('Client Name') ?></th>:</strong> 
+                            <?= $conversation->has('client') ? $this->Html->link($conversation->client->fullname, ['controller' => 'Clients', 'action' => 'view', $conversation->client->id]) : '' ?>
                     </span>
                     <span class="d-flex mb-2">
                             <strong class="mr-1"><th><?= __('Conversation Description') ?></th>:</strong> 
-                            <?= h($conversation->con_description) ?>
-                    </span>
-                    <span class="d-flex mb-2">
-                            <strong class="mr-1"><th><?= __('Client Name') ?></th>:</strong> 
-                            <?= $conversation->has('client') ? $this->Html->link($conversation->client->fullname, ['controller' => 'Clients', 'action' => 'view', $conversation->client->id]) : '' ?>
+                            <?= $this->Text->autoParagraph(h($conversation->conversation_description)); ?>
                     </span>
                 </div>
             </div>
