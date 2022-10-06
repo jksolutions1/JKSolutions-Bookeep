@@ -18,8 +18,8 @@
                     echo $this->Form->input('date', [
                         'type' => 'date',
                         'required',
-                        'default' => date('Y-m-d'),
-                        'min' => date('Y-m-d')
+                        'default' => date('Y-m-d h:i:sa'),
+                        'min' => date('Y-m-d h:i:sa')
                     ]);
 
                     echo $this->Form->label('Appointment Place(address)');

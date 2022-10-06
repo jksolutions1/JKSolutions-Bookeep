@@ -47,7 +47,7 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['bl
                     <td><?= h($document->docfile) ?></td>
 
                     <!-- Document Downloadable link -->
-                    <td><?= $this->Html->link('Download', '../files/Documents/docfile/'$document->docfile.,['download'=>$document->docfile]) ?></td>
+                    <td><?= $this->Html->link('Download', '../files/Documents/docfile/'.$document->docfile,['download'=>$document->docfile]) ?></td>
 
                     <td class="actions">
                         <?= $this->Html->link(__('View'), ['action' => 'view', $document->id]) ?>
