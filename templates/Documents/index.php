@@ -21,21 +21,21 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['bl
                     <th><?= $this->Paginator->sort('client_id') ?></th>
                     <th><?= $this->Paginator->sort('Document Type') ?></th>
                     <th><?= $this->Paginator->sort('Document Name') ?></th>
-                    
+
                     <!-- Document Downloadable link -->
                     <th><?= $this->Paginator->sort('Attachment') ?></th>
-                    
+
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>
             </thead>
             <tbody>
 
             <?php if (!$isAdmin ) {
-                
+
                 $myDocuments = $usersDocuments;
 
             }
-            
+
             else {
                 $myDocuments = $documents;
             } ?>
@@ -45,15 +45,15 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['bl
                     <td><?= $document->has('client') ? $this->Html->link($document->client->fullname, ['controller' => 'Clients', 'action' => 'view', $document->client->id]) : '' ?></td>
                     <td><?= h($document->doctype) ?></td>
                     <td><?= h($document->docfile) ?></td>
-                    
+
                     <!-- Document Downloadable link -->
-                    <td><?= $this->Html->link('Download', '../files/Documents/docfile/Uploaded_file_location.txt',['download'=>$document->docfile]) ?></td>
-                    
+                    <td><?= $this->Html->link('Download', '../files/Documents/docfile/'$document->docfile.,['download'=>$document->docfile]) ?></td>
+
                     <td class="actions">
                         <?= $this->Html->link(__('View'), ['action' => 'view', $document->id]) ?>
                         <?= $this->Html->link(__('Edit'), ['action' => 'edit', $document->id]) ?>
                         <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $document->id], ['confirm' => __('Are you sure you want to delete # {0}?', $document->id)]) ?>
-                        
+
                     </td>
                 </tr>
                 <?php endforeach; ?>
