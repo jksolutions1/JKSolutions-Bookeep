@@ -15,12 +15,7 @@
                     echo $this->Form->control('company_id', ['options' => $companies]);
 
                     echo $this->Form->label('Appointment Date');
-                    echo $this->Form->input('date', [
-                        'type' => 'dateTime',
-                        'required',
-                        'default' => date('Y-m-d h:i:sa'),
-                        'min' => date('Y-m-d h:i:sa')
-                    ]);
+                    echo $this->Form->control('date');
 
                     echo $this->Form->label('Appointment Place(address)');
                     $options = ['1' => 'Home (Virtual meeting)', '2' => 'At Bookeep company (Face meeting)', '3' => 'Option3', '4' => 'Option4'];
@@ -33,3 +28,4 @@
             <?= $this->Form->end() ?>
         </div>
     </div>
+

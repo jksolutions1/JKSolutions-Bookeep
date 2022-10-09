@@ -76,7 +76,6 @@ class AppointmentsTable extends Table
 
         $validator
             ->dateTime('date')
-            ->requirePresence('date', 'create')
             ->notEmptyDateTime('date');
 
         $validator

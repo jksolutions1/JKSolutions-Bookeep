@@ -6,7 +6,6 @@
  * @var string[]|\Cake\Collection\CollectionInterface $companies
  */
 ?>
-
 <h1 class="h3 mb-2 text-gray-800">Edit Appointment</h1>
     <div class = "row">
         <div class = "col-lg-4">
@@ -16,6 +15,7 @@
                     echo $this->Form->control('company_id', ['options' => $companies]);
 
                     echo $this->Form->label('Appointment Date');
+                    echo $this->Form->control('date');
                     echo $this->Form->input('date', [
                         'type' => 'dateTime',
                         'required',
@@ -28,8 +28,6 @@
                     echo $this->Form->select('address', $options, ['empty' => true]);
 
                     echo $this->Form->control('appointment_description',array('type'=>'text','maxlength'=>'100','size'=>'8'));
-
-
                 ?>
             
             <?= $this->Form->button(__('Submit')) ?>
