@@ -40,9 +40,7 @@
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center">
-                <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-solid fa-book"></i>
-                </div>
+                <img width = "100", height = "100"  src="https://i.ibb.co/WHqfpXD/310066288-500771725248014-7151549807630858839-n.pngg">
                 <div class="sidebar-brand-text mx-3">Bookeep</div>
             </a>
 

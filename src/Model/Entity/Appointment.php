@@ -12,7 +12,7 @@ use Cake\ORM\Entity;
  * @property string|null $appointment_description
  * @property int $client_id
  * @property int $company_id
- * @property \Cake\I18n\FrozenDate $date
+ * @property \Cake\I18n\FrozenTime $date
  * @property string|null $address
  *
  * @property \App\Model\Entity\Client $client

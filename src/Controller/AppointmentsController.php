@@ -45,8 +45,8 @@ class AppointmentsController extends AppController
         // send email
 
 
-        $currentTime = FrozenTime::now();
-        $maxTime = $currentTime->addDays(3);
+        $currentTime = date('Y-m-d h:i:sa', time());
+        $maxTime = date("Y-m-d h:i:sa",strtotime("+3 day"));
         $relativeAppointments = $this->fetchTable('Appointments')->find('all', [
             'conditions' => ['Appointments.date <=' => $maxTime],
             'contain' => ['Clients', 'Companies']

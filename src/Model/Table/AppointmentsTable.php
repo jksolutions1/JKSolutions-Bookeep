@@ -68,19 +68,16 @@ class AppointmentsTable extends Table
 
         $validator
             ->integer('client_id')
-            ->requirePresence('client_id', 'create')
             ->notEmptyString('client_id');
 
         $validator
             ->integer('company_id')
-            ->requirePresence('company_id', 'create')
             ->notEmptyString('company_id');
 
         $validator
-            ->date('date')
+            ->dateTime('date')
             ->requirePresence('date', 'create')
-            ->notEmptyDate('date');
-            
+            ->notEmptyDateTime('date');
 
         $validator
             ->scalar('address')
@@ -104,4 +101,3 @@ class AppointmentsTable extends Table
         return $rules;
     }
 }
-

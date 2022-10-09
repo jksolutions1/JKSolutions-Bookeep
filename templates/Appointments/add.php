@@ -16,7 +16,7 @@
 
                     echo $this->Form->label('Appointment Date');
                     echo $this->Form->input('date', [
-                        'type' => 'date',
+                        'type' => 'dateTime',
                         'required',
                         'default' => date('Y-m-d h:i:sa'),
                         'min' => date('Y-m-d h:i:sa')
