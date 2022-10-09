@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 05, 2022 at 11:45 AM
+-- Generation Time: Oct 09, 2022 at 11:56 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `cake`
+-- Database: `fit3047 team 105`
 --
 
 -- --------------------------------------------------------
@@ -32,7 +32,7 @@ CREATE TABLE `appointments` (
   `appointment_description` text DEFAULT NULL,
   `client_id` int(11) NOT NULL,
   `company_id` int(11) NOT NULL,
-  `date` date NOT NULL,
+  `date` datetime NOT NULL,
   `address` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -41,7 +41,13 @@ CREATE TABLE `appointments` (
 --
 
 INSERT INTO `appointments` (`id`, `appointment_description`, `client_id`, `company_id`, `date`, `address`) VALUES
-(14, 'asdfad', 6, 131, '2022-11-06', '1');
+(14, 'asdfad', 6, 131, '2022-11-06 00:00:00', '1'),
+(12938, 'asdf', 6, 131, '2022-10-06 07:52:02', 'adsgasdg'),
+(12953, '', 6, 131, '2022-10-09 09:37:01', '1'),
+(12959, '', 6, 131, '2022-10-11 09:49:55', ''),
+(12960, '', 6, 131, '2022-10-18 01:50:09', ''),
+(12961, '', 6, 131, '2022-10-12 23:55:51', ''),
+(12962, '', 6, 131, '2022-10-13 13:56:06', '');
 
 -- --------------------------------------------------------
 
@@ -137,7 +143,13 @@ CREATE TABLE `documents` (
 --
 
 INSERT INTO `documents` (`id`, `doctype`, `client_id`, `docfile`, `doc_date`) VALUES
-(11, 'Client Engagement Agreement', 6, '', '0000-00-00');
+(12, 'Client Engagement Agreement', 6, 'phpcs.xml', '0000-00-00'),
+(13, 'Client Engagement Agreement', 6, 'phpstan.neon', '0000-00-00'),
+(14, 'Client Engagement Agreement', 6, 'login.html', '0000-00-00'),
+(15, 'Authority for Agency', 6, 'phpstan.neon', '0000-00-00'),
+(16, 'Client Engagement Agreement', 6, '.gitignore', '0000-00-00'),
+(17, 'Client Engagement Agreement', 6, 'index.php', '0000-00-00'),
+(18, 'Option3', 6, 'login.html', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -247,7 +259,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `appointments`
 --
 ALTER TABLE `appointments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12963;
 
 --
 -- AUTO_INCREMENT for table `clients`
@@ -277,7 +289,7 @@ ALTER TABLE `conversationtypes`
 -- AUTO_INCREMENT for table `documents`
 --
 ALTER TABLE `documents`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `staffs`
