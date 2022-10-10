@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主机： 127.0.0.1
--- 生成日期： 2022-10-10 06:02:48
+-- 生成日期： 2022-10-10 07:39:20
 -- 服务器版本： 10.4.24-MariaDB
 -- PHP 版本： 8.1.6
 
@@ -134,7 +134,7 @@ CREATE TABLE `documents` (
   `doctype` varchar(255) NOT NULL,
   `client_id` int(11) NOT NULL,
   `docfile` varchar(255) NOT NULL,
-  `doc_date` date NOT NULL
+  `doc_date` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -142,13 +142,14 @@ CREATE TABLE `documents` (
 --
 
 INSERT INTO `documents` (`id`, `doctype`, `client_id`, `docfile`, `doc_date`) VALUES
-(12, 'Client Engagement Agreement', 6, 'phpcs.xml', '0000-00-00'),
-(13, 'Client Engagement Agreement', 6, 'phpstan.neon', '0000-00-00'),
-(14, 'Client Engagement Agreement', 6, 'login.html', '0000-00-00'),
-(15, 'Authority for Agency', 6, 'phpstan.neon', '0000-00-00'),
-(16, 'Client Engagement Agreement', 6, '.gitignore', '0000-00-00'),
-(17, 'Client Engagement Agreement', 6, 'index.php', '0000-00-00'),
-(18, 'Option3', 6, 'login.html', '0000-00-00');
+(12, 'Client Engagement Agreement', 6, 'phpcs.xml', '0000-00-00 00:00:00'),
+(13, 'Client Engagement Agreement', 6, 'phpstan.neon', '0000-00-00 00:00:00'),
+(14, 'Client Engagement Agreement', 6, 'login.html', '0000-00-00 00:00:00'),
+(15, 'Authority for Agency', 6, 'phpstan.neon', '0000-00-00 00:00:00'),
+(16, 'Client Engagement Agreement', 6, '.gitignore', '0000-00-00 00:00:00'),
+(17, 'Client Engagement Agreement', 6, 'index.php', '0000-00-00 00:00:00'),
+(18, 'Option3', 6, 'login.html', '0000-00-00 00:00:00'),
+(19, 'Client Engagement Agreement', 6, 'login.html', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -288,7 +289,7 @@ ALTER TABLE `conversationtypes`
 -- 使用表AUTO_INCREMENT `documents`
 --
 ALTER TABLE `documents`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- 使用表AUTO_INCREMENT `staffs`
