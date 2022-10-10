@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Oct 09, 2022 at 11:56 AM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.6
+-- 主机： 127.0.0.1
+-- 生成日期： 2022-10-10 06:02:48
+-- 服务器版本： 10.4.24-MariaDB
+-- PHP 版本： 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `fit3047 team 105`
+-- 数据库： `fit3047 team 105`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `appointments`
+-- 表的结构 `appointments`
 --
 
 CREATE TABLE `appointments` (
@@ -32,18 +32,17 @@ CREATE TABLE `appointments` (
   `appointment_description` text DEFAULT NULL,
   `client_id` int(11) NOT NULL,
   `company_id` int(11) NOT NULL,
-  `date` datetime NOT NULL,
+  `date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE current_timestamp(),
   `address` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `appointments`
+-- 转存表中的数据 `appointments`
 --
 
 INSERT INTO `appointments` (`id`, `appointment_description`, `client_id`, `company_id`, `date`, `address`) VALUES
 (14, 'asdfad', 6, 131, '2022-11-06 00:00:00', '1'),
 (12938, 'asdf', 6, 131, '2022-10-06 07:52:02', 'adsgasdg'),
-(12953, '', 6, 131, '2022-10-09 09:37:01', '1'),
 (12959, '', 6, 131, '2022-10-11 09:49:55', ''),
 (12960, '', 6, 131, '2022-10-18 01:50:09', ''),
 (12961, '', 6, 131, '2022-10-12 23:55:51', ''),
@@ -52,7 +51,7 @@ INSERT INTO `appointments` (`id`, `appointment_description`, `client_id`, `compa
 -- --------------------------------------------------------
 
 --
--- Table structure for table `clients`
+-- 表的结构 `clients`
 --
 
 CREATE TABLE `clients` (
@@ -67,7 +66,7 @@ CREATE TABLE `clients` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `clients`
+-- 转存表中的数据 `clients`
 --
 
 INSERT INTO `clients` (`id`, `firstname`, `lastname`, `contactno`, `address`, `email`, `required_documents`, `user_id`) VALUES
@@ -76,7 +75,7 @@ INSERT INTO `clients` (`id`, `firstname`, `lastname`, `contactno`, `address`, `e
 -- --------------------------------------------------------
 
 --
--- Table structure for table `companies`
+-- 表的结构 `companies`
 --
 
 CREATE TABLE `companies` (
@@ -88,7 +87,7 @@ CREATE TABLE `companies` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `companies`
+-- 转存表中的数据 `companies`
 --
 
 INSERT INTO `companies` (`id`, `name`, `address`, `contactno`, `client_id`) VALUES
@@ -97,7 +96,7 @@ INSERT INTO `companies` (`id`, `name`, `address`, `contactno`, `client_id`) VALU
 -- --------------------------------------------------------
 
 --
--- Table structure for table `conversations`
+-- 表的结构 `conversations`
 --
 
 CREATE TABLE `conversations` (
@@ -107,7 +106,7 @@ CREATE TABLE `conversations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='Keep all conversations with clients';
 
 --
--- Dumping data for table `conversations`
+-- 转存表中的数据 `conversations`
 --
 
 INSERT INTO `conversations` (`id`, `conversation_description`, `client_id`) VALUES
@@ -116,7 +115,7 @@ INSERT INTO `conversations` (`id`, `conversation_description`, `client_id`) VALU
 -- --------------------------------------------------------
 
 --
--- Table structure for table `conversationtypes`
+-- 表的结构 `conversationtypes`
 --
 
 CREATE TABLE `conversationtypes` (
@@ -127,7 +126,7 @@ CREATE TABLE `conversationtypes` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `documents`
+-- 表的结构 `documents`
 --
 
 CREATE TABLE `documents` (
@@ -139,7 +138,7 @@ CREATE TABLE `documents` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `documents`
+-- 转存表中的数据 `documents`
 --
 
 INSERT INTO `documents` (`id`, `doctype`, `client_id`, `docfile`, `doc_date`) VALUES
@@ -154,7 +153,7 @@ INSERT INTO `documents` (`id`, `doctype`, `client_id`, `docfile`, `doc_date`) VA
 -- --------------------------------------------------------
 
 --
--- Table structure for table `staffs`
+-- 表的结构 `staffs`
 --
 
 CREATE TABLE `staffs` (
@@ -169,7 +168,7 @@ CREATE TABLE `staffs` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- 表的结构 `users`
 --
 
 CREATE TABLE `users` (
@@ -183,7 +182,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `users`
+-- 转存表中的数据 `users`
 --
 
 INSERT INTO `users` (`id`, `firstname`, `lastname`, `role`, `client_id`, `username`, `password`) VALUES
@@ -193,11 +192,11 @@ INSERT INTO `users` (`id`, `firstname`, `lastname`, `role`, `client_id`, `userna
 (15, 'ha', 'asf', 'regular', NULL, 'test', '$2y$10$/ys00YsXSKD/tl9a5L4WE.Gizet1elUPCY1e.MLiKW.tDrp8g.t/m');
 
 --
--- Indexes for dumped tables
+-- 转储表的索引
 --
 
 --
--- Indexes for table `appointments`
+-- 表的索引 `appointments`
 --
 ALTER TABLE `appointments`
   ADD PRIMARY KEY (`id`),
@@ -205,141 +204,141 @@ ALTER TABLE `appointments`
   ADD KEY `company_id` (`company_id`);
 
 --
--- Indexes for table `clients`
+-- 表的索引 `clients`
 --
 ALTER TABLE `clients`
   ADD PRIMARY KEY (`id`),
   ADD KEY `clients_user_id_fk` (`user_id`);
 
 --
--- Indexes for table `companies`
+-- 表的索引 `companies`
 --
 ALTER TABLE `companies`
   ADD PRIMARY KEY (`id`),
   ADD KEY `client_id` (`client_id`);
 
 --
--- Indexes for table `conversations`
+-- 表的索引 `conversations`
 --
 ALTER TABLE `conversations`
   ADD PRIMARY KEY (`id`),
   ADD KEY `client_id` (`client_id`);
 
 --
--- Indexes for table `conversationtypes`
+-- 表的索引 `conversationtypes`
 --
 ALTER TABLE `conversationtypes`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `documents`
+-- 表的索引 `documents`
 --
 ALTER TABLE `documents`
   ADD PRIMARY KEY (`id`),
   ADD KEY `client_id` (`client_id`);
 
 --
--- Indexes for table `staffs`
+-- 表的索引 `staffs`
 --
 ALTER TABLE `staffs`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `users`
+-- 表的索引 `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD KEY `FK_USERS_CLIENTS` (`client_id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- 在导出的表使用AUTO_INCREMENT
 --
 
 --
--- AUTO_INCREMENT for table `appointments`
+-- 使用表AUTO_INCREMENT `appointments`
 --
 ALTER TABLE `appointments`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12963;
 
 --
--- AUTO_INCREMENT for table `clients`
+-- 使用表AUTO_INCREMENT `clients`
 --
 ALTER TABLE `clients`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=455;
 
 --
--- AUTO_INCREMENT for table `companies`
+-- 使用表AUTO_INCREMENT `companies`
 --
 ALTER TABLE `companies`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=133;
 
 --
--- AUTO_INCREMENT for table `conversations`
+-- 使用表AUTO_INCREMENT `conversations`
 --
 ALTER TABLE `conversations`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `conversationtypes`
+-- 使用表AUTO_INCREMENT `conversationtypes`
 --
 ALTER TABLE `conversationtypes`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `documents`
+-- 使用表AUTO_INCREMENT `documents`
 --
 ALTER TABLE `documents`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
--- AUTO_INCREMENT for table `staffs`
+-- 使用表AUTO_INCREMENT `staffs`
 --
 ALTER TABLE `staffs`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `users`
+-- 使用表AUTO_INCREMENT `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
--- Constraints for dumped tables
+-- 限制导出的表
 --
 
 --
--- Constraints for table `appointments`
+-- 限制表 `appointments`
 --
 ALTER TABLE `appointments`
   ADD CONSTRAINT `appointments_ibfk_1` FOREIGN KEY (`client_id`) REFERENCES `clients` (`id`),
   ADD CONSTRAINT `appointments_ibfk_2` FOREIGN KEY (`company_id`) REFERENCES `companies` (`id`);
 
 --
--- Constraints for table `clients`
+-- 限制表 `clients`
 --
 ALTER TABLE `clients`
   ADD CONSTRAINT `clients_user_id_fk` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 --
--- Constraints for table `companies`
+-- 限制表 `companies`
 --
 ALTER TABLE `companies`
   ADD CONSTRAINT `companies_ibfk_1` FOREIGN KEY (`client_id`) REFERENCES `clients` (`id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `conversations`
+-- 限制表 `conversations`
 --
 ALTER TABLE `conversations`
   ADD CONSTRAINT `conversations_ibfk_1` FOREIGN KEY (`client_id`) REFERENCES `clients` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `documents`
+-- 限制表 `documents`
 --
 ALTER TABLE `documents`
   ADD CONSTRAINT `documents_ibfk_1` FOREIGN KEY (`client_id`) REFERENCES `clients` (`id`);
 
 --
--- Constraints for table `users`
+-- 限制表 `users`
 --
 ALTER TABLE `users`
   ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`client_id`) REFERENCES `clients` (`id`);

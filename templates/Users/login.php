@@ -7,6 +7,7 @@
 <br>
 <div class="index login large-4 medium-4 large-offset-4 medium-offset-4 columns input-group">
 	<div class="panel">
+		<img width = "300", height = "300"  src="https://i.ibb.co/WHqfpXD/310066288-500771725248014-7151549807630858839-n.pngg">
 		<h2 class="text-center">Login</h2>
 		<?= $this->Form->create(); ?>
 		<br>

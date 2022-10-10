@@ -9,7 +9,7 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['bl
 foreach ($relativeClients as $rclient):
     if ($rclient->required_documents != "null"){
             $to = $rclient->email;//$this->$clients->email;//destination email
-            $subject ="Appointment Notification";//mail title
+            $subject ="Documentation Notification";//mail title
             $message ="Please don't forget to update compulsory documents.";//mail content
             $from = "bookeep@u22s2105.monash-ie.me";
             $headers = "From: $from";
