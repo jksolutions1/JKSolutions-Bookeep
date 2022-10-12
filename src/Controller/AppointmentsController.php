@@ -49,6 +49,7 @@ class AppointmentsController extends AppController
         ])->all();
 
 
+        // Set variables to be accessed by front end
         $this->set('relativeAppointments', $relativeAppointments);
         $this->set('currentTime', $currentTime);
         $this->set('usersAppointments', $usersAppointments);
