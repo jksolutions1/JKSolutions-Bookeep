@@ -5,9 +5,16 @@ namespace App\Controller;
 use App\Controller\AppController;
 use Cake\I18n\FrozenTime;
 
+/**
+ * Dashboard Controller
+ *
+ */
 class DashboardController extends AppController
 {
-
+    /**
+     * index method
+     *
+     */
     public function index()
     {
         $this->paginate = [

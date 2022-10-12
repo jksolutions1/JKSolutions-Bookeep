@@ -1,11 +1,13 @@
 <?php
 /**
+ * page view for adding client document page
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Clientdocument $clientdocument
  * @var \Cake\Collection\CollectionInterface|string[] $clients
  * @var \Cake\Collection\CollectionInterface|string[] $documents
  */
 ?>
+<!-- The view of add client document page -->
 <div class="row">
     <aside class="column">
         <div class="side-nav">
@@ -13,6 +15,7 @@
             <?= $this->Html->link(__('List Clientdocuments'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
         </div>
     </aside>
+    
     <div class="column-responsive column-80">
         <div class="clientdocuments form content">
             <?= $this->Form->create($clientdocument) ?>

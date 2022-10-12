@@ -1,5 +1,6 @@
 <?php
 /**
+ * This is used to show the admin page
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Admin[]|\Cake\Collection\CollectionInterface $admins
  */

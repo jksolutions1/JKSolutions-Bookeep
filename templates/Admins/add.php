@@ -1,5 +1,6 @@
 <?php
 /**
+ * This is used for add admin users
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Admin $admin
  * @var \Cake\Collection\CollectionInterface|string[] $users

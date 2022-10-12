@@ -7,11 +7,15 @@ echo $this->Html->css('/vendor/datatables/dataTables.bootstrap4.min.css', ['bloc
 echo $this->Html->script('/vendor/datatables/jquery.dataTables.min.js', ['block' => true]);
 echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['block' => true]);
 ?>
-
+<!-- The view of view page to for one company -->
+<!-- Set the title -->
 <div class="column-responsive column-80">
     <div class="companies view content">
         <h2 class="h3 mb-2 text-gray-800">Company Details</h2>
             <div class = "row">
+
+                <!-- Set the content view -->
+                <!-- Set the view of text bar -->
                 <div class = "col-lg-4">
                     <span class="d-flex mb-2">
                             <strong class="mr-1"><th><?= __('Id') ?></th>:</strong> 
@@ -35,12 +39,17 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['bl
                     </span>
                 </div>
 
+                <!-- Set the related table view beside the text view -->
                 <div class = "col-lg-8">
+
+                    <!-- The related appointment table view -->
                     <div class="related">
                         <h4><?= __('Related Appointments') ?></h4>
                         <?php if (!empty($company->appointments)) : ?>
                         <div class="table-responsive">
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+
+                                <!-- Show the column name in top of table -->
                                 <thead>
                                     <tr>
                                         <th><?= $this->Paginator->sort('id') ?></th>
@@ -50,6 +59,8 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['bl
                                         <th class="actions"><?= __('Actions') ?></th>
                                     </tr>
                                 </thead>
+
+                                <!-- Show the data in table -->
                                 <tbody>
                                 <?php foreach ($company->appointments as $appointments) : ?>
                                     <tr>

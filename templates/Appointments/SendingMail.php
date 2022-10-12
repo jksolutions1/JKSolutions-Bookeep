@@ -1,5 +1,6 @@
 <?php
 /**
+ * This page is not used for now, it should be run by cron, used to send the email
  * @var \App\Model\Entity\Appointment $appointment
  * @var string[]|\Cake\Collection\CollectionInterface $clients
  * @var string[]|\Cake\Collection\CollectionInterface $companies

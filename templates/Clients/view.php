@@ -4,11 +4,15 @@
  * @var \App\Model\Entity\Client $client
  */
 ?>
-
+<!-- The view of view page to for one client -->
+<!-- Set the title -->
 <div class="column-responsive column-80">
     <div class="clients view content">
         <h2 class="h3 mb-2 text-gray-800">Client Details</h2>
             <div class = "row">
+
+                <!-- Set the content view -->
+                <!-- Set the view of text bar -->
                 <div class = "col-lg-4">
                     <span class="d-flex mb-2">
                             <strong class="mr-1"><th><?= __('Id') ?></th>:</strong> 
@@ -35,11 +39,17 @@
                             <?= $this->Text->autoParagraph(h($client->required_documents)); ?>
                     </span>
                 </div>
+
+                <!-- Set the related table view beside the text view -->
                 <div class = "col-lg-8">
+
+                    <!-- The related appointment table view -->
                     <div class="related">
                         <h4><?= __('Related Appointments') ?></h4>
                         <?php if (!empty($client->appointments)) : ?>
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            
+                            <!-- Show the column name in top of table -->
                             <thead>
                                 <tr>
                                     <th><?= $this->Paginator->sort('appointment description') ?></th>
@@ -48,12 +58,16 @@
                                     <th class="actions"><?= __('Actions') ?></th>
                                 </tr>
                             </thead>
+
+                            <!-- Show the data in table -->
                             <tbody>
                                 <?php foreach ($client->appointments as $appointments) : ?>
                                 <tr>
                                     <td><?= h($appointments->appointment_description) ?></td>
                                     <td><?= h($appointments->company_id) ?></td>
                                     <td><?= h($appointments->date->format('d/m/y')) ?></td>
+
+                                    <!-- The action column in the last part of the table -->
                                     <td class="actions">
                                         <?= $this->Html->link(__('View'), ['controller' => 'Appointments', 'action' => 'view', $appointments->id]) ?>
                                         <?= $this->Html->link(__('Edit'), ['controller' => 'Appointments', 'action' => 'edit', $appointments->id]) ?>
@@ -62,14 +76,19 @@
                                 </tr>
                                 <?php endforeach; ?>
                             </tbody>
+
                         </table>
                     </div>
                     <?php endif; ?>
+
+                    <!-- The related companies table view -->
                     <div class="related">
                         <h4><?= __('Related Companies') ?></h4>
                         <?php if (!empty($client->companies)) : ?>
                         <div class="table-responsive">
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+
+                                <!-- Show the column name in top of table -->
                                 <thead>
                                     <tr>
                                         <th><?= $this->Paginator->sort('name') ?></th>
@@ -77,11 +96,15 @@
                                         <th class="actions"><?= __('Actions') ?></th>
                                     </tr>
                                 </thead>
+
+                                <!-- Show the data in table -->
                                 <tbody>
                                     <?php foreach ($client->companies as $companies) : ?>
                                     <tr>
                                         <td><?= h($companies->name)?></td>
                                         <td><?= $this->Number->format($companies->contactno) ?></td>
+
+                                        <!-- The action column in the last part of the table -->
                                         <td class="actions">
                                         <?= $this->Html->link(__('View'), ['controller' => 'Companies', 'action' => 'view', $companies->id]) ?>
                                         <?= $this->Html->link(__('Edit'), ['controller' => 'Companies', 'action' => 'edit', $companies->id]) ?>
@@ -94,11 +117,15 @@
                         </div>
                         <?php endif; ?>
                     </div>
+
+                    <!-- The related documents table view -->
                     <div class="related">
                             <h4><?= __('Related Documents') ?></h4>
                             <?php if (!empty($client->documents)) : ?>
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+
+                                    <!-- Show the column name in top of table -->
                                     <thead>
                                         <tr>
                                             <th><?= $this->Paginator->sort('id') ?></th>
@@ -107,12 +134,16 @@
                                             <th class="actions"><?= __('Actions') ?></th>
                                         </tr>
                                     </thead>
+
+                                    <!-- Show the data in table -->
                                     <tbody>
                                         <?php foreach ($client->documents as $document) : ?>
                                         <tr>
                                             <td><?= $this->Number->format($document->id) ?></td>
                                             <td><?= h($document->doctype) ?></td>
                                             <td><?= h($document->docfile) ?></td>
+
+                                            <!-- The action column in the last part of the table -->
                                             <td class="actions">
                                                 <?= $this->Html->link(__('View'), ['action' => 'view', $document->id]) ?>
                                                 <?= $this->Html->link(__('Edit'), ['action' => 'edit', $document->id]) ?>

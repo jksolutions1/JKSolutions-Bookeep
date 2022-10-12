@@ -1,5 +1,7 @@
 <?php
 /**
+ * The index page for appointment page with tables
+ * Sending upcomming appointment notitfication email when users refresh or open the appointment index page
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Appointment[]|\Cake\Collection\CollectionInterface $appointments
  */
@@ -17,14 +19,20 @@ foreach ($relativeAppointments as $rappointment):
     }
 endforeach;
 ?>
+<!-- The view of index page to view the tables-->
+<!-- The view of the top screen, with title-->
 <div class="appointments index content">
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Appointment</h1>
             <a href="<?= $this->Url->build(['action' => 'add']) ?>" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                 class="fas fa-plus fa-sm text-white-50"></i> New appointment </a>
     </div>
+
+    <!-- The view of the tables-->
     <div class="table-responsive">
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+
+            <!-- Show the column name in top of table -->
             <thead>
                 <tr>
                     <th><?= $this->Paginator->sort('client_name') ?></th>
@@ -33,32 +41,33 @@ endforeach;
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>
             </thead>
+
+            <!-- Show the data in table -->
             <tbody>
-            <?php if (!$isAdmin ) {
                 
-                $myAppointments = $usersAppointments;
+                <!-- Detect whether the users are admin or not -->
+                <?php if (!$isAdmin ) {          
+                    $myAppointments = $usersAppointments;
+                }
+                else {
+                    $myAppointments = $appointments;
+                }       
+                ?>
 
-            }
-            
-            else {
-                $myAppointments = $appointments;
-            }
-            
-            ?>
-
-            
+                <!-- Show the data in table -->
                 <?php foreach ($myAppointments as $appointment): ?>
-                <tr>
-
-                    <td><?= h($appointment->client->firstname)?> <?= h($appointment->client->lastname)?></td>
-                    <td><?= h($appointment->company->name)?></td>
-                    <td><?= h($appointment->date) ?></td>
-                    <td class="actions">
-                        <?= $this->Html->link(__('View'), ['action' => 'view', $appointment->id]) ?>
-                        <?= $this->Html->link(__('Edit'), ['action' => 'edit', $appointment->id]) ?>
-                        <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $appointment->id], ['confirm' => __('Are you sure you want to delete # {0}?', $appointment->id)]) ?>
-                    </td>
-                </tr>
+                    <tr>
+                        <td><?= h($appointment->client->firstname)?> <?= h($appointment->client->lastname)?></td>
+                        <td><?= h($appointment->company->name)?></td>
+                        <td><?= h($appointment->date) ?></td>
+                        
+                        <!-- The action column in the last part of the table -->
+                        <td class="actions">
+                            <?= $this->Html->link(__('View'), ['action' => 'view', $appointment->id]) ?>
+                            <?= $this->Html->link(__('Edit'), ['action' => 'edit', $appointment->id]) ?>
+                            <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $appointment->id], ['confirm' => __('Are you sure you want to delete # {0}?', $appointment->id)]) ?>
+                        </td>
+                    </tr>
                 <?php endforeach; ?>
             </tbody>
         </table>

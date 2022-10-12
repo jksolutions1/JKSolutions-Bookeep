@@ -1,5 +1,6 @@
 <?php
 /**
+ * View page of the admin page
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Admin $admin
  */

@@ -1,5 +1,6 @@
 <?php
 /**
+ * This is used to edit the admin information
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Admin $admin
  * @var string[]|\Cake\Collection\CollectionInterface $users

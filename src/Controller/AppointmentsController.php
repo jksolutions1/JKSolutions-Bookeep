@@ -38,13 +38,9 @@ class AppointmentsController extends AppController
         })->all();
 
         $this->set(compact('appointments'));
-        // currentDate
-        // appointmentDate
-        // diffDays = Appointmentdate - currentdate e.g. diffdays =
-        // if diff <= 3 then
-        // send email
 
-
+        // initilaized the variables need to use in appointment index page to send email
+        // get the current date time
         $currentTime = date('Y-m-d h:i:sa', time());
         $maxTime = date("Y-m-d h:i:sa",strtotime("+3 day"));
         $relativeAppointments = $this->fetchTable('Appointments')->find('all', [
@@ -146,6 +142,10 @@ class AppointmentsController extends AppController
         return $this->redirect(['action' => 'index']);
     }
 
+    /**
+     * Sending Email method, it's not used now
+     *
+     */
     public function sendingemail()
     {
         $currentTime = FrozenTime::now();
