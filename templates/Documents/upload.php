@@ -1,6 +1,9 @@
 <?php
-
+/**
+ * This page is used to choose the document to upload
+ */
 ?>
+<!-- The view of upload page to to choose one file on local -->
 <div class="row">
     <div class="col-md-6 offset-md-3">
         <div class = "card">

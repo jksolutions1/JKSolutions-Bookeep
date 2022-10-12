@@ -1,9 +1,11 @@
+<!-- The login page -->
 <style>
 .login {
   justify-content:center;
 }
 </style>
 
+<!-- The view and style of login page -->
 <br>
 <div class="index login large-4 medium-4 large-offset-4 medium-offset-4 columns input-group">
 	<div class="panel">

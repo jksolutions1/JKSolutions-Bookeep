@@ -5,6 +5,7 @@
  * @var string[]|\Cake\Collection\CollectionInterface $clients
  */
 ?>
+<!-- The view of edit user page -->
 <div class="row">
     <aside class="column">
         <div class="side-nav">
@@ -17,6 +18,8 @@
             <?= $this->Html->link(__('List Users'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
         </div>
     </aside>
+
+    <!-- The text bar for editing documents -->
     <div class="column-responsive column-80">
         <div class="users form content">
             <?= $this->Form->create($user) ?>
@@ -31,6 +34,8 @@
                     echo $this->Form->control('password');
                 ?>
             </fieldset>
+
+            <!-- submit button -->
             <?= $this->Form->button(__('Submit')) ?>
             <?= $this->Form->end() ?>
         </div>

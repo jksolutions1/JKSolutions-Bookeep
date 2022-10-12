@@ -1,30 +1,29 @@
 <?php
 
 /**
+ * The index page for dashboard page with tables
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Appointment[]|\Cake\Collection\CollectionInterface $appointments
  */
-
 echo $this->Html->css('/vendor/datatables/dataTables.bootstrap4.min.css', ['block' => true]);
 echo $this->Html->script('/vendor/datatables/jquery.dataTables.min.js', ['block' => true]);
 echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['block' => true]);
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
 
+<!-- Set the style of this page -->
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
+	<!-- Set the title of the page -->
 	<title>Dashboard</title>
-
-
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<link href="css/style.css" rel="stylesheet">
-
 </head>
+
 
 <body>
 	<div class="container-fluid">

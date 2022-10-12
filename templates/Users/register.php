@@ -1,9 +1,11 @@
+<!-- The register page -->
 <style>
 .register {
   justify-content:center;
 }
 </style>
 
+<!-- The view and style of register page -->
 <br>
 <div class="index register large-4 medium-4 large-offset-4 medium-offset-4 columns input-group">
 	<div class="panel">
@@ -20,8 +22,6 @@
 			<br>
             <?= $this->Form->control('lastname',  ['type' => 'text']); ?>
 			<br>
-
-			
 
             <?= $this->Form->control('role',  ['type' => 'dropdown']); ?>
             <br>

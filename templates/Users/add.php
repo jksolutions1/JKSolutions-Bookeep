@@ -5,6 +5,8 @@
  * @var \Cake\Collection\CollectionInterface|string[] $clients
  */
 ?>
+<!-- The view of add users page -->
+<!-- Set the title -->
 <div class="row">
     <aside class="column">
         <div class="side-nav">
@@ -15,6 +17,8 @@
     <div class="column-responsive column-80">
         <div class="users form content">
             <?= $this->Form->create($user) ?>
+
+            <!-- The text bar for adding users -->
             <fieldset>
                 <legend><?= __('Add User') ?></legend>
                 <?php
@@ -26,6 +30,8 @@
                     echo $this->Form->control('password');
                 ?>
             </fieldset>
+
+            <!-- submit button -->
             <?= $this->Form->button(__('Submit')) ?>
             <?= $this->Form->end() ?>
         </div>

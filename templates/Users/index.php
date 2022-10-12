@@ -1,14 +1,21 @@
 <?php
 /**
+ * The index page for users page with tables
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\User[]|\Cake\Collection\CollectionInterface $users
  */
 ?>
+<!-- The view of index page to view the tables-->
+<!-- The view of the top screen, with title-->
 <div class="users index content">
     <?= $this->Html->link(__('New User'), ['action' => 'add'], ['class' => 'button float-right']) ?>
     <h3><?= __('Users') ?></h3>
+
+    <!-- The view of the tables-->
     <div class="table-responsive">
         <table>
+
+            <!-- Show the column name in top of table -->
             <thead>
                 <tr>
                     <th><?= $this->Paginator->sort('id') ?></th>
@@ -16,11 +23,15 @@
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>
             </thead>
+
+            <!-- Show the data in table -->
             <tbody>
                 <?php foreach ($users as $user): ?>
                 <tr>
                     <td><?= $this->Number->format($user->id) ?></td>
                     <td><?= $user->has('client') ? $this->Html->link($user->client->id, ['controller' => 'Clients', 'action' => 'view', $user->client->id]) : '' ?></td>
+                    
+                    <!-- The action column in the last part of the table -->
                     <td class="actions">
                         <?= $this->Html->link(__('View'), ['action' => 'view', $user->id]) ?>
                         <?= $this->Html->link(__('Edit'), ['action' => 'edit', $user->id]) ?>
@@ -31,6 +42,8 @@
             </tbody>
         </table>
     </div>
+
+    <!-- The bottom part of table -->
     <div class="paginator">
         <ul class="pagination">
             <?= $this->Paginator->first('<< ' . __('first')) ?>

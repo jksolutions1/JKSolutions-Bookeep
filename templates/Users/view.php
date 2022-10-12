@@ -4,6 +4,8 @@
  * @var \App\Model\Entity\User $user
  */
 ?>
+<!-- The view of view page to for one user -->
+<!-- Set the title -->
 <div class="row">
     <aside class="column">
         <div class="side-nav">
