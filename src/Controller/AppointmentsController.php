@@ -29,10 +29,10 @@ class AppointmentsController extends AppController
 
         $userId = $this->Auth->user('id');
 
+        // Queries to find all the relevant appointments of the current user
         $usersAppointments = $this->fetchTable('Appointments')->find('all', [
             'contain' => ['Clients','Companies']
         ]);
-
         $usersAppointments = $usersAppointments->matching('Clients', function ($q) {
             return $q->where(['Clients.user_id' => $this->Auth->user('id')]);
         })->all();
