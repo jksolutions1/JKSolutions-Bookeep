@@ -22,7 +22,6 @@ class DocumentsController extends AppController
         $usersDocuments = $this->fetchTable('Documents')->find('all', [
             'contain' => ['Clients']
         ]);
-
         $usersDocuments = $usersDocuments->matching('Clients', function ($q) {
             return $q->where(['Clients.user_id' => $this->Auth->user('id')]);
         })->all();
@@ -65,17 +64,17 @@ class DocumentsController extends AppController
         if ($this->request->is('post')) {
             $document = $this->Documents->patchEntity($document, $this->request->getData());
 
-        
+
 
                 if ($this->Documents->save($document)) {
                     $this->Flash->success(__('The document has been saved.'));
-    
+
                     return $this->redirect(['action' => 'index']);
                 } else {
                     $this->Flash->error(__('The document could not be saved. Please, try again.'));
                 }
 
-        
+
 
         }
         $clients = $this->Documents->Clients->find('list', ['limit' => 200])->all();
